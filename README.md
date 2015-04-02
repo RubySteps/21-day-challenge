@@ -18,7 +18,7 @@ All you have to do is complete the *RubySteps 21-Day Challenge*. It's easier tha
 
 #### Do I have to buy *RubySteps: The Playbook*?
 
-Nope! Sign up for the 21-day challenge, and I will send you the first four games for free! You can use the games to complete the challenge, and I'll be here to help you every step of the way. [Buy the *Playbook* and you'll get 9 extra games that will help you ship Ruby applications](http://rubysteps.com/playbook/), plus my undieing gratitude :)
+Nope! Sign up for the 21-day challenge, and I will send you the first four games for free! You can use the games to complete the challenge, and I'll be here to help you every step of the way. [Buy the *Playbook* and you'll get 9 extra games that will help you ship Ruby applications](http://www.rubysteps.com/playbook/), plus my undieing gratitude :)
 
 #### I've finished 20 days and I'm going out of the country tomorrow - can I still get in to *RubySteps Heroes' Hall*?
 
