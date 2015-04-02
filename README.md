@@ -12,9 +12,7 @@ All you have to do is complete the *RubySteps 21-Day Challenge*. It's easier tha
 
 ## For 21 consecutive days, use the techniques you learned in [*RubySteps: The Playbook*](http://www.rubysteps.com/playbook/) to ship some code. Send a pull request by [12pm mountain time](http://everytimezone.com/#2015-4-1,360,cn3) to complete the day's quest.
 
-### Enter your name and email below to join the next adventure on Monday, April 13th:
-
-<script type="text/javascript" src="//www1.moon-ray.com/v2.4/include/formEditor/genbootstrap.php?method=script&uid=p2c13791f28&version=1"></script>
+### [The next adventure begins on Monday, April 13th. Join us!](http://www.rubysteps.com)
 
 ----
 
