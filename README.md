@@ -1,6 +1,4 @@
-# RubySteps 21-Day Challenge
-
-Everyone you know has some sort of Ruby mentor - except for you - and you're missing out on EVERYTHING.
+# Everyone you know has some sort of Ruby mentor - except for you - and you're missing out on EVERYTHING.
 
 Where do the nice, smart programmers hang out? In the *RubySteps Heroes' Hall*, of course! :) Successfully complete the *RubySteps 21-Day Challenge*, and you're automatically inducted in to the hall. As an offering of thanks, you'll get:
 
