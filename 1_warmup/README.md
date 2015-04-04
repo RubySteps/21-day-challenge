@@ -10,3 +10,17 @@ What makes a valid pull request?
 4. It does not contain any files unrelated to your work (tmp files, backup files, etc)
 
 **To warm up for the challenge, you must send three valid pull requests. You will not get to participate for the challenge until you're warmed up.**
+
+You will prefix sub-directory names with the step of the challenge, formatted as two digits.
+
+*Valid sub-directory names:*
+
+* 01
+* 02_pat
+* 03_pat_loves_to_code
+
+*Invalid sub-directory names:*
+
+* 1
+* one
+* pat_01
