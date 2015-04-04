@@ -1,6 +1,6 @@
 # *RubySteps 21-Day Challenge* warmup
 
-Let's get you warmed up and ready to go for the *RubySteps 21-Day Challenge*! To complete the challenge, you'll need to [send a valid pull request](https://help.github.com/articles/creating-a-pull-request/) every day.
+Let's get you warmed up and ready to go for the *RubySteps 21-Day Challenge*! To complete the challenge, you'll need to [send a valid pull request](https://help.github.com/articles/creating-a-pull-request/) to this repository every day.
 
 What makes a valid pull request?
 
