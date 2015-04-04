@@ -8,7 +8,8 @@ What makes a valid pull request?
 2. It contains a single sub-directory for that step of the challenge.
 3. The single sub-directory has a README.md describing what you did.
 4. It does not contain any files unrelated to your work (tmp files, backup files, etc)
-5. It comes from a topic branch (aka not `master`)
+5. It comes from a topic branch, not `master`
+6. It is rebased off of the upstream master (doesn't end with a merge commit)
 
 **To warm up for the challenge, you must send three valid pull requests. You will not get to participate for the challenge until you're warmed up.**
 
