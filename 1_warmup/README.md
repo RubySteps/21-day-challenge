@@ -26,3 +26,7 @@ You will prefix sub-directory names with the step of the challenge, formatted as
 * `1`
 * `one`
 * `pat_01`
+
+## Example pull requests:
+
+* [Pat's first warmup](https://github.com/RubySteps/21-day-challenge/pull/2)
