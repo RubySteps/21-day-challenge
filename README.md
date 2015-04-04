@@ -1,8 +1,8 @@
 #
 
 1. [Sign up for the *RubySteps 21-Day Challenge*...](http://www.rubysteps.com)
-2. [Get warmed up](1_warmup) so you can participate in the challenge!
-3. [Complete the challenge](2_adventures)
+2. [Get warmed up](1_warmup) so you can participate in the challenge...
+3. [Complete the challenge...](2_adventures)
 4. [Be enshrined in *RubySteps Heroes' Hall*!](3_heroes)
 
 ----
