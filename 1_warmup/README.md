@@ -7,3 +7,6 @@ What makes a valid pull request?
 1. It is for files *only* within your personal sub-directory.
 2. It contains a single sub-directory for that step of the challenge.
 3. The single sub-directory has a README.md describing what you did.
+4. It does not contain any files unrelated to your work (tmp files, backup files, etc)
+
+**To warm up for the challenge, you must send three valid pull requests. You will not get to participate for the challenge until you're warmed up.**
