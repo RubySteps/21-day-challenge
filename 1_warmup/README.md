@@ -11,7 +11,7 @@ What makes a valid pull request?
 5. It comes from a topic branch, not `master`
 6. It is rebased off of the upstream master (doesn't end with a merge commit)
 
-**To warm up for the challenge, you must send pull requests for two warmup exercises ([you may send both in a single pull request](https://github.com/RubySteps/21-day-challenge/pull/5) . You will not get to participate for the challenge until you're warmed up.**
+**To warm up for the challenge, you must send pull requests for two warmup exercises ([you may send both in a single pull request](https://github.com/RubySteps/21-day-challenge/pull/5)). You will not get to participate for the challenge until you're warmed up.**
 
 You will prefix sub-directory names with the step of the challenge, formatted as two digits.
 
