@@ -1,6 +1,6 @@
 # *RubySteps 21-Day Challenge* warmup
 
-Let's get you warmed up and ready to go for the *RubySteps 21-Day Challenge*! To complete the challenge, you'll need to send a valid pull request every day.
+Let's get you warmed up and ready to go for the *RubySteps 21-Day Challenge*! To complete the challenge, you'll need to [send a valid pull request](https://help.github.com/articles/creating-a-pull-request/) every day.
 
 What makes a valid pull request?
 
@@ -11,7 +11,7 @@ What makes a valid pull request?
 5. It comes from a topic branch, not `master`
 6. It is rebased off of the upstream master (doesn't end with a merge commit)
 
-**To warm up for the challenge, you must send two valid pull requests. You will not get to participate for the challenge until you're warmed up.**
+**To warm up for the challenge, you must send pull requests for two warmup exercises ([you may send both in a single pull request](https://github.com/RubySteps/21-day-challenge/pull/5) . You will not get to participate for the challenge until you're warmed up.**
 
 You will prefix sub-directory names with the step of the challenge, formatted as two digits.
 
@@ -31,3 +31,4 @@ You will prefix sub-directory names with the step of the challenge, formatted as
 
 * [Pat's first warmup](https://github.com/RubySteps/21-day-challenge/pull/2)
 * [Pat's second warmup](https://github.com/RubySteps/21-day-challenge/pull/3)
+* [kotp does both warmups in one pull request](https://github.com/RubySteps/21-day-challenge/pull/5)
