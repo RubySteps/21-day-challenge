@@ -1,0 +1,1 @@
+This is the second warmup exercise for the 21 Day Ruby Challenge.  I forked the repo,created my warmup subfolder and added this readme.  Then I pushed up and submitted a pull request
