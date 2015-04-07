@@ -1,0 +1,1 @@
+This is the first warmup exercise.  I forked the repo, made a branch, created my warmup subfolder and added this readme.  Then I pushed and submitted a pull request
