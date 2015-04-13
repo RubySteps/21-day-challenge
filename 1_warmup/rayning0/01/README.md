@@ -12,5 +12,6 @@ What I'm going to do now...
 
 1. `git add .`
 2. `git commit -m "Warmup"`
-3. `git push origin warmup`
-4. Create pull request
+3. `git remote add me git@github.com:rayning0/21-day-challenge.git`
+4. `git push me warmup`
+5. Create pull request
