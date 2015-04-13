@@ -1,0 +1,2 @@
+# Day 1 Challenge
+I rebased my local copy of the 21-day-challenge repo to upstream/master, then created a new personal folder in the 'adventures' directory. I'm about to push this up to my personal branch of my forked version of the repo on github, and then I'll submit a pull request to Pat. 
