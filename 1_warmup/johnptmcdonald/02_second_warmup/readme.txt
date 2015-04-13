@@ -1,0 +1,1 @@
+This is the readme for the second warmup exercise. I forked the 21 day challenge repo, make a branch, added my own directory, pushed up, and submitted a pull request.

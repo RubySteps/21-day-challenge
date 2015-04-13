@@ -1,0 +1,2 @@
+- [x] 01 warmup
+- [x] 02 warmup
