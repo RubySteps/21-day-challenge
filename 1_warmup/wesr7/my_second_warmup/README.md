@@ -1,1 +1,0 @@
-This is my second warm up for the 21 day challenge.
