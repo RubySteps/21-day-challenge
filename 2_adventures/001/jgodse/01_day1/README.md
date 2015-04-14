@@ -1,0 +1,1 @@
+Directory for jgodse (2_adventures/001/jgodse/01_day1/). This file is to acknowledge the existence of the directory. 
