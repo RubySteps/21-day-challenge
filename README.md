@@ -64,6 +64,8 @@ That's all the inherently awesome stuff you get *just from sticking with the pro
 
 A *RubySteps* day begins on [12:00pm mountain time](http://everytimezone.com/#2015-4-13,360,cn3) and ends at 11:59am on the following calendar day. WATCH OUT FOR DAYLIGHT SAVINGS. You're a programmer, so you already know how messed up time is. If you don't... well, I apologize in advance for the frustration you will face for the rest of your programming life.
 
+Please see the [2_adventures/README](2_adventures/README.md) for info on the current day of the challenge.
+
 ### The first three days are free
 
 All 21 days are free! But you get a free pass for the first three days. You can't get eliminated in the first three days, for any reason - including because you signed up on day 3.
