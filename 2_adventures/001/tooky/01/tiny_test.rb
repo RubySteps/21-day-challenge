@@ -1,5 +1,7 @@
-def assert(condition)
+class AssertionFailed < StandardError; end
 
+def assert(condition)
+  raise AssertionFailed unless condition
 end
 
 assert(1 + 1 == 2)
