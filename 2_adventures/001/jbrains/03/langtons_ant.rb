@@ -24,14 +24,13 @@ class Grid
   end
 end
 
-Direction = Struct.new(:directionAsSymbol)
-class Direction
+class Direction < Vector
   def self.north
-    self.new(:north)
+    self.new(0, 1)
   end
   
   def self.west
-    self.new(:west)
+    self.new(-1, 0)
   end
 
   def turn_left
