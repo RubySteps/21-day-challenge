@@ -1,0 +1,1 @@
+* Ready to start adventure!

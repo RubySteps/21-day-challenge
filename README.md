@@ -1,10 +1,13 @@
-#
+# 1. [Sign up for the *RubySteps 21-Day Challenge*...](http://www.rubysteps.com/#21-day-challenge)
 
-1. [Sign up for the *RubySteps 21-Day Challenge*...](http://www.rubysteps.com)
-2. [Get warmed up](1_warmup/README.md) so you can participate in the challenge...
-3. [Complete the challenge...](2_adventures/README.md)
-4. [Be enshrined in *RubySteps Heroes' Hall*!](3_heroes/README.md)
+# 2. [Join us in Gitter chat](https://gitter.im/RubySteps/21-day-challenge)
+
+# 3. [Read the wiki](https://github.com/RubySteps/21-day-challenge/wiki)
+
+# 4. [Tell your friends!](http://www.rubysteps.com/rubysteps-list-thanks/)
 
 ----
 
-Want to hang out with other adventurers on the *RubySteps 21-Day Challenge*? Join us in gitter chat: [![Join the chat at https://gitter.im/RubySteps/21-day-challenge](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/RubySteps/21-day-challenge)
+*RubySteps* is copyright [Pat Maddox](mailto:pat@rubysteps.com).
+
+All content in the *RubySteps 21-Day Challenge* repository is copyright the respective creators.

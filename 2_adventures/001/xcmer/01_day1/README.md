@@ -1,0 +1,3 @@
+This is my README for the first day of the challenge. :-)
+
+Let the adventure begin...
