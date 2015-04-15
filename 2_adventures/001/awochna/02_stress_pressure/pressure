@@ -1,0 +1,58 @@
+#!/usr/bin/env ruby
+
+require 'thor'
+require 'rainbow'
+require 'yaml'
+
+class Pressure < Thor
+
+  desc "rec PERCENT [PERSON]", "record the pressure for [PERSON, alex] for today with PERCENT"
+  def rec(percent, person="alex")
+    pressure = read_pressure_file
+    if !pressure[person]
+      pressure.store(person, {Date.today => percent.to_i}) unless pressure[person]
+    elsif !pressure[person][Date.today]
+      pressure[person].store(Date.today, [percent.to_i])
+    else
+      pressure[person][Date.today].push(percent.to_i)
+    end
+    File.open(@pressure_file, 'w') { |f| YAML.dump(pressure, f) }
+  end
+
+  desc "ls DAYS [PERSON]", "list the pressures for the past DAYS days for [PERSON, alex]"
+  def ls(days=3, person="alex")
+    pressure = read_pressure_file
+    days.to_i.times do |mod|
+      day = Date.today + 1 - days.to_i + mod
+      if pressure[person][day]
+        puts day
+        pressure[person][day].each do |pressure_number|
+          puts pressure_number > 100 ? Rainbow("\t#{pressure_number}").blue : Rainbow("\t#{pressure_number}").cyan
+        end
+      end
+    end
+  end
+
+  desc "report DAYS [PERSON]", "create a colored, CLI based report for the past DAYS days for [PERSON, alex]"
+  def report(days=7, person="alex")
+    pressure = read_pressure_file
+    days.to_i.times do |mod|
+      day = Date.today + 1 - days.to_i + mod
+      if pressure[person][day]
+        average = pressure[person][day].inject{ |sum, el| sum + el }.to_f / pressure[person][day].size
+        color = average > 100 ? :blue : :cyan
+        equal_signs = average / 5
+        puts Rainbow("#{day}\t#{average}%\t#{'=' * equal_signs}").send(color)
+      end
+    end
+  end
+
+  private
+
+  def read_pressure_file
+    @pressure_file = File.join(__dir__, 'pressure.yml')
+    YAML.load_file(@pressure_file)
+  end
+end
+
+Pressure.start(ARGV)
