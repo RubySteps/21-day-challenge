@@ -7,9 +7,6 @@ client.login
 
 pulls = client.pulls REPO_NAME, state: 'open'
 
-#client.add_comment('RubySteps/21-day-challenge', 158, 'testing a comment')
-#client.update_issue 'RubySteps/21-day-challenge', 158, labels: ['help wanted']
-
 pulls.each do |pull|
   issue = client.issue REPO_NAME, pull[:number]
   next if issue[:labels].any?
