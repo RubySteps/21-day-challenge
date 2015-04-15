@@ -1,0 +1,6 @@
+require 'game'
+
+say = Game.new
+puts say.greeting + '.'
+
+puts say.greeting 'individual person' + '!'
