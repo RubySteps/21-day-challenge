@@ -1,5 +1,4 @@
-require 'csv'
-
+require 'faker'
 class Superhero
   @@adjectives = ["mega","super","epic"]
   @@superpowers = %{Adhesion
@@ -128,7 +127,19 @@ Weather prediction
 Unaided outer space travel
 X-ray vision
 }.lines
+@@orientation = ['neutral', 'evil', 'good']
+@@level = ['lawful','neutral','chaotic']
   def self.power
     "#{@@adjectives.sample} #{@@superpowers.sample.downcase.gsub(/\n/, '')}"
+  end
+  def self.alignment
+    "#{@@level.sample} #{@@orientation.sample}"
+  end
+  def self.name
+    Faker::App.name
+  end
+  def self.describe
+    name = Faker::App.name
+    "#{name} is #{@@level.sample} #{@@orientation.sample} and their power is #{@@adjectives.sample} #{@@superpowers.sample.downcase.gsub(/\n/, '')}"
   end
 end
