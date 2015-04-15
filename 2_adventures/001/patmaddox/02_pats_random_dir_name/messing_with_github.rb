@@ -16,6 +16,7 @@ pulls.each do |pull|
 
   puts "Pull: #{pull[:number]}"
   username = pull[:user][:login].downcase
+  next if username == "patmaddox" # because I get to do whatever I want :P
 
   files = client.pull_files REPO_NAME, pull[:number]
 
