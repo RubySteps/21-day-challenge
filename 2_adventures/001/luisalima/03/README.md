@@ -1,0 +1,1 @@
+So I'm thinking that for the challenges I'll try to implement an algorithm or data structure a day in Ruby. Why not? :)
