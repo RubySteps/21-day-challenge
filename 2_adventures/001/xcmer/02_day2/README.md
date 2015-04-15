@@ -1,0 +1,3 @@
+# The second day...
+
+Trying to get some useful code out here... Let's see.
