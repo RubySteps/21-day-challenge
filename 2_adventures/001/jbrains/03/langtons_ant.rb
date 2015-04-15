@@ -8,7 +8,7 @@ class Location < Vector
   def step_towards(direction)
     # assume west
     # Note that west is unit vector (-1, 0)
-    Location.new(self.x - 1, self.y + 0)
+    Location.new(self.x + direction.x, self.y + direction.y)
   end
 end
 
