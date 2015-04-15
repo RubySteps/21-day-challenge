@@ -22,6 +22,7 @@ class Grid
   end
 end
 
+# CONTRACT Directions are unit Vectors
 class Direction < Vector
   def self.north
     self.new(0, 1)
