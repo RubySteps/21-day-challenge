@@ -1,0 +1,1 @@
+* Readme fore adventure day 2.
