@@ -6,12 +6,12 @@ end
 
 assert(1 + 1 == 2)
 
-raised = false
 begin
   assert(1 + 1 != 2)
 rescue AssertionFailed
   raised = true
+else
+  fail
 end
-raise unless raised
 
 puts "Success!"
