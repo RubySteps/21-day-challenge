@@ -53,7 +53,12 @@ describe Validator do
                                               )
       end
 
-      it 'checks for a README.md in the day directory'
+      it 'checks for a README.md in the day directory' do
+        pull[:filenames] = ['2_adventures/001/github-user/01/NOT_README']
+
+        expect(response[:success]).to eq(false)
+        expect(response[:message]).to include('Where\'s the README? :(')
+      end
     end
   end
 end

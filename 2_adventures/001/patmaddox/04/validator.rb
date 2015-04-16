@@ -4,8 +4,7 @@ REPO_NAME = 'RubySteps/21-day-challenge'
 
 class Validator
   def validate_pull(pull, day)
-    success = true
-    message = 'Go you!'
+    message_parts = []
 
     invalid_filenames = pull[:filenames].reject {|f|
       f.index("1_warmup/#{pull[:user][:login]}/") == 0 ||
@@ -13,8 +12,7 @@ class Validator
     }
 
     if invalid_filenames.any?
-      success = false
-      message = %<Your pull request contains changes to files outside of the challenge and warmup directories. Please fix it!\n\n#{invalid_filenames.join("\n")}>
+      message_parts << %<Your pull request contains changes to files outside of the challenge and warmup directories. Please fix it!\n\n#{invalid_filenames.join("\n")}>
     end
 
     wrong_day_files = pull[:filenames].reject {|f|
@@ -23,13 +21,16 @@ class Validator
     }
 
     if wrong_day_files.any?
-      success = false
-      message = %<Your pull request appears to be for a different day. Expected Day: #{day}\n\n#{wrong_day_files.join("\n")}>
+      message_parts << %<Your pull request appears to be for a different day. Expected Day: #{day}\n\n#{wrong_day_files.join("\n")}>
+    end
+
+    unless pull[:filenames].include?("2_adventures/001/#{pull[:user][:login]}/#{day}/README.md")
+      message_parts << 'Where\'s the README? :('
     end
 
     {
-      success: success,
-      message: message
+      success: message_parts.empty?,
+      message: message_parts.any?? message_parts.join("\n----\n") : 'Go you!'
     }
   end
 
