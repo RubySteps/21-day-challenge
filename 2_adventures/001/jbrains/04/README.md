@@ -16,4 +16,8 @@ class Grid
 end
 ```
 
-I also notice in my output that although I show the Direction, I now show it as a Vector, when a human might prefer a more human interpretation of the Vector. I think that takes more than two minutes, so I create an issue.
+I also notice in my output that although I show the Direction, I now show it as a Vector, when a human might prefer a more human interpretation of the Vector. I think that takes more than two minutes, so I create an issue. https://github.com/jbrains/21-day-challenge/issues/1
+
+## The Result
+
+Langton's ant now takes two correct steps and I have some smelly code to deal with. Ma&ntilde;ana.
