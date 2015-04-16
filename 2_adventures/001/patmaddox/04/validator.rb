@@ -33,7 +33,7 @@ class Validator
 
     {
       success: message_parts.empty?,
-      message: message_parts.any?? message_parts.join("\n----\n") : 'Go you!'
+      message: message_parts.any?? message_parts.join("\n\n----\n\n") : 'Go you!'
     }
   end
 

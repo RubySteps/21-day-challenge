@@ -59,7 +59,11 @@ describe Validator do
         expect(response[:success]).to eq(true), response[:message]
       end
 
-      it 'allows a _ extension for a day directory'
+      xit 'allows a _ extension for a day directory' do
+        pull[:filenames] = ['2_adventures/001/github-user/01_ext/readme.md']
+
+        expect(response[:success]).to eq(true), response[:message]
+      end
 
       it 'allows warmup-only filenames' do
         pull[:filenames] = ['1_warmup/github-user/01/README.md']
