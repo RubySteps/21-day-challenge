@@ -100,7 +100,12 @@ describe Validator do
         expect(response[:message]).to include('Where\'s the README? :(')
       end
 
-      it 'checks for a README.md in the warmup directory'
+      xit 'checks for a README.md in the warmup directory' do
+        pull[:filenames] = ['1_warmup/github-user/01/NOT_README']
+
+        expect(response[:success]).to eq(false)
+        expect(response[:message]).to include('Where\'s the README? :(')
+      end
     end
   end
 end
