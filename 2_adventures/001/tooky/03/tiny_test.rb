@@ -5,7 +5,9 @@ def assert(condition)
 end
 
 class TinyTest
+  def self.run
 
+  end
 end
 
 assert_does_not_raise_for_true_condition = -> () {
