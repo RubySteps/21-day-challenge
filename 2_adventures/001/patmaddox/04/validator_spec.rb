@@ -32,22 +32,26 @@ describe Validator do
       it 'allows README.txt as an alternative to README.md' do
         pull[:filenames] = ['2_adventures/001/github-user/01/README.txt']
 
-        expect(response[:success]).to eq(true)
+        expect(response[:success]).to eq(true), response[:message]
       end
 
       it 'allows README as an alternative to README.md' do
         pull[:filenames] = ['2_adventures/001/github-user/01/README']
 
-        expect(response[:success]).to eq(true)
+        expect(response[:success]).to eq(true), response[:message]
       end
 
       it 'ignores case for README files' do
         pull[:filenames] = ['2_adventures/001/github-user/01/readme.md']
 
-        expect(response[:success]).to eq(true)
+        expect(response[:success]).to eq(true), response[:message]
       end
 
-      it 'ignores case for the username'
+      it 'ignores case for the username' do
+        pull[:filenames] << '2_adventures/001/GitHub-User/01/file.rb'
+
+        expect(response[:success]).to eq(true), response[:message]
+      end
 
       it 'allows a - extension for a day directory'
 

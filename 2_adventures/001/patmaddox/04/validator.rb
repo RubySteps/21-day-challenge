@@ -7,8 +7,8 @@ class Validator
     message_parts = []
 
     invalid_filenames = pull[:filenames].reject {|f|
-      f.index("1_warmup/#{pull[:user][:login]}/") == 0 ||
-        f.index("2_adventures/001/#{pull[:user][:login]}/") == 0
+      f.downcase.index("1_warmup/#{pull[:user][:login].downcase}/") == 0 ||
+        f.downcase.index("2_adventures/001/#{pull[:user][:login].downcase}/") == 0
     }
 
     if invalid_filenames.any?
@@ -16,8 +16,8 @@ class Validator
     end
 
     wrong_day_files = pull[:filenames].reject {|f|
-      f.index("1_warmup/#{pull[:user][:login]}/") == 0 ||
-        f.index("2_adventures/001/#{pull[:user][:login]}/#{day}/") == 0
+      f.downcase.index("1_warmup/#{pull[:user][:login].downcase}/") == 0 ||
+        f.downcase.index("2_adventures/001/#{pull[:user][:login].downcase}/#{day}/") == 0
     }
 
     if wrong_day_files.any?
