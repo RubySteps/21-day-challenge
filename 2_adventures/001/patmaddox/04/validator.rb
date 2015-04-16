@@ -17,7 +17,7 @@ class Validator
 
     wrong_day_files = pull[:filenames].reject {|f|
       f.downcase.index("1_warmup/#{pull[:user][:login].downcase}/") == 0 ||
-        f.downcase.index("2_adventures/001/#{pull[:user][:login].downcase}/#{day}/") == 0
+        f.downcase =~ /^2_adventures\/001\/#{pull[:user][:login].downcase}\/#{day}([-]\S*)?\//
     }
 
     if wrong_day_files.any?
@@ -25,8 +25,8 @@ class Validator
     end
 
     unless pull[:filenames].all? {|f| f.downcase.index("1_warmup") == 0 }
-      unless %w(README.md README.txt README).any? {|r|
-               pull[:filenames].any? {|f| f.casecmp("2_adventures/001/#{pull[:user][:login]}/#{day}/#{r}").zero? } }
+      unless %w(readme.md readme.txt readme).any? {|r|
+               pull[:filenames].any? {|f| f.downcase =~ /^2_adventures\/001\/#{pull[:user][:login].downcase}\/#{day}([-]\S*)?\/#{r}$/ } }
         message_parts << 'Where\'s the README? :('
       end
     end
