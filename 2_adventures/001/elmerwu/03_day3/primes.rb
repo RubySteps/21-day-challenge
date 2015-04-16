@@ -16,6 +16,7 @@ end
 
 def prime_number?(num)
   return false if num.even?
+  return false if num == 1
 
   ary = (2...num).to_a
   odd_nums_ary = ary.delete_if &:even?
