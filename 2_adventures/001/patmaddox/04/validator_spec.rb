@@ -41,7 +41,11 @@ describe Validator do
         expect(response[:success]).to eq(true)
       end
 
-      it 'ignores case for README files'
+      it 'ignores case for README files' do
+        pull[:filenames] = ['2_adventures/001/github-user/01/readme.md']
+
+        expect(response[:success]).to eq(true)
+      end
 
       it 'ignores case for the username'
 

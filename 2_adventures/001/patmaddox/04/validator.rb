@@ -25,7 +25,7 @@ class Validator
     end
 
     unless %w(README.md README.txt README).any? {|r|
-             pull[:filenames].include?("2_adventures/001/#{pull[:user][:login]}/#{day}/#{r}") }
+             pull[:filenames].any? {|f| f.casecmp("2_adventures/001/#{pull[:user][:login]}/#{day}/#{r}").zero? } }
       message_parts << 'Where\'s the README? :('
     end
 
