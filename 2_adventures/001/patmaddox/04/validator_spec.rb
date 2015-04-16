@@ -35,7 +35,11 @@ describe Validator do
         expect(response[:success]).to eq(true)
       end
 
-      it 'allows README as an alternative to README.md'
+      it 'allows README as an alternative to README.md' do
+        pull[:filenames] = ['2_adventures/001/github-user/01/README']
+
+        expect(response[:success]).to eq(true)
+      end
 
       it 'ignores case for README files'
 
