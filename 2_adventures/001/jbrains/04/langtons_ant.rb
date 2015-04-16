@@ -52,11 +52,26 @@ class LangtonsAnt
   end
 end
 
+def describe_walk(ant)
+  puts "Langton's ant is now at #{ant.location}"
+  puts "He is facing #{ant.facing}"
+  puts "He sees black squares at #{ant.grid.describe()}"
+end
+
+def take_a_step(ant)
+  ant = ant.go
+  $steps = $steps + 1
+  puts "After step #{$steps}"
+  describe_walk(ant)
+end
+
 origin = Location.new(0, 0)
 grid = Grid.with_black_squares([])
 ant = LangtonsAnt.start(grid: grid, facing: Direction.north, location: origin)
-ant = ant.go
 
-puts "Langton's ant is now at #{ant.location}"
-puts "He is facing #{ant.facing}"
-puts "He sees black squares at #{ant.grid.describe()}"
+puts "At the beginning of his walk..."
+describe_walk(ant)
+
+$steps = 0
+take_a_step(ant)
+
