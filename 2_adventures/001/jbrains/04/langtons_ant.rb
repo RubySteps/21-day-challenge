@@ -20,6 +20,11 @@ class Grid
   def describe
     black_squares.inspect
   end
+
+  def flip_square_at(location)
+    # assume white square
+    black_squares << location
+  end
 end
 
 # CONTRACT Directions are unit Vectors
@@ -45,6 +50,7 @@ class LangtonsAnt
   end
 
   def go
+    self.grid.flip_square_at(self.location)
     # assume a white square
     now_facing = self.facing.turn_left
     now_at = self.location.step_towards(now_facing)
