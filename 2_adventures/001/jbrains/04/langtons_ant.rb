@@ -29,6 +29,14 @@ end
 
 # CONTRACT Directions are unit Vectors
 class Direction < Vector
+  # how to make this array circular?
+  @@directions_rotating_left = [
+    Direction.new(0, 1),
+    Direction.new(-1, 0),
+    Direction.new(0, -1),
+    Direction.new(1, 0)
+  ]
+
   def self.north
     self.new(0, 1)
   end
@@ -38,8 +46,8 @@ class Direction < Vector
   end
 
   def turn_left
-    # assume facing north
-    self.class.west
+    # ugh. maintain a cursor, maybe?
+    @@directions_rotating_left[@@directions_rotating_left.index(self) + 1]
   end
 end
 
