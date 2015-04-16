@@ -49,8 +49,6 @@ class Validator
 
       client.update_issue REPO_NAME, pull[:number], labels: response[:labels]
       client.add_comment REPO_NAME, pull[:number], response[:message]
-
-      break
     end
   end
 end
