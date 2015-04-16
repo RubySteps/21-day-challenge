@@ -3,7 +3,7 @@ require 'octokit'
 REPO_NAME = 'RubySteps/21-day-challenge'
 
 class Validator
-  def do_the_thing
+  def validate_pulls
     client = Octokit::Client.new netrc: true
     client.login
 
