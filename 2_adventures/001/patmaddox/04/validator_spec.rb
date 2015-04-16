@@ -34,6 +34,8 @@ describe Validator do
       it 'allows README as an alternative to README.md'
 
       it 'ignores case for README files'
+
+      it 'ignores case for the username'
     end
 
     context 'an invalid pull' do
