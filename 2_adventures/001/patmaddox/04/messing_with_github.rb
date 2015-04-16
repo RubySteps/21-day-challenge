@@ -31,6 +31,6 @@ pulls.each do |pull|
     client.add_comment REPO_NAME, pull[:number], %<Your pull request contains changes to files outside of the challenge and warmup directories. Please fix it!\n\n#{invalid_file_names.join("\n")}>
   else
     client.update_issue REPO_NAME, pull[:number], labels: ['help wanted']
-    client.add_comment REPO_NAME, pull[:number], 'This pull request appears modify only your own files - nice work! Now it just needs final review from a human... (this comment was auto-generated :)'
+    client.add_comment REPO_NAME, pull[:number], 'This pull request appears to modify only your own files - nice work! Now it just needs final review from a human... (this comment was auto-generated :)'
   end
 end
