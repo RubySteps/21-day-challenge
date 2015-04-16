@@ -24,9 +24,11 @@ class Validator
       message_parts << %<Your pull request appears to be for a different day. Expected Day: #{day}\n\n#{wrong_day_files.join("\n")}>
     end
 
-    unless %w(README.md README.txt README).any? {|r|
-             pull[:filenames].any? {|f| f.casecmp("2_adventures/001/#{pull[:user][:login]}/#{day}/#{r}").zero? } }
-      message_parts << 'Where\'s the README? :('
+    unless pull[:filenames].all? {|f| f.downcase.index("1_warmup") == 0 }
+      unless %w(README.md README.txt README).any? {|r|
+               pull[:filenames].any? {|f| f.casecmp("2_adventures/001/#{pull[:user][:login]}/#{day}/#{r}").zero? } }
+        message_parts << 'Where\'s the README? :('
+      end
     end
 
     {

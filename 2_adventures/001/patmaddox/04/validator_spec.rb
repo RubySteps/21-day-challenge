@@ -57,7 +57,11 @@ describe Validator do
 
       it 'allows a _ extension for a day directory'
 
-      it 'allows warmup-only filenames'
+      it 'allows warmup-only filenames' do
+        pull[:filenames] = ['1_warmup/github-user/01/README.md']
+
+        expect(response[:success]).to eq(true), response[:message]
+      end
     end
 
     context 'an invalid pull' do
