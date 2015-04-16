@@ -4,6 +4,10 @@ def assert(condition)
   raise AssertionFailed unless condition
 end
 
+class TinyTest
+
+end
+
 assert_does_not_raise_for_true_condition = -> () {
   assert(1 + 1 == 2)
 }.call
