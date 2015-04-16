@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby -w
+
+# To run from the command line, please include the lib folder.  For example:
+#    ruby -Ilib bin/fizz_buzz 1 100
+
+require 'fizz_buzz'
+
+if ARGV.empty?
+  puts 'We require one or two numbers as arguments',
+    nil, nil, "\tfizz_buzz <1> [15]", nil,
+    'Where <> is required, and [] is optional',
+    'Unable to process your request.'
+else
+  number_1, number_2 = ARGV.collect(&:to_i)
+  case ARGV.size
+  when 2
+    (number_1..number_2).each do |number|
+      puts FizzBuzz.play(number)
+    end
+  when 1
+    puts FizzBuzz.play(number_1)
+  end
+end
