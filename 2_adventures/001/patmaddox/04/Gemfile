@@ -2,3 +2,4 @@ source "https://rubygems.org"
 
 gem "netrc", "~> 0.10"
 gem "octokit", "~> 3.0"
+gem "rspec", "~> 3.2", group: :development
