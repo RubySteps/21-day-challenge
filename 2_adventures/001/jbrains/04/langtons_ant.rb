@@ -69,6 +69,7 @@ def take_a_step(ant)
   $steps = $steps + 1
   puts "After step #{$steps}"
   describe_walk(ant)
+  ant
 end
 
 origin = Location.new(0, 0)
@@ -79,5 +80,7 @@ puts "At the beginning of his walk..."
 describe_walk(ant)
 
 $steps = 0
-take_a_step(ant)
+2.times do
+  ant = take_a_step(ant)
+end
 
