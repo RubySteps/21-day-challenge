@@ -27,6 +27,7 @@ describe Validator do
       it 'returns a success object' do
         expect(response[:success]).to eq(true)
         expect(response[:message]).to_not be_empty
+        expect(response[:labels]).to match_array(['checked-pass'])
       end
 
       it 'allows README.txt as an alternative to README.md' do
@@ -82,6 +83,7 @@ describe Validator do
 
         expect(response[:success]).to eq(false)
         expect(response[:message]).to include('invalid_file')
+        expect(response[:labels]).to match_array(['checked-fail'])
       end
 
       it 'checks that a pull includes a directory for that day of the challenge' do
