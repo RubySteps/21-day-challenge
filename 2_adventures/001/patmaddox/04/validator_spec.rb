@@ -62,6 +62,10 @@ describe Validator do
 
         expect(response[:success]).to eq(true), response[:message]
       end
+
+      it 'allows a - extension for a warmup directory'
+
+      it 'allowa a _ extension for a warmup directory'
     end
 
     context 'an invalid pull' do
