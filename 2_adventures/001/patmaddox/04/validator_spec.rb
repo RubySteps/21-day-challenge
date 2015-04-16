@@ -36,6 +36,8 @@ describe Validator do
       it 'ignores case for README files'
 
       it 'ignores case for the username'
+
+      it 'allows warmup-only filenames'
     end
 
     context 'an invalid pull' do
