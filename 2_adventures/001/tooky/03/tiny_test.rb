@@ -6,10 +6,11 @@ end
 
 class TinyTest
   def self.run(test)
-    result = Result.new(0, 0)
+    result = Result.new(0, 0, 0)
     begin
       test.call
     rescue
+      result.failed_count += 1
     else
       result.passed_count += 1
     ensure
@@ -18,7 +19,7 @@ class TinyTest
     result
   end
 
-  class Result < Struct.new(:run_count, :passed_count)
+  class Result < Struct.new(:run_count, :passed_count, :failed_count)
   end
 end
 
@@ -40,16 +41,18 @@ report_result_of_single_passing_test = -> () {
   result = TinyTest.run(
     ->() {}
   )
-  assert 1 == result.passed_count
   assert 1 == result.run_count
+  assert 1 == result.passed_count
+  assert 0 == result.failed_count
 }.call
 
 report_result_of_single_failing_test = -> () {
   result = TinyTest.run(
     ->() { fail }
   )
-  assert 0 == result.passed_count
   assert 1 == result.run_count
+  assert 0 == result.passed_count
+  assert 1 == result.failed_count
 }.call
 
 puts "Success!"
