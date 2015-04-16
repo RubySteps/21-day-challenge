@@ -6,7 +6,16 @@ end
 
 class TinyTest
   def self.run(test)
-    Result.new(1, 1)
+    result = Result.new(0, 0)
+    begin
+      test.call
+    rescue
+    else
+      result.passed_count += 1
+    ensure
+      result.run_count += 1
+    end
+    result
   end
 
   class Result < Struct.new(:run_count, :passed_count)
