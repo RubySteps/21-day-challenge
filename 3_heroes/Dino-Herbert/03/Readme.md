@@ -1,1 +1,0 @@
-following along with Bastards Book of Ruby to learn how to input/output files from the web
