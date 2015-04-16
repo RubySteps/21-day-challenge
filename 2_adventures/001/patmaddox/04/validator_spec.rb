@@ -49,6 +49,10 @@ describe Validator do
 
       it 'ignores case for the username'
 
+      it 'allows a - extension for a day directory'
+
+      it 'allows a _ extension for a day directory'
+
       it 'allows warmup-only filenames'
     end
 
