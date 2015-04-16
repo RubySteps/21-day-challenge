@@ -1,29 +1,32 @@
 require_relative 'validator'
 
 describe Validator do
+  let(:validator) { Validator.new }
+
   describe '#validate_pull(pull)' do
+    let(:pull) do
+      {
+        number: 123,
+
+        user: {
+          login: 'github-user'
+        },
+
+        labels: [],
+
+        filenames: [
+          '1_warmup/github-user/01/README.md',
+          '2_adventures/001/github-user/01/README.md'
+        ]
+      }
+    end
+
+    let(:response) { validator.validate_pull pull }
+
     context 'a valid pull' do
-      let(:pull) do
-        {
-          number: 123,
-
-          user: {
-            login: 'github-user'
-          },
-
-          labels: [],
-
-          filenames: [
-            '1_warmup/github-user/01/README.md',
-            '2_adventures/001/github-user/01/README.md'
-          ]
-        }
-      end
-
       it 'returns a success object' do
-        response = validate_pull pull
         expect(response[:success]).to eq(true)
-        expect(response[:message]).to be_present
+        expect(response[:message]).to_not be_empty
       end
 
       it 'allows README.txt as an alternative to README.md'
@@ -34,7 +37,12 @@ describe Validator do
     end
 
     context 'an invalid pull' do
-      it 'checks that a pull only touches files in a user\'s personal directory'
+      it 'checks that a pull only touches files in a user\'s personal directory' do
+        pull[:filenames] << 'invalid_file'
+
+        expect(response[:success]).to eq(false)
+        expect(response[:message]).to include('invalid_file')
+      end
 
       it 'checks that a pull includes a directory for that day of the challenge'
 
