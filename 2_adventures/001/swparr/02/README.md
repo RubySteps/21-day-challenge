@@ -1,0 +1,6 @@
+Let's use the next 3 weeks as a chance to try out a few gems that I've
+not used before...
+
+first one...
+
+[Acts As State Machine](https://github.com/aasm/aasm) 
