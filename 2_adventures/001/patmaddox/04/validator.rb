@@ -24,7 +24,8 @@ class Validator
       message_parts << %<Your pull request appears to be for a different day. Expected Day: #{day}\n\n#{wrong_day_files.join("\n")}>
     end
 
-    unless pull[:filenames].include?("2_adventures/001/#{pull[:user][:login]}/#{day}/README.md")
+    unless %w(README.md README.txt).any? {|r|
+             pull[:filenames].include?("2_adventures/001/#{pull[:user][:login]}/#{day}/#{r}") }
       message_parts << 'Where\'s the README? :('
     end
 
