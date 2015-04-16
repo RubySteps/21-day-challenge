@@ -3,7 +3,7 @@ require 'octokit'
 REPO_NAME = 'RubySteps/21-day-challenge'
 
 class Validator
-  def validate_pull(pull, day)
+  def validate_pull(pull)
     message_parts = []
 
     invalid_filenames = pull[:filenames].reject {|f|
@@ -15,18 +15,9 @@ class Validator
       message_parts << %<Your pull request contains changes to files outside of the challenge and warmup directories. Please fix it!\n\n#{invalid_filenames.join("\n")}>
     end
 
-    wrong_day_files = pull[:filenames].reject {|f|
-      f.downcase.index("1_warmup/#{pull[:user][:login].downcase}/") == 0 ||
-        f.downcase =~ /^2_adventures\/001\/#{pull[:user][:login].downcase}\/#{day}([-_]\S*)?\//
-    }
-
-    if wrong_day_files.any?
-      message_parts << %<Your pull request appears to be for a different day. Expected Day: #{day}\n\n#{wrong_day_files.join("\n")}>
-    end
-
     unless pull[:filenames].all? {|f| f.downcase.index("1_warmup") == 0 }
       unless %w(readme.md readme.txt readme).any? {|r|
-               pull[:filenames].any? {|f| f.downcase =~ /^2_adventures\/001\/#{pull[:user][:login].downcase}\/#{day}([-_]\S*)?\/#{r}$/ } }
+               pull[:filenames].any? {|f| f.downcase =~ /^2_adventures\/001\/#{pull[:user][:login].downcase}\/\d\d([-_]\S*)?\/#{r}$/ } }
         message_parts << 'Where\'s the README? :('
       end
     end
@@ -38,7 +29,7 @@ class Validator
     }
   end
 
-  def validate_pulls(day)
+  def validate_pulls
     client = Octokit::Client.new netrc: true
     client.login
 
@@ -54,7 +45,7 @@ class Validator
       files = client.pull_files REPO_NAME, pull[:number]
       pull[:filenames] = files.map {|f| f[:filename] }
 
-      response = validate_pull pull, day
+      response = validate_pull pull
 
       client.update_issue REPO_NAME, pull[:number], labels: response[:labels]
       client.add_comment REPO_NAME, pull[:number], response[:message]
