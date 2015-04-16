@@ -3,7 +3,7 @@ require 'octokit'
 REPO_NAME = 'RubySteps/21-day-challenge'
 
 class Validator
-  def validate_pull(pull)
+  def validate_pull(pull, day)
     success = true
     message = 'Go you!'
 
@@ -15,6 +15,16 @@ class Validator
     if invalid_filenames.any?
       success = false
       message = %<Your pull request contains changes to files outside of the challenge and warmup directories. Please fix it!\n\n#{invalid_filenames.join("\n")}>
+    end
+
+    wrong_day_files = pull[:filenames].reject {|f|
+      f.index("1_warmup/#{pull[:user][:login]}/") == 0 ||
+        f.index("2_adventures/001/#{pull[:user][:login]}/#{day}/") == 0
+    }
+
+    if wrong_day_files.any?
+      success = false
+      message = %<Your pull request appears to be for a different day. Expected Day: #{day}\n\n#{wrong_day_files.join("\n")}>
     end
 
     {

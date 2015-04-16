@@ -3,7 +3,7 @@ require_relative 'validator'
 describe Validator do
   let(:validator) { Validator.new }
 
-  describe '#validate_pull(pull)' do
+  describe '#validate_pull(pull, day)' do
     let(:pull) do
       {
         number: 123,
@@ -21,7 +21,7 @@ describe Validator do
       }
     end
 
-    let(:response) { validator.validate_pull pull }
+    let(:response) { validator.validate_pull pull, '01' }
 
     context 'a valid pull' do
       it 'returns a success object' do
@@ -44,7 +44,14 @@ describe Validator do
         expect(response[:message]).to include('invalid_file')
       end
 
-      it 'checks that a pull includes a directory for that day of the challenge'
+      it 'checks that a pull includes a directory for that day of the challenge' do
+        pull[:filenames] = ['2_adventures/001/github-user/02/README.md']
+
+        expect(response[:success]).to eq(false)
+        expect(response[:message]).to include('Expected Day: 01',
+                                              '2_adventures/001/github-user/02/README.md'
+                                              )
+      end
 
       it 'checks for a README.md in the day directory'
     end
