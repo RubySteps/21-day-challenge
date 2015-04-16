@@ -5,8 +5,11 @@ def assert(condition)
 end
 
 class TinyTest
-  def self.run
+  def self.run(test)
+    Result.new(1, 1)
+  end
 
+  class Result < Struct.new(:run_count, :passed_count)
   end
 end
 
