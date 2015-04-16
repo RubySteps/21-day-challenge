@@ -83,6 +83,8 @@ describe Validator do
         expect(response[:success]).to eq(false)
         expect(response[:message]).to include('Where\'s the README? :(')
       end
+
+      it 'checks for a README.md in the warmup directory'
     end
   end
 end
