@@ -18,4 +18,12 @@ assert_raises_for_false_condition = -> () {
   end
 }.call
 
+report_result_of_single_passing_test = -> () {
+  result = TinyTest.run(
+    ->() {}
+  )
+  assert 1 == result.passed_count
+  assert 1 == result.run_count
+}.call
+
 puts "Success!"
