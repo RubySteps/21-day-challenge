@@ -10,6 +10,7 @@ class TinyTest
       test.call
     rescue
       result.failed_count += 1
+      result.add_failure(test)
     else
       result.passed_count += 1
     ensure
