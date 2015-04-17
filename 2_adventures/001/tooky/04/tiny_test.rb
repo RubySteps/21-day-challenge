@@ -12,8 +12,6 @@ class TinyTest
       result.add_failure(test)
     else
       result.add_pass(test)
-    ensure
-      result.run_count += 1
     end
     result
   end
