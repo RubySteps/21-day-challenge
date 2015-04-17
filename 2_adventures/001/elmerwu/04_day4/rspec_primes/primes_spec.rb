@@ -25,3 +25,35 @@ describe "#prime_number?" do
     end
   end
 end
+
+describe "#nth_prime" do
+  context "given 0" do
+    it "should return 'Please enter a number 1 or greater'" do
+      expect(nth_prime(0)).to eq("Please enter a number 1 or greater")
+    end
+  end
+
+  context "given 1" do
+    it "should return 2" do
+      expect(nth_prime(1)).to eq(2)
+    end
+  end
+
+  context "given 2" do
+    it "should return 3" do
+      expect(nth_prime(2)).to eq(3)
+    end
+  end
+
+  context "given 9" do
+    it "should return 23" do
+      expect(nth_prime(9)).to eq(23)
+    end
+  end
+
+  context "given 100" do
+    it "should return 541" do
+      expect(nth_prime(100)).to eq(541)
+    end
+  end
+end
