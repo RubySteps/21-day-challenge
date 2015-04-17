@@ -14,6 +14,14 @@ class TwitterCLI < Thor
     puts "#{Time.now} Posted: #{posted_tweet.text}" if posted_tweet.text == tweet
   end
 
+  desc "ls", "list the last 20 tweets from your timeline"
+  def ls
+    client = read_config
+    client.home_timeline.each do |tweet|
+      puts "#{tweet.text}\n\t-- #{tweet.user.name}"
+    end
+  end
+
   private
 
   def read_config
