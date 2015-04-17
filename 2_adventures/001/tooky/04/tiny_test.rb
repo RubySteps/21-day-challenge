@@ -5,7 +5,7 @@ def assert(condition)
 end
 
 class TinyTest
-  def self.run(test, result=Result.new(0,0,0))
+  def self.run(test, result=Result.new)
     begin
       test.call
     rescue
@@ -17,20 +17,27 @@ class TinyTest
   end
 
   def self.run_all(*tests)
-    result = Result.new(0, 0, 0)
+    result = Result.new
     tests.each do |test|
       run(test, result)
     end
     result
   end
 
-  class Result < Struct.new(:run_count, :passed_count, :failed_count)
+  class Result
+    attr_reader :passed_count, :failed_count
+
+    def initialize
+      @passed_count = 0
+      @failed_count = 0
+    end
+
     def add_failure(test)
-      self.failed_count += 1
+      @failed_count += 1
     end
 
     def add_pass(test)
-      self.passed_count += 1
+      @passed_count += 1
     end
 
     def run_count
