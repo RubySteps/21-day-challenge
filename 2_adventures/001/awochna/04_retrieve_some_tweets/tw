@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+require 'thor'
+require 'twitter'
+require 'yaml'
+
+class TwitterCLI < Thor
+
+  desc "post TWEET", "post to your twitter with TWEET"
+  def post(tweet)
+    # tweet posting logic goes here
+    client = read_config
+    posted_tweet = client.update(tweet)
+    puts "#{Time.now} Posted: #{posted_tweet.text}" if posted_tweet.text == tweet
+  end
+
+  desc "ls", "list the last 20 tweets from your timeline"
+  def ls
+    client = read_config
+    client.home_timeline.each do |tweet|
+      puts "#{tweet.text}\n\t-- #{tweet.user.name}"
+    end
+  end
+
+  private
+
+  def read_config
+    access_tokens = YAML.load_file(File.join(__dir__, 'access_tokens.yml'))
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = access_tokens['consumer_api_key']
+      config.consumer_secret     = access_tokens['consumer_api_secret']
+      config.access_token        = access_tokens['access_token']
+      config.access_token_secret = access_tokens['access_token_secret']
+    end
+    return client
+  end
+end
+
+TwitterCLI.start(ARGV)
