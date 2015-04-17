@@ -34,6 +34,10 @@ class TinyTest
     def add_pass(test)
       self.passed_count += 1
     end
+
+    def run_count
+      failed_count + passed_count
+    end
   end
 end
 
