@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+
+gem "rspec-its"
+gem "rspec"
+gem "guard"
+gem "guard-rspec"''
+
+gem "gosu"
