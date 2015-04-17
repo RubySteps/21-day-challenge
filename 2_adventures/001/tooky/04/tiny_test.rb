@@ -19,6 +19,22 @@ class TinyTest
     result
   end
 
+  def self.run_all(*tests)
+    result = Result.new(0, 0, 0)
+    tests.each do |test|
+      begin
+        test.call
+      rescue
+        result.failed_count += 1
+      else
+        result.passed_count += 1
+      ensure
+        result.run_count += 1
+      end
+    end
+    result
+  end
+
   class Result < Struct.new(:run_count, :passed_count, :failed_count)
   end
 end
