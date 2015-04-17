@@ -11,7 +11,7 @@ class TinyTest
     rescue
       result.add_failure(test)
     else
-      result.passed_count += 1
+      result.add_pass(test)
     ensure
       result.run_count += 1
     end
@@ -29,6 +29,10 @@ class TinyTest
   class Result < Struct.new(:run_count, :passed_count, :failed_count)
     def add_failure(test)
       self.failed_count += 1
+    end
+
+    def add_pass(test)
+      self.passed_count += 1
     end
   end
 end
