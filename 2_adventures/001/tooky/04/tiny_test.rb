@@ -6,7 +6,6 @@ end
 
 class TinyTest
   def self.run(test, result=Result.new(0,0,0))
-    result = Result.new(0, 0, 0)
     begin
       test.call
     rescue
