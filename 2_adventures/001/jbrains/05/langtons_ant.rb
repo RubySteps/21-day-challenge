@@ -22,7 +22,7 @@ class Grid
   end
 
   def describe
-    black_squares.inspect
+    "[#{black_squares.collect(&:to_s).join(", ")}]"
   end
 
   def flip_square_at(location)
