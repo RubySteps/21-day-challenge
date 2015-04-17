@@ -1,0 +1,1 @@
+This is a small exercise in using regular expressions to find a particular string within a large body of text - first from a sample bit of text, then from an external file.
