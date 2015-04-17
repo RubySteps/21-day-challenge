@@ -8,6 +8,10 @@ class Location < Vector
   def step_towards(direction)
     Location.new(self.x + direction.x, self.y + direction.y)
   end
+
+  def to_s
+    "(#{x}, #{y})"
+  end
 end
 
 # black_squares: List of black-colored squares
