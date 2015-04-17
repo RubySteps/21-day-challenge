@@ -55,4 +55,15 @@ report_result_of_single_failing_test = -> () {
   assert 1 == result.failed_count
 }.call
 
+report_result_of_running_a_failing_and_passing_test = -> () {
+  result = TinyTest.run_all(
+    ->() {},
+    ->() { fail }
+  )
+
+  assert 2 == result.run_count
+  assert 1 == result.passed_count
+  assert 1 == result.failed_count
+}.call
+
 puts "Success!"
