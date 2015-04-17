@@ -48,7 +48,7 @@ end
 
 assert_does_not_raise_for_true_condition = -> () {
   assert(1 + 1 == 2)
-}.call
+}
 
 assert_raises_for_false_condition = -> () {
   begin
@@ -58,7 +58,7 @@ assert_raises_for_false_condition = -> () {
   else
     fail
   end
-}.call
+}
 
 report_result_of_single_passing_test = -> () {
   result = TinyTest.run(
@@ -67,7 +67,7 @@ report_result_of_single_passing_test = -> () {
   assert 1 == result.run_count
   assert 1 == result.passed_count
   assert 0 == result.failed_count
-}.call
+}
 
 report_result_of_single_failing_test = -> () {
   result = TinyTest.run(
@@ -76,7 +76,7 @@ report_result_of_single_failing_test = -> () {
   assert 1 == result.run_count
   assert 0 == result.passed_count
   assert 1 == result.failed_count
-}.call
+}
 
 report_result_of_running_a_failing_and_passing_test = -> () {
   result = TinyTest.run_all(
@@ -87,6 +87,16 @@ report_result_of_running_a_failing_and_passing_test = -> () {
   assert 2 == result.run_count
   assert 1 == result.passed_count
   assert 1 == result.failed_count
-}.call
+}
 
-puts "Success!"
+result = TinyTest.run_all(
+  assert_does_not_raise_for_true_condition,
+  assert_raises_for_false_condition,
+  report_result_of_single_passing_test,
+  report_result_of_single_failing_test,
+  report_result_of_running_a_failing_and_passing_test,
+)
+
+puts "#{result.run_count} ran, #{result.passed_count} passed, #{result.failed_count} failed"
+
+puts "Success!" if result.run_count == result.passed_count
