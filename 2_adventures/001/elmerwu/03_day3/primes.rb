@@ -3,6 +3,9 @@
 # given a number n, find the nth prime number
 
 def nth_prime(num)
+  return 2 if num == 1
+  return "Please enter a number 1 or greater" if num == 0
+
   prime_count = 1
   n = 2
 
@@ -28,7 +31,7 @@ def prime_number?(num)
     break if divisors > 0
   end
 
-  divisors == 0 ? true : false
+  divisors.zero?
 end
 
 nth_prime(9) == 23
