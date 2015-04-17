@@ -27,6 +27,9 @@ class TinyTest
   end
 
   class Result < Struct.new(:run_count, :passed_count, :failed_count)
+    def add_failure(test)
+
+    end
   end
 end
 
