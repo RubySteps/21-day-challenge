@@ -54,13 +54,13 @@ class Direction < Vector
     @@directions_rotating_left[@@directions_rotating_left.index(self) + 1]
   end
 
+  @@named_directions = {
+    Direction.new(0, 1) => "north",
+    Direction.new(-1, 0) => "west",
+    Direction.new(0, -1) => "south",
+    Direction.new(1, 0) => "east"
+  }
   def to_s
-    @@named_directions = {
-      Direction.new(0, 1) => "north",
-      Direction.new(-1, 0) => "west",
-      Direction.new(0, -1) => "south",
-      Direction.new(1, 0) => "east"
-    }
     @@named_directions[self]
   end
 end
