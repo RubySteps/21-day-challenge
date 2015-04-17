@@ -6,7 +6,7 @@ next_directory    = current_directory.succ
 day_number        = File.basename(next_directory)
 
 FileUtils.cp_r current_directory, next_directory
-File.truncate File.join(next_directory, "README.md")
+File.truncate File.join(next_directory, "README.md"), 0
 
 `git reset && git add #{next_directory} && git commit -m "Start day #{day_number}"`
 
