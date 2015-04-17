@@ -1,3 +1,5 @@
-### Adding Tests to r11runner's Code Continued
+### A Ruby App From Scratch With Tests
 
-- @r11runner's [code](https://github.com/RubySteps/21-day-challenge/blob/08cf18f0849c0bd712076d91914adbbd65bb5870/2_adventures/001/r11runner/01_day1/create_personal_directory.rb) stuck out to me and I thought it was a nice idea. I've started the process of making the original code more testable by adding simple tests (only 1 done so far).
+- I decided to add the [guard-minitest](https://github.com/guard/guard-minitest) gem early on (inspired by [kotp](https://github.com/kotp)'s Day 4 code which you can find [here](https://github.com/RubySteps/21-day-challenge/tree/master/2_adventures/001/kotp/04_automated_testing_example), in order to make testing a little quicker.
+
+- The repo for this project can be found [here](https://github.com/liamseanbrady/trello-rat.git)
