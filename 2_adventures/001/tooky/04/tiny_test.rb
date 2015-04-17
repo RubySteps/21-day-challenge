@@ -9,7 +9,6 @@ class TinyTest
     begin
       test.call
     rescue
-      result.failed_count += 1
       result.add_failure(test)
     else
       result.passed_count += 1
@@ -29,7 +28,7 @@ class TinyTest
 
   class Result < Struct.new(:run_count, :passed_count, :failed_count)
     def add_failure(test)
-
+      self.failed_count += 1
     end
   end
 end
