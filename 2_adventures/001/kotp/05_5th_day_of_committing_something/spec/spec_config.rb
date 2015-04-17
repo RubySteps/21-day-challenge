@@ -8,8 +8,8 @@
 
 OPTION = {
 # report_style: 'Default',
-# report_style: 'Spec',
-  report_style: 'Progress',
+  report_style: 'Spec',
+# report_style: 'Progress',
 # report_style: 'Guard',
 # report_style: 'RubyMine',
 # report_style: 'RubyMate',
