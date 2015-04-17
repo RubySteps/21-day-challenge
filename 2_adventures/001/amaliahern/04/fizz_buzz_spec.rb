@@ -13,4 +13,7 @@ describe "fizz_buzz kata" do
   it "should return number when is not fizz buzz" do
     expect(fizzbuzz(8)).to eq 8 
   end
+  it "should return number when it is 1" do
+    expect(fizzbuzz(1)).to eq 1
+  end
 end
