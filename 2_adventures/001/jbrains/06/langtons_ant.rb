@@ -80,25 +80,27 @@ class LangtonsAnt
   end
 end
 
-def step_taken(number, ant)
-  if number == 0
-    puts "At the beginning of his walk..."
-  else
-    puts "After step #{number}"
+class ConsoleReportingWalkListener
+  def step_taken(number, ant)
+    if number == 0
+      puts "At the beginning of his walk..."
+    else
+      puts "After step #{number}"
+    end
+    describe_walk(ant)
   end
-  describe_walk(ant)
-end
 
-def describe_walk(ant)
-  puts "Langton's ant is now at #{ant.location}"
-  puts "He is facing #{ant.facing}"
-  puts "He sees black squares at #{ant.grid.describe()}"
+  def describe_walk(ant)
+    puts "Langton's ant is now at #{ant.location}"
+    puts "He is facing #{ant.facing}"
+    puts "He sees black squares at #{ant.grid.describe()}"
+  end
 end
 
 def take_a_step(ant)
   ant = ant.go
   $steps = $steps + 1
-  step_taken($steps, ant)
+  $walk_listener.step_taken($steps, ant)
   ant
 end
 
@@ -106,9 +108,11 @@ origin = Location.new(0, 0)
 grid = Grid.with_black_squares([])
 ant = LangtonsAnt.start(grid: grid, facing: Direction.north, location: origin)
 
-step_taken(0, ant)
-
 $steps = 0
+$walk_listener = ConsoleReportingWalkListener.new
+
+$walk_listener.step_taken(0, ant)
+
 2.times do
   ant = take_a_step(ant)
 end
