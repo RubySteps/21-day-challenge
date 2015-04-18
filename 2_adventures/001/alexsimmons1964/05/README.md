@@ -33,6 +33,7 @@ IOW I'm assuming that each of:
 - remote
 - refs
 - associated objects
+
 have a specific meanings in git land.
 
 It goes on:
@@ -41,13 +42,13 @@ It goes on:
 	Updates remote refs using local refs, while sending objects necessary to complete the given refs.
 
 So this next paragraph is also dominated by terms with git meanings I'm yet to understand:
-	- update
-	- remote refs
-	- local refs
-	- sending
-	- objects
-	- complete
-	- given refs
+- update
+- remote refs
+- local refs
+- sending
+- objects
+- complete
+- given refs
 
 In this case I'm assuming the other words have their regular use English meaning but one 
 can never be sure.
