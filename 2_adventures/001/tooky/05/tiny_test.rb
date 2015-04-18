@@ -30,6 +30,7 @@ class TinyTest
     def initialize
       @passed_count = 0
       @failed_count = 0
+      @failures = []
     end
 
     def add_failure(test)
