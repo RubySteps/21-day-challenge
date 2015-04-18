@@ -29,17 +29,19 @@ class TinyTest
 
     def initialize
       @passed_count = 0
-      @failed_count = 0
       @failures = []
     end
 
     def add_failure(test, exception)
-      @failed_count += 1
       @failures << Failure.new(test, exception)
     end
 
     def add_pass(test)
       @passed_count += 1
+    end
+
+    def failed_count
+      failures.count
     end
 
     def run_count
