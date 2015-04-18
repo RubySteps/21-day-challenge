@@ -10,6 +10,20 @@ class Question
 
 end
 
+describe Questionnaire do
+  
+  before do
+    @questionnaire = Questionnaire.new
+  end
+
+  it "must respond to title" do
+    @questionnaire.must_repond_to(:title)
+  end
+
+  it "must respond to questions" do 
+    @questionnaire.must_respond_to(:questions)
+  end
+end
 
 describe Question do
 
