@@ -80,7 +80,13 @@ class LangtonsAnt
   end
 end
 
-class ConsoleReportingWalkListener
+class WalkListener
+  def step_taken(number, ant)
+    # Optional subclass responsibility
+  end
+end
+
+class ConsoleReportingWalkListener < WalkListener
   def step_taken(number, ant)
     if number == 0
       puts "At the beginning of his walk..."
