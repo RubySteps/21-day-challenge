@@ -81,7 +81,11 @@ class LangtonsAnt
 end
 
 def step_taken(number)
-  puts "After step #{number}"
+  if number == 0
+    puts "At the beginning of his walk..."
+  else
+    puts "After step #{number}"
+  end
 end
 
 def describe_walk(ant)
@@ -102,7 +106,7 @@ origin = Location.new(0, 0)
 grid = Grid.with_black_squares([])
 ant = LangtonsAnt.start(grid: grid, facing: Direction.north, location: origin)
 
-puts "At the beginning of his walk..."
+step_taken(0)
 describe_walk(ant)
 
 $steps = 0
