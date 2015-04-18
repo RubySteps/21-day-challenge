@@ -47,7 +47,7 @@ describe Banjo do
       -|-|-|-
       -|-|-|-
       }
-      expect(Banjo.shape('cm')).to eq(shape)
+      expect(Banjo.shape('em')).to eq(shape)
     end
   end
 end
