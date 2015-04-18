@@ -1,8 +1,8 @@
 module FizzBuzz
   def rules
     [
-      ->(n) { (n % 3).zero? && 'Fizz' || '' },
-      ->(n) { (n % 5).zero? && 'Buzz' || '' }
+      ->(n) { (n % 3).zero? and 'Fizz' or '' },
+      ->(n) { (n % 5).zero? and 'Buzz' or '' }
     ]
   end
 
