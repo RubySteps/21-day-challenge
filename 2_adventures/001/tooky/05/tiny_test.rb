@@ -80,8 +80,8 @@ report_result_of_single_failing_test = -> () {
 
 report_result_of_running_a_failing_and_passing_test = -> () {
   result = TinyTest.run_all(
-    ->() {},
-    ->() { fail }
+    ->() { fail },
+    ->() {}
   )
 
   assert 2 == result.run_count
