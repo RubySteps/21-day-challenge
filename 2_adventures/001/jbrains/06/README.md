@@ -1,9 +1,3 @@
-# Day 5
+# Day 6
 
-I have some conflicting thoughts: handle the ant stepping off a black square, improve the format of the output, or improve the design.
-
-I decided to go for what seems quickest, and that's improving the format of the output, both the Location and the Direction. For Location I choose the simple format "(4, -5)", but for the Direction I choose the English word for the compass direction.
-
-## The Result
-
-I decided to stop after improving the format. I did a little refactoring.
+Today I think I prefer to improve the design. Notably, I don't like that my "driver" invokes `puts` directly from two different places. I interpret what it does as signaling interesting events during the walk, so I prefer to model it that way in the code. Observer/observable seems to fit best here.
