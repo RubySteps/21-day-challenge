@@ -5,3 +5,5 @@ Today I think I prefer to improve the design. Notably, I don't like that my "dri
 ## Result
 
 I moved all the `puts` calls into one place. This led me to observe that the message "At the beginning of his walk...", which looks special, isn't really. It's just one implementation of "taken step number 0". This also helped me remove the duplicate usage of `describe_walk`.
+
+I like most of the resulting design, although I don't like that `LangtonsAntWalk` instantiates its own collaborator, a specific implementation of `WalkListener`. I'll fix that later.
