@@ -25,7 +25,7 @@ class TinyTest
   end
 
   class Result
-    attr_reader :passed_count, :failed_count
+    attr_reader :passed_count, :failed_count, :failures
 
     def initialize
       @passed_count = 0
