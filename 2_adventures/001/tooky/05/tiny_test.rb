@@ -95,7 +95,7 @@ report_test_failure_details = -> () {
 
   result = TinyTest.run_all(failing_test)
 
-  assert result.failures.include?(Test::Failure.new(failing_test, the_exception))
+  assert result.failures.include?(TinyTest::Failure.new(failing_test, the_exception))
 }
 
 result = TinyTest.run_all(
