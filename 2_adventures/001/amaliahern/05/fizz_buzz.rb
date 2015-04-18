@@ -12,3 +12,5 @@ def fizzbuzz(number)
   end
   result
 end
+
+(1..100).each {|n| puts fizzbuzz(n) }
