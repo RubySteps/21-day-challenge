@@ -80,6 +80,10 @@ class LangtonsAnt
   end
 end
 
+def step_taken(number)
+  puts "After step #{number}"
+end
+
 def describe_walk(ant)
   puts "Langton's ant is now at #{ant.location}"
   puts "He is facing #{ant.facing}"
@@ -89,7 +93,7 @@ end
 def take_a_step(ant)
   ant = ant.go
   $steps = $steps + 1
-  puts "After step #{$steps}"
+  step_taken($steps)
   describe_walk(ant)
   ant
 end
