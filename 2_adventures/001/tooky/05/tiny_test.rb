@@ -8,8 +8,8 @@ class TinyTest
   def self.run(test, result=Result.new)
     begin
       test.call
-    rescue
-      result.add_failure(test)
+    rescue Object => exception
+      result.add_failure(test, exception)
     else
       result.add_pass(test)
     end
@@ -33,8 +33,9 @@ class TinyTest
       @failures = []
     end
 
-    def add_failure(test)
+    def add_failure(test, exception)
       @failed_count += 1
+      @failures << Failure.new(test, exception)
     end
 
     def add_pass(test)
@@ -47,7 +48,6 @@ class TinyTest
   end
 
   class Failure < Struct.new(:test, :exception)
-
   end
 end
 
