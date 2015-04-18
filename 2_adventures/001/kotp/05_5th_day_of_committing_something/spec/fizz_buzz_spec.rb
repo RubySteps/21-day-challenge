@@ -3,37 +3,36 @@ require 'fizz_buzz'
 
 describe FizzBuzz do
   describe 'Single Numbers' do
-    it 'must return 1 for 1' do
-      FizzBuzz.play(1).must_equal 1
-    end
-    it 'must return 2 for 2' do
-      FizzBuzz.play(2).must_equal 2
-    end
-    it 'must return "Fizz" for 3' do
-      FizzBuzz.play(3).must_equal 'Fizz'
-    end
-    it 'must return "Buzz" for 5' do
-      FizzBuzz.play(5).must_equal 'Buzz'
-    end
-    it 'must return "FizzBuzz" for 15' do
-      FizzBuzz.play(15).must_equal 'FizzBuzz'
-    end
-    it 'must return "FizzBuzz" for 45' do
-      FizzBuzz.play(45).must_equal 'FizzBuzz'
+    @fizz = 'Fizz'
+    @buzz = 'Buzz'
+    @both = @fizz + @buzz
+    @result_samples = [
+      # given, expected
+      [  1,    1    ],
+      [  2,    2    ],
+      [  3,    @fizz],
+      [  5,    @buzz],
+      [ 15,    @both],
+      [ 45,    @both],
+    ]
+    .each do |given, expected|
+      it " #{expected} for #{given}" do
+        assert_equal expected, FizzBuzz.play(given)
+      end
     end
   end
 
   describe 'Edge Cases' do
-    it 'must return FizzBuzz for 0' do
-      FizzBuzz.play(0).must_equal 'FizzBuzz'
+    it ' FizzBuzz for 0' do
+      assert_equal 'FizzBuzz', FizzBuzz.play(0)
     end
-    it 'must return -1 for -1' do
-      FizzBuzz.play(-1).must_equal(-1)
+    it ' -1 for -1' do
+      assert_equal -1,  FizzBuzz.play(-1)
     end
   end
 
   describe '1 to 100' do
-    it 'must follow the rules' do
+    it ' follows the rules' do
       @expected_results = [
         1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz', 13,
         14, 'FizzBuzz', 16, 17, 'Fizz', 19, 'Buzz', 'Fizz', 22, 23, 'Fizz',
@@ -45,8 +44,7 @@ describe FizzBuzz do
         83, 'Fizz', 'Buzz', 86, 'Fizz', 88, 89, 'FizzBuzz', 91, 92, 'Fizz', 94,
         'Buzz', 'Fizz', 97, 98, 'Fizz', 'Buzz'
       ]
-      (1..100).map { |number | FizzBuzz.play(number) }
-        .must_equal @expected_results
+      assert_equal @expected_results, (1..100).map { |number | FizzBuzz.play(number) }
     end
   end
 
