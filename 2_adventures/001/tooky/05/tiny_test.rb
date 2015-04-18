@@ -44,6 +44,10 @@ class TinyTest
       failed_count + passed_count
     end
   end
+
+  class Failure < Struct.new(:test, :exception)
+
+  end
 end
 
 assert_does_not_raise_for_true_condition = -> () {
