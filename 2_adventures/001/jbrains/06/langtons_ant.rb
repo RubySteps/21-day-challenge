@@ -103,23 +103,25 @@ class ConsoleReportingWalkListener < WalkListener
   end
 end
 
-def take_a_step(ant)
-  ant = ant.go
-  $steps = $steps + 1
-  $walk_listener.step_taken($steps, ant)
-  ant
+class LangtonsAntWalk
+  def initialize
+    origin = Location.new(0, 0)
+    grid = Grid.with_black_squares([])
+    @ant = LangtonsAnt.start(grid: grid, facing: Direction.north, location: origin)
+    @steps = 0
+    @walk_listener = ConsoleReportingWalkListener.new
+    @walk_listener.step_taken(0, @ant)
+  end
+
+  def take_a_step
+    @ant = @ant.go
+    @steps = @steps + 1
+    @walk_listener.step_taken(@steps, @ant)
+  end
 end
 
-origin = Location.new(0, 0)
-grid = Grid.with_black_squares([])
-ant = LangtonsAnt.start(grid: grid, facing: Direction.north, location: origin)
-
-$steps = 0
-$walk_listener = ConsoleReportingWalkListener.new
-
-$walk_listener.step_taken(0, ant)
-
+walk = LangtonsAntWalk.new
 2.times do
-  ant = take_a_step(ant)
+  walk.take_a_step
 end
 
