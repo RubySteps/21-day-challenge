@@ -103,10 +103,11 @@ result = TinyTest.run_all(
   assert_raises_for_false_condition,
   report_result_of_single_passing_test,
   report_result_of_single_failing_test,
-  report_result_of_running_a_failing_and_passing_test,
-  report_test_failure_details
+  report_result_of_running_a_failing_and_passing_test
 )
 
 puts "#{result.run_count} ran, #{result.passed_count} passed, #{result.failed_count} failed"
+
+report_test_failure_details.call
 
 puts "Success!" if result.run_count == result.passed_count
