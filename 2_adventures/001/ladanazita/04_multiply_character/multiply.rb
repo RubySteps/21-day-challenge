@@ -1,1 +1,3 @@
-def spam(number) 'hue' *number end
+def spam(number) 
+  'hue' *number 
+end
