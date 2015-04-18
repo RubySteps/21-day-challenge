@@ -1,5 +1,16 @@
 require 'minitest/autorun'
 
+class Questionnaire
+  
+  attr_accessor :title
+  attr_accessor :questions
+
+  def initialize(title="")
+    @title = title
+    @quesitons = []
+  end
+end
+
 class Question
 
   attr_reader :sentence
@@ -17,7 +28,7 @@ describe Questionnaire do
   end
 
   it "must respond to title" do
-    @questionnaire.must_repond_to(:title)
+    @questionnaire.must_respond_to(:title)
   end
 
   it "must respond to questions" do 
@@ -38,7 +49,7 @@ describe Question do
 
   describe 'when asked about sentence' do
     it "must responds #{@sentence}" do
-      @quesiton.sentence.must_equal @sentence
+      @question.sentence.must_equal @sentence
     end
   end
 end
