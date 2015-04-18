@@ -29,10 +29,10 @@ I'm assuming these are used in their regular English sense, and not some special
 programming/git code sense. 
 
 IOW I'm assuming that each of:
-	- Update
-	- remote
-	- refs
-	- associated objects
+	Update
+	remote
+	refs
+	associated objects
 have a specific meanings in git land.
 
 It goes on:
