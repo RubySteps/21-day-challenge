@@ -1,0 +1,20 @@
+# This file is a sample file.  Copy this to spec_config.rb and modify at will.
+
+# The spec_config.rb file is ignored in the project so can be modified by
+# individual taste.
+
+# Minitest Reporters Selection
+# Reporter choices are case sensitive!
+# uncomment the one you wish to use
+
+OPTION = {
+# report_style: "Default",
+# report_style: "Spec",
+# report_style: "Progress",
+# report_style: "Guard",
+# report_style: "RubyMine",
+# report_style: "RubyMate",
+# report_style: "JUnit",
+}
+
+# vim: set ft=rb:
