@@ -1,36 +1,6 @@
 require 'minitest/autorun'
 
-class Questionnaire
-  
-  attr_accessor :title
-  attr_accessor :questions
-
-  def initialize(arg_hash={})
-    @title = arg_hash[:title]
-    @questions = arg_hash[:questions]
-  end
-end
-
-class Question
-
-  attr_reader :sentence
-
-  def initialize(arg_hash)
-    @sentence = arg_hash[:sentence]
-  end
-
-end
-
-def create_questionnaire_from_hash(arg_hash={})
-  @title = arg_hash[:title]
-  @questions = []
-  if arg_hash[:questions]
-    arg_hash[:questions].each do |question_hash| 
-      @questions.push(Question.new(question_hash))
-    end
-  end
-  Questionnaire.new title: @title, questions: @questions
-end
+require_relative 'questionnaire'
 
 describe Questionnaire do
   
