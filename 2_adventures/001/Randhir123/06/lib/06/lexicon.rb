@@ -20,7 +20,7 @@ class Lexicon
 			begin
 				tokens.push([LexiconType::NUMBER, Integer(word)])
 			rescue
-				if @lexicon_inverted.has_key? word
+				if @lexicon_inverted.has_key? word.downcase
 					tokens.push([@lexicon_inverted[word], word])
 				else
 					tokens.push([LexiconType::ERROR, word])
@@ -36,7 +36,7 @@ class Lexicon
 		f = File.open(file_name, "r")
 		f.each_line do |line|
 			if ! line.start_with? '#'
-				words.push(line.chomp)
+				words.push(line.chomp.downcase)
 			end
 		end
 		f.close
