@@ -69,5 +69,9 @@ got green pass
 
 [finished]
 
-In my next run through this kata, I think I will lock down the version of RSpec in the Gemfile
-and also set-up Guard so that I can do the cycle faster
+In my next run through this kata, I think I will: 
+
+* lock down the version of RSpec in the Gemfile
+* set-up Guard so that I can do the cycle faster
+* use it as a way to play with git rebase -i, try to make very small commits at each tiny step and then squash it down
+
