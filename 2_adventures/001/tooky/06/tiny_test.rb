@@ -7,7 +7,7 @@ def assert(condition, message="Expected assertion to be to true, was false.")
 end
 
 def assert_equal(expected, actual)
-
+  assert expected == actual
 end
 
 class TinyTest
