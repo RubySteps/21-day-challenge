@@ -49,9 +49,8 @@ class Direction < Vector
     self.new(-1, 0)
   end
 
-  def turn_left
-    # ugh. maintain a cursor, maybe?
-    @@directions_rotating_left[@@directions_rotating_left.index(self) + 1]
+  def self.turn_left_from(direction)
+    @@directions_rotating_left[@@directions_rotating_left.index(direction) + 1]
   end
 
   @@named_directions = {
@@ -74,7 +73,7 @@ class LangtonsAnt
   def go
     self.grid.flip_square_at(self.location)
     # assume a white square
-    now_facing = self.facing.turn_left
+    now_facing = Direction.turn_left_from(self.facing)
     now_at = self.location.step_towards(now_facing)
     self.class.new(self.grid, now_facing, now_at)
   end
