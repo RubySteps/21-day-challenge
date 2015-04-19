@@ -89,11 +89,7 @@ end
 
 class ConsoleReportingWalkListener < WalkListener
   def step_taken(number, ant)
-    if number == 0
-      puts "At the beginning of his walk..."
-    else
-      puts "After step #{number}"
-    end
+    puts (number == 0 ? "At the beginning of his walk..." : "After step #{number}")
     describe_walk(ant)
   end
 
