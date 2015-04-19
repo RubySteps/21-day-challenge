@@ -6,6 +6,10 @@ def assert(condition, message="Expected assertion to be to true, was false.")
   end
 end
 
+def assert_equal(expected, actual)
+
+end
+
 class TinyTest
   def self.run(test, result=Result.new)
     begin
