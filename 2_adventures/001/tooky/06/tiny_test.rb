@@ -77,6 +77,15 @@ assert_default_message = -> () {
   end
 }
 
+set_a_custom_assert_message = -> () {
+  begin
+    assert(1 + 1 != 2, "In a parallel universe, 1+1 is not 2.")
+  rescue AssertionFailed => fail
+    assert fail.message == "In a parallel universe, 1+1 is not 2."
+  end
+
+}
+
 report_result_of_single_passing_test = -> () {
   result = TinyTest.run(
     ->() {}
@@ -122,7 +131,8 @@ result = TinyTest.run_all(
   report_result_of_single_failing_test,
   report_result_of_running_a_failing_and_passing_test,
   report_test_failure_details,
-  assert_default_message
+  assert_default_message,
+  set_a_custom_assert_message
 )
 
 if result.failures.any?
