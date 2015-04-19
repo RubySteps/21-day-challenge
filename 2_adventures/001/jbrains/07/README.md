@@ -15,3 +15,8 @@ I also notice that, at least for now, if the ant continues walking indefinitely,
 ## The Result
 
 I find the design very cohesive so far. We have scattered assumptions that the ant always stands on a white square. I'd like to deal with that next.
+
+# Epilogue
+
+Someone has told me that I can just use `Array#cycle()` which returns an `Enumerator`, so I can use `@@directions_turning_left.cycle()` to turn left and `@@directions_turning_left.reverse.cycle()` to turn right.
+
