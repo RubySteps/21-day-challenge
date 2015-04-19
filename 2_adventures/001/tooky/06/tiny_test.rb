@@ -7,7 +7,8 @@ def assert(condition, message="Expected assertion to be to true, was false.")
 end
 
 def assert_equal(expected, actual)
-  assert expected == actual
+  message = "Expected '#{expected.inspect}' to `==` '#{actual.inspect}'"
+  assert expected == actual, message
 end
 
 class TinyTest
