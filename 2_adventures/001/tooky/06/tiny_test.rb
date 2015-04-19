@@ -130,7 +130,7 @@ if result.failures.any?
   puts
 
   result.failures.each do |f|
-    puts "  #{f.exception} - #{f.exception.message}"
+    puts "  #{f.exception.class} - #{f.exception.message}"
     puts f.exception.backtrace.map { |s| "    #{s}" }
     puts
   end
