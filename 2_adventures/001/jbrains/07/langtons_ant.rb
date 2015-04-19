@@ -50,7 +50,7 @@ class Direction < Vector
   end
 
   def self.turn_left_from(direction)
-    @@directions_rotating_left[@@directions_rotating_left.index(direction) + 1]
+    @@directions_rotating_left[(@@directions_rotating_left.index(direction) + 1) % @@directions_rotating_left.length]
   end
 
   @@named_directions = {
