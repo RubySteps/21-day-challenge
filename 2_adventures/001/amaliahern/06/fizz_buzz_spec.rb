@@ -1,3 +1,4 @@
+require 'minitest/autorun'
 require './fizz_buzz.rb'
 
 describe "fizz_buzz kata" do
