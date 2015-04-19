@@ -1,0 +1,7 @@
+source "https://rubygems.org"
+
+gem 'guard'
+gem 'minitest'
+gem 'minitest-reporters'
+gem 'guard-minitest'
+gem 'terminal-notifier-guard'
