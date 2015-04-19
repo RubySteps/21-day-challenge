@@ -98,6 +98,16 @@ assert_equal_raises_assertion_failed_when_not_equal = -> () {
   end
 }
 
+default_message_for_assert_equal = -> () {
+  expected = 2
+  actual   = 1 + 2
+  begin
+    assert_equal expected, actual
+  rescue AssertionFailed => failure
+    assert_equal "Expected '2' to `==` '3'", failure.message
+  end
+}
+
 set_a_custom_assert_message = -> () {
   begin
     assert(1 + 1 != 2, "In a parallel universe, 1+1 is not 2.")
@@ -155,7 +165,8 @@ result = TinyTest.run_all(
   assert_default_message,
   set_a_custom_assert_message,
   assert_equal_does_not_raise_when_values_are_equal,
-  assert_equal_raises_assertion_failed_when_not_equal
+  assert_equal_raises_assertion_failed_when_not_equal,
+  default_message_for_assert_equal
 )
 
 if result.failures.any?
