@@ -1,0 +1,5 @@
+# each line is a noun
+door
+bear
+princess
+cabinet
