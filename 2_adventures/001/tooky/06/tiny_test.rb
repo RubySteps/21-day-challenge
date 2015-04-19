@@ -122,18 +122,18 @@ report_result_of_single_passing_test = -> () {
   result = TinyTest.run(
     ->() {}
   )
-  assert 1 == result.run_count
-  assert 1 == result.passed_count
-  assert 0 == result.failed_count
+  assert_equal 1, result.run_count
+  assert_equal 1, result.passed_count
+  assert_equal 0, result.failed_count
 }
 
 report_result_of_single_failing_test = -> () {
   result = TinyTest.run(
     ->() { fail }
   )
-  assert 1 == result.run_count
-  assert 0 == result.passed_count
-  assert 1 == result.failed_count
+  assert_equal 1, result.run_count
+  assert_equal 0, result.passed_count
+  assert_equal 1, result.failed_count
 }
 
 report_result_of_running_a_failing_and_passing_test = -> () {
@@ -142,9 +142,9 @@ report_result_of_running_a_failing_and_passing_test = -> () {
     ->() {}
   )
 
-  assert 2 == result.run_count
-  assert 1 == result.passed_count
-  assert 1 == result.failed_count
+  assert_equal 2, result.run_count
+  assert_equal 1, result.passed_count
+  assert_equal 1, result.failed_count
 }
 
 report_test_failure_details = -> () {
