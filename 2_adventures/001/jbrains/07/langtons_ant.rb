@@ -29,6 +29,10 @@ class Grid
     # assume white square
     black_squares << location
   end
+
+  def color_of(location)
+    black_squares.include?(location) ? "black" : "white"
+  end
 end
 
 # CONTRACT Directions are unit Vectors
@@ -45,10 +49,6 @@ class Direction < Vector
     self.new(0, 1)
   end
   
-  def self.west
-    self.new(-1, 0)
-  end
-
   def self.turn_left_from(direction)
     # SMELL Circular view on an array, rather than making the array itself circular.
     index_of_next_direction_turning_left = (@@directions_rotating_left.index(direction) + 1) % @@directions_rotating_left.length
@@ -98,7 +98,7 @@ class ConsoleReportingWalkListener < WalkListener
   end
 
   def describe_walk(ant)
-    puts "Langton's ant is now at #{ant.location}"
+    puts "Langton's ant is now at #{ant.location}, which is #{ant.grid.color_of(ant.location)}"
     puts "He is facing #{ant.facing}"
     puts "He sees black squares at #{ant.grid.describe()}"
   end
