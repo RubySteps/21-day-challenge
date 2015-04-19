@@ -1,7 +1,9 @@
 class AssertionFailed < StandardError; end
 
 def assert(condition)
-  raise AssertionFailed unless condition
+  unless condition
+    raise AssertionFailed, "Expected assertion to evaluate to true, was false."
+  end
 end
 
 class TinyTest
