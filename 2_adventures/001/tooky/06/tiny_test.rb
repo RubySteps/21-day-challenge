@@ -67,6 +67,14 @@ assert_raises_for_false_condition = -> () {
   end
 }
 
+assert_default_message = -> () {
+  begin
+    assert(1 + 1 != 2)
+  rescue AssertionFailed => fail
+    assert fail.message == "Expected assertion to evaluate to true, was false."
+  end
+}
+
 report_result_of_single_passing_test = -> () {
   result = TinyTest.run(
     ->() {}
@@ -111,7 +119,8 @@ result = TinyTest.run_all(
   report_result_of_single_passing_test,
   report_result_of_single_failing_test,
   report_result_of_running_a_failing_and_passing_test,
-  report_test_failure_details
+  report_test_failure_details,
+  assert_default_message
 )
 
 if result.failures.any?
