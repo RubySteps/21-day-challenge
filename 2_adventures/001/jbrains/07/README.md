@@ -10,4 +10,8 @@ Now that I have this working, I no longer feel in the mood to duplicate all the 
 
 I look for things to clean up. I no longer need `Direction.west` and remove it. I would prefer not to need `Direction.north`, but I think I prefer it to `new Direction(1, 0)`, at least for now, so I keep it.
 
+I also notice that, at least for now, if the ant continues walking indefinitely, then the same four squares will be marked as black-colored over and over again. This doesn't affect the correctness of the code, but only wastes memory, so I don't mind for now. I don't want to forget about this potential problem, however, so I log it as an issue.
+
 ## The Result
+
+I find the design very cohesive so far. We have scattered assumptions that the ant always stands on a white square. I'd like to deal with that next.
