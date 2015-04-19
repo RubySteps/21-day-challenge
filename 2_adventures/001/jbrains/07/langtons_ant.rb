@@ -50,6 +50,7 @@ class Direction < Vector
   end
 
   def self.turn_left_from(direction)
+    # SMELL Circular view on an array, rather than making the array itself circular.
     index_of_next_direction_turning_left = (@@directions_rotating_left.index(direction) + 1) % @@directions_rotating_left.length
     @@directions_rotating_left[index_of_next_direction_turning_left]
   end
