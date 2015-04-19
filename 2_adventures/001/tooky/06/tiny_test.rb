@@ -1,8 +1,8 @@
 class AssertionFailed < StandardError; end
 
-def assert(condition)
+def assert(condition, message="Expected assertion to be to true, was false.")
   unless condition
-    raise AssertionFailed, "Expected assertion to evaluate to true, was false."
+    raise AssertionFailed, message
   end
 end
 
@@ -73,7 +73,7 @@ assert_default_message = -> () {
   begin
     assert(1 + 1 != 2)
   rescue AssertionFailed => fail
-    assert fail.message == "Expected assertion to evaluate to true, was false."
+    assert fail.message == "Expected assertion to be to true, was false."
   end
 }
 
