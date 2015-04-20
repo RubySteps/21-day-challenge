@@ -55,6 +55,12 @@ class Direction < Vector
     @@directions_rotating_left[index_of_next_direction_turning_left]
   end
 
+  def self.turn_right_from(direction)
+    # SMELL Circular view on an array, rather than making the array itself circular.
+    index_of_next_direction_turning_left = (@@directions_rotating_left.index(direction) - 1) % @@directions_rotating_left.length
+    @@directions_rotating_left[index_of_next_direction_turning_left]
+  end
+
   @@named_directions = {
     Direction.new(0, 1) => "north",
     Direction.new(-1, 0) => "west",
@@ -75,7 +81,7 @@ class LangtonsAnt
   def go
     self.grid.flip_square_at(self.location)
     # assume a white square
-    now_facing = Direction.turn_left_from(self.facing)
+    now_facing = Direction.turn_right_from(self.facing)
     now_at = self.location.step_towards(now_facing)
     self.class.new(self.grid, now_facing, now_at)
   end

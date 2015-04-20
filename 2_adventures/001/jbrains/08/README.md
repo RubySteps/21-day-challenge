@@ -8,3 +8,7 @@ Good news: I have to implement "turn right" anyhow, so I can do that first, so t
 
 Then I can think about how to do graphics, which I've never done in Ruby before, and which I haven't done since high school using the Graphics Development Kit for WATCOM BASIC. That will be interesting.
 
+## Turn Right, You!
+
+I can just do the opposite of turning left. I'll subtract one instead of adding one... but I'd better verify that -1 % 4 == 3. It is. I don't have to use `@@directions_turning_left.reverse`, although I might use that eventually. One small change and the ant now turns right on a white square. (Well, on all squares.)
+
