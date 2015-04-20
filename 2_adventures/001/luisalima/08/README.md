@@ -1,0 +1,3 @@
+I promise tomorrow I'll have something code-juicy to share...
+
+But today, I'll only share this: veggie burgers in Portugal are very dangerous and I'm a bit sick so I don't have imagination for more -.-
