@@ -134,7 +134,7 @@ class LangtonsAntWalk
 end
 
 walk = LangtonsAntWalk.new
-5.times do
+9.times do
   walk.take_a_step
 end
 
