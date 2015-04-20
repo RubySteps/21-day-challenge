@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Portland Schools: Math Standards</title>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.js"></script>
+    <link href="style.css" media="screen" rel="stylesheet" />
+  </head>
+  <body>
+
+    <h2>Portland Public Schools</h2>
+    <h3>Percentage of Students Meeting or Exceeding Math Standards (Previous Year)</h3>
+    <script type="text/javascript">
+      var w = 1200;
+      var h = 1600;
+      var padding = {
+        top: 20,
+        right: 10,
+        bottom: 30,
+        left: 270
+      };
+
+      var widthScale = d3.scale.linear()
+                         .range([ 0, w - padding.right - padding.left ]);
+
+      var heightScale = d3.scale.ordinal()
+                                .rangeRoundBands([ padding.top, h - padding.bottom ], 0.1)
+
+      var xAxisBottom = d3.svg.axis()
+                              .scale(widthScale)
+                              .orient('bottom');
+
+      var xAxisTop = d3.svg.axis()
+                           .scale(widthScale)
+                           .orient('top');
+
+      var yAxis = d3.svg.axis()
+                        .scale(heightScale)
+                        .orient('left');
+
+      var svg = d3.select('body')
+            .append('svg')
+            .attr('width', w)
+            .attr('height', h);
+
+      d3.csv("portland_school_data.csv", function(data) {
+        data.sort(function(a, b) {
+          return d3.descending(parseFloat(a.MathPctPrev), parseFloat(b.MathPctPrev));
+        });
+
+        widthScale.domain([ 0, d3.max(data, function(d) {
+          return parseFloat(d.MathPctPrev);
+        }) ]);
+
+        heightScale.domain(data.map(function(d) {
+          return d.Name;
+        }));
+
+        var rects = svg.selectAll("rect")
+                       .data(data)
+                       .enter()
+                       .append("rect");
+
+        rects.attr("x", padding.left)
+             .attr("y", function(d, i) {
+               return heightScale(d.Name);
+             })
+             .attr("width", function(d) {
+               return widthScale(d.MathPctPrev);
+             })
+             .attr("height", heightScale.rangeBand())
+             .attr("fill", "#bf4400")
+             .append("title")
+             .text(function(d) {
+               return d.Name + "’s Math Percentage: " + d.MathPctPrev + "%";
+             });
+
+        svg.append("g")
+           .attr("class", "x axis")
+           .attr("transform", "translate(" + padding.left + "," + (h - padding.bottom - 5) + ")")
+           .call(xAxisBottom);
+
+        svg.append("g")
+           .attr("class", "x axis")
+           .attr("transform", "translate(" + padding.left + "," + padding.top + ")")
+           .call(xAxisTop);
+
+        svg.append("g")
+           .attr("class", "y axis")
+           .attr("transform", "translate(" + padding.left + ",0)")
+           .call(yAxis);
+
+      });
+
+    </script>
+
+  </body>
+</html>

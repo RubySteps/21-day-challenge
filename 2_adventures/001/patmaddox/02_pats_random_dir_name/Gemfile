@@ -1,0 +1,4 @@
+source "https://rubygems.org"
+
+gem "netrc", "~> 0.10"
+gem "octokit", "~> 3.0"
