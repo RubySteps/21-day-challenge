@@ -26,8 +26,11 @@ class Grid
   end
 
   def flip_square_at(location)
-    # assume white square
-    black_squares << location
+    if color_of(location) == :white
+      black_squares << location
+    else
+      black_squares.delete(location)
+    end
   end
 
   # Answers a symbol representing the color
@@ -86,7 +89,10 @@ class LangtonsAnt
       now_at = self.location.step_towards(now_facing)
       self.class.new(self.grid, now_facing, now_at)
     else
-      raise "NYI"
+      self.grid.flip_square_at(self.location)
+      now_facing = Direction.turn_left_from(self.facing)
+      now_at = self.location.step_towards(now_facing)
+      self.class.new(self.grid, now_facing, now_at)
     end
   end
 end
