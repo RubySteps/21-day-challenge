@@ -30,8 +30,9 @@ class Grid
     black_squares << location
   end
 
+  # Answers a symbol representing the color
   def color_of(location)
-    black_squares.include?(location) ? "black" : "white"
+    black_squares.include?(location) ? :black : :white
   end
 end
 
@@ -79,11 +80,14 @@ class LangtonsAnt
   end
 
   def go
-    self.grid.flip_square_at(self.location)
-    # assume a white square
-    now_facing = Direction.turn_right_from(self.facing)
-    now_at = self.location.step_towards(now_facing)
-    self.class.new(self.grid, now_facing, now_at)
+    if self.grid.color_of(self.location) == :white
+      self.grid.flip_square_at(self.location)
+      now_facing = Direction.turn_right_from(self.facing)
+      now_at = self.location.step_towards(now_facing)
+      self.class.new(self.grid, now_facing, now_at)
+    else
+      raise "NYI"
+    end
   end
 end
 
@@ -100,7 +104,7 @@ class ConsoleReportingWalkListener < WalkListener
   end
 
   def describe_walk(ant)
-    puts "Langton's ant is now at #{ant.location}, which is #{ant.grid.color_of(ant.location)}"
+    puts "Langton's ant is now at #{ant.location}, which is #{ant.grid.color_of(ant.location).to_s}"
     puts "He is facing #{ant.facing}"
     puts "He sees black squares at #{ant.grid.describe()}"
   end

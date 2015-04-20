@@ -12,3 +12,8 @@ Then I can think about how to do graphics, which I've never done in Ruby before,
 
 I can just do the opposite of turning left. I'll subtract one instead of adding one... but I'd better verify that -1 % 4 == 3. It is. I don't have to use `@@directions_turning_left.reverse`, although I might use that eventually. One small change and the ant now turns right on a white square. (Well, on all squares.)
 
+## Flip the Black Square
+
+I already know the color of the square on which the ant finds itself, so it suffices to implement the rule of "turn left, flip the square to white, move forward". I can just search for "assume" to find the places where I'd documented that the code assumes white squares. Easy. An actual use for comments.
+
+First, I change `color_of()` to answer a symbol rather than a string, and adjust `describe_walk()` accordingly. Next, I turn the assumption "white square" into an explicit check for white square, raising "NYI" ("not yet implemented") for other branch. This makes it clear that once the ant reaches a black square, he doesn't know what to do next.
