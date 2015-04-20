@@ -1,0 +1,7 @@
+# each line represents a stop word
+the
+in
+of
+from
+at
+it
