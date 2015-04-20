@@ -1,5 +1,7 @@
 require 'octokit'
 
+Octokit.auto_paginate = true
+
 REPO_NAME = 'RubySteps/21-day-challenge'
 
 class Validator
