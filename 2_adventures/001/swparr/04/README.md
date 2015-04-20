@@ -1,1 +1,3 @@
 Day Four...
+
+Setup AASM and wrote a basic test!
