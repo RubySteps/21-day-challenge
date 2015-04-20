@@ -118,6 +118,17 @@ default_message_for_assert_equal = -> () {
   end
 }
 
+custom_message_for_assert_equal = -> () {
+  expected = "Hello, world!"
+  actual   = "Hello" + "World"
+
+  begin
+    assert_equal expected, actual, "Hello world requires punctuation!"
+  rescue AssertionFailed => failure
+    assert_equal "Hello world requires punctuation!", failure.message
+  end
+}
+
 report_result_of_single_passing_test = -> () {
   result = TinyTest.run(
     ->() {}
@@ -167,7 +178,8 @@ result = TinyTest.run_all(
   set_a_custom_assert_message,
   assert_equal_does_not_raise_when_values_are_equal,
   assert_equal_raises_assertion_failed_when_not_equal,
-  default_message_for_assert_equal
+  default_message_for_assert_equal,
+  custom_message_for_assert_equal
 )
 
 if result.failures.any?
