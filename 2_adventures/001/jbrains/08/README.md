@@ -21,3 +21,10 @@ First, I change `color_of()` to answer a symbol rather than a string, and adjust
 ## Walk On, Ant!
 
 Now the ant can take more steps. I think the engine works and is complete. Let's see.
+
+It do.
+
+## I need to see this!
+
+Sadly, I can't visualise a grid from a list of black square coordinates, so I now need some graphics. I have no idea how to do that, and I'm not going to figure that out now. I'll try that tomorrow.
+
