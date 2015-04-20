@@ -5,7 +5,7 @@ The [donwlaod page](http://emmet.io/download/) offers verious choices fir differ
 ##How to use Emmet?
 
 
-```
+```html
 section#container>ul.nav>li.item*6>a[href="#"]{Click here!}  
 ```  
 
@@ -34,6 +34,26 @@ table>tr#row$*2>td[colspan=2][cellpadding=20][cellspacing=0](60 characters)
 
 magically will produce the following 360 characters.
 
+```
+<table>
+	<tr id="row1">
+		<td colspan="2" cellpadding="20" cellspacing="0"></td>
+	</tr>
+	<tr id="row2">
+		<td colspan="2" cellpadding="20" cellspacing="0"></td>
+	</tr>
+	<tr id="row3">
+		<td colspan="2" cellpadding="20" cellspacing="0"></td>
+	</tr>
+	<tr id="row4">
+		<td colspan="2" cellpadding="20" cellspacing="0"></td>
+	</tr>
+	<tr id="row5">
+		<td colspan="2" cellpadding="20" cellspacing="0"></td>
+	</tr>
+</table>
+```
+Which represent the folowing table.
 <table>
 	<tr id="row1">
 		<td colspan="2" cellpadding="20" cellspacing="0"></td>
