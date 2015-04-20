@@ -6,8 +6,8 @@ def assert(condition, message="Expected assertion to be to true, was false.")
   end
 end
 
-def assert_equal(expected, actual)
-  message = "Expected '#{expected.inspect}' to `==` '#{actual.inspect}'"
+def assert_equal(expected, actual, message=nil)
+  message ||= "Expected '#{expected.inspect}' to `==` '#{actual.inspect}'"
   assert expected == actual, message
 end
 
