@@ -1,3 +1,8 @@
 # Day 7 Challenge
 
-Nothing to commit, but want to stay in challenge.
+Finally started with web scraping.
+This will be continuous project with additions to it everyday.
+
+Current Progress:
+
+* Fetch hardcoded data from Wikipedia page.
