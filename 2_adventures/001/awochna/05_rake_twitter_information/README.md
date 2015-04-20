@@ -12,3 +12,7 @@ Create a twitter application on [Twitter's development website](https://dev.twit
 `./tw post "your tweet"` to post your tweet
 
 `./tw ls` to see the last 20 tweets from people you follow
+
+If you want to fill in the access_tokens.yml file automatically, there is a rake task defined
+
+    rake access_tokens
