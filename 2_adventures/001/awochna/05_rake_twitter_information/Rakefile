@@ -1,0 +1,19 @@
+require 'yaml'
+
+desc "Generate a new access_tokens.yml"
+task :access_tokens do
+  access_tokens = Hash.new
+  print "Enter your consumer API key: "
+  access_tokens["consumer_api_key"] = STDIN.gets.chomp
+  print "Enter your consumer API secret: "
+  access_tokens["consumer_api_secret"] = STDIN.gets.chomp
+  print "Enter your access token: "
+  access_tokens["access_token"] = STDIN.gets.chomp
+  print "Enter your access token secret: "
+  access_tokens["access_token_secret"] = STDIN.gets.chomp
+  if File.open("access_tokens.yml", "w") { |f| YAML.dump(access_tokens, f)}
+    puts "Access tokens successfully stored"
+  else
+    puts "There was an error that we couldn't handle. Incoming explosion"
+  end
+end
