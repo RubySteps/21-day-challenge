@@ -1,3 +1,0 @@
-Deciding on what project to do...
-
-Any ideas are welcome. Debating a marketplace application. 

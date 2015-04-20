@@ -1,1 +1,0 @@
-Personal readme for adventure 1. Looking forward to the challenge :D
