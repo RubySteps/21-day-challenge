@@ -195,7 +195,6 @@ result = TinyTest.run_all(
   assert_equal_raises_assertion_failed_when_not_equal,
   default_message_for_assert_equal,
   custom_message_for_assert_equal,
-  run_a_suite_of_tests
 )
 
 if result.failures.any?
