@@ -23,7 +23,7 @@ class TinyTest
     result
   end
 
-  def self.run_all(*tests)
+  def self.run_all(tests)
     result = Result.new
     tests.each do |test|
       run(test, result)
@@ -57,6 +57,21 @@ class TinyTest
   end
 
   class Failure < Struct.new(:test, :exception)
+  end
+
+  class Suite
+    def initialize
+      @tests = []
+    end
+
+    def add(test)
+      @tests << test
+      self
+    end
+
+    def each(*args, &block)
+      @tests.each(*args, &block)
+    end
   end
 end
 
@@ -148,10 +163,10 @@ report_result_of_single_failing_test = -> () {
 }
 
 report_result_of_running_a_failing_and_passing_test = -> () {
-  result = TinyTest.run_all(
+  result = TinyTest.run_all([
     ->() { fail },
     ->() {}
-  )
+  ])
 
   assert_equal 2, result.run_count
   assert_equal 1, result.passed_count
@@ -162,12 +177,27 @@ report_test_failure_details = -> () {
   the_exception = StandardError.new("this error")
   failing_test = ->() { raise the_exception }
 
-  result = TinyTest.run_all(failing_test)
+  result = TinyTest.run_all([failing_test])
 
   assert result.failures.include?(TinyTest::Failure.new(failing_test, the_exception))
 }
 
-result = TinyTest.run_all(
+run_a_suite_of_tests = -> () {
+  suite = TinyTest::Suite.new
+  suite.add ->() {
+    assert_equal 5, 1 + 4
+  }
+  suite.add ->() {
+    assert_equal 5, -2 + 7
+  }
+
+  result = TinyTest.run_all(suite)
+
+  assert_equal 2, result.run_count
+  assert_equal 2, result.passed_count
+}
+
+result = TinyTest.run_all([
   assert_does_not_raise_for_true_condition,
   assert_raises_for_false_condition,
   report_result_of_single_passing_test,
@@ -179,8 +209,9 @@ result = TinyTest.run_all(
   assert_equal_does_not_raise_when_values_are_equal,
   assert_equal_raises_assertion_failed_when_not_equal,
   default_message_for_assert_equal,
-  custom_message_for_assert_equal
-)
+  custom_message_for_assert_equal,
+  run_a_suite_of_tests,
+])
 
 if result.failures.any?
   puts "Tests Failed:"
