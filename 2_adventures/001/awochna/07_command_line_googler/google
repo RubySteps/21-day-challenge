@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require 'thor'
+require 'capybara'
+require 'capybara/dsl'
+require 'selenium-webdriver'
+
+Capybara.default_driver = :selenium
+Capybara.run_server = false
+
+Selenium::WebDriver::Driver.class_eval do
+  def quit
+    #some comment
+  end
+end
+
+class Googler < Thor
+  include Capybara::DSL
+
+  desc "search \"TERMS\"", "Let me google that for you: TERMS"
+  def search(terms)
+    visit "https://www.google.com/"
+    fill_in "q", with: terms
+    click_button "btnG" if page.has_button? "btnG"
+    click_button "btnK" if page.has_button? "btnK"
+  end
+end
+
+Googler.start(ARGV)

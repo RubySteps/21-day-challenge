@@ -1,0 +1,11 @@
+GEM
+  specs:
+    eventmachine (1.0.4)
+    minitest (4.7.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  eventmachine
+  minitest

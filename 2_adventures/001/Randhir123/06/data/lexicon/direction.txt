@@ -1,0 +1,10 @@
+# each line represents a direction
+north
+south
+east
+west
+down
+up
+left
+right
+back

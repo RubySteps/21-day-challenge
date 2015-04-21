@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'thor'
+require 'securerandom'
+
+class Generate < Thor
+  
+  desc "password LENGTH", "Generate a random password LENGTH characters long. Defaults to 32."
+  def password(length=32)
+    puts SecureRandom.base64(length)
+  end
+end 
+
+Generate.start(ARGV)

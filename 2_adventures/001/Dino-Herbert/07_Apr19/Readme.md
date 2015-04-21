@@ -1,0 +1,1 @@
+I was able to go to a website and find certain strings using regular expressions.  I was able to save this a file, but the results are not what I want.  The file has 'junk data' included.  Also, the code needs to be refactored; I'm sure this can be written more efficiently.  The way I've written it may also contribute to the results.
