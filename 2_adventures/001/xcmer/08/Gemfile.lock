@@ -1,0 +1,12 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ffi (1.9.8)
+    levenshtein-ffi (1.1.0)
+      ffi (~> 1.9)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  levenshtein-ffi
