@@ -14,6 +14,10 @@ class HelloWorld < Gtk::Window
     self.add(fixed)
 
     quit_button = Gtk::Button.new("Quit")
+    quit_button.signal_connect("pressed") do
+      Gtk.main_quit
+    end
+
     fixed.put(quit_button, 50, 50)
 
     self.set_default_size(800, 600)
