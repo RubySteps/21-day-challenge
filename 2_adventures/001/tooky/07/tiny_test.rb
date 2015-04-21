@@ -23,7 +23,7 @@ class TinyTest
     result
   end
 
-  def self.run_all(*tests)
+  def self.run_all(tests)
     result = Result.new
     tests.each do |test|
       run(test, result)
@@ -148,10 +148,10 @@ report_result_of_single_failing_test = -> () {
 }
 
 report_result_of_running_a_failing_and_passing_test = -> () {
-  result = TinyTest.run_all(
+  result = TinyTest.run_all([
     ->() { fail },
     ->() {}
-  )
+  ])
 
   assert_equal 2, result.run_count
   assert_equal 1, result.passed_count
@@ -162,7 +162,7 @@ report_test_failure_details = -> () {
   the_exception = StandardError.new("this error")
   failing_test = ->() { raise the_exception }
 
-  result = TinyTest.run_all(failing_test)
+  result = TinyTest.run_all([failing_test])
 
   assert result.failures.include?(TinyTest::Failure.new(failing_test, the_exception))
 }
@@ -182,7 +182,7 @@ run_a_suite_of_tests = -> () {
   assert_equal 2, result.passed_count
 }
 
-result = TinyTest.run_all(
+result = TinyTest.run_all([
   assert_does_not_raise_for_true_condition,
   assert_raises_for_false_condition,
   report_result_of_single_passing_test,
@@ -195,7 +195,7 @@ result = TinyTest.run_all(
   assert_equal_raises_assertion_failed_when_not_equal,
   default_message_for_assert_equal,
   custom_message_for_assert_equal,
-)
+])
 
 if result.failures.any?
   puts "Tests Failed:"
