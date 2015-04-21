@@ -13,3 +13,5 @@ functionality to do this as far as I know.  Of course, this code is from 2012,
 perhaps there is now a mechanism for this now.
 
 Definitely an unfamiliar territory for me.
+
+Right now it is set to a 24 hour clock, and marks at every two hours.

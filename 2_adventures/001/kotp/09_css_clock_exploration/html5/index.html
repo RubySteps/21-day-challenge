@@ -9,9 +9,9 @@
         var sec = now.getSeconds();
         var min = now.getMinutes();
         var hour = (now.getHours() % 24) + min/60;
-        var secangle = sec*6;
-        var minangle = min*6;
-        var hourangle = hour*15;
+        var secangle = sec * 6;
+        var minangle = min * 6;
+        var hourangle = hour * 15;
 
         // Get SVG elements for the hands of the clock
         var sechand = document.getElementById('secondhand');
@@ -34,7 +34,7 @@
         /* black lines */
         stroke-linecap: round;
         /* with rounded ends */
-        fill: #eef;
+        fill: lightgray;
         /* on a light blue gray background */
       }
       #face { stroke-width: 3px;} /* clock face outline */
@@ -52,12 +52,12 @@
   <body onload="updateTime()">
     <!-- viewBox is coordinate system, width and height are on-screen size -->
     <svg id="clock" viewBox="0 0 100 100" width="500" height="500">
- 
+
       <circle id="face" cx="50" cy="50" r="45"/> <!-- the clock face -->
- 
+
       <g id="ticks">
         <!-- 12 hour tick marks -->
-        <line x1='50' y1='5.000' x2='50.00' y2='10.00'/>
+        <line x1='50.00' y1='5.000' x2='50.00' y2='10.00'/>
         <line x1='72.50' y1='11.03' x2='70.00' y2='15.36'/>
         <line x1='88.97' y1='27.50' x2='84.64' y2='30.00'/>
         <line x1='95.00' y1='50.00' x2='90.00' y2='50.00'/>
@@ -70,13 +70,13 @@
         <line x1='11.03' y1='27.50' x2='15.36' y2='30.00'/>
         <line x1='27.50' y1='11.03' x2='30.00' y2='15.36'/>
       </g>
- 
+
       <g id="numbers">
         <!-- Number the cardinal directions-->
         <text x="50" y="18">00</text><text x="83" y="53">06</text>
         <text x="50" y="88">12</text><text x="17" y="53">18</text>
       </g>
- 
+
       <!-- Draw hands pointing straight up. We rotate them in the code. -->
       <g id="hands"> <!-- Add shadows to the hands -->
         <line id="hourhand" x1="50" y1="50" x2="50" y2="24"/>
@@ -84,6 +84,5 @@
         <line id="secondhand" x1="50" y1="50" x2="50" y2="16"/>
       </g>
     </svg>
-    <p>RubySteps Time Zone</p>
   </body>
 </html>
