@@ -58,6 +58,21 @@ class TinyTest
 
   class Failure < Struct.new(:test, :exception)
   end
+
+  class Suite
+    def initialize
+      @tests = []
+    end
+
+    def add(test)
+      @tests << test
+      self
+    end
+
+    def each(*args, &block)
+      @tests.each(*args, &block)
+    end
+  end
 end
 
 assert_does_not_raise_for_true_condition = -> () {
@@ -173,7 +188,7 @@ run_a_suite_of_tests = -> () {
     assert_equal 5, 1 + 4
   }
   suite.add ->() {
-    assert_equal 4, -2 + 7
+    assert_equal 5, -2 + 7
   }
 
   result = TinyTest.run_all(suite)
@@ -195,6 +210,7 @@ result = TinyTest.run_all([
   assert_equal_raises_assertion_failed_when_not_equal,
   default_message_for_assert_equal,
   custom_message_for_assert_equal,
+  run_a_suite_of_tests,
 ])
 
 if result.failures.any?
