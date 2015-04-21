@@ -167,6 +167,21 @@ report_test_failure_details = -> () {
   assert result.failures.include?(TinyTest::Failure.new(failing_test, the_exception))
 }
 
+run_a_suite_of_tests = -> () {
+  suite = TinyTest::Suite.new
+  suite.add ->() {
+    assert_equal 5, 1 + 4
+  }
+  suite.add ->() {
+    assert_equal 4, -2 + 7
+  }
+
+  result = TinyTest.run_all(suite)
+
+  assert_equal 2, result.run_count
+  assert_equal 2, result.passed_count
+}
+
 result = TinyTest.run_all(
   assert_does_not_raise_for_true_condition,
   assert_raises_for_false_condition,
@@ -179,7 +194,8 @@ result = TinyTest.run_all(
   assert_equal_does_not_raise_when_values_are_equal,
   assert_equal_raises_assertion_failed_when_not_equal,
   default_message_for_assert_equal,
-  custom_message_for_assert_equal
+  custom_message_for_assert_equal,
+  run_a_suite_of_tests
 )
 
 if result.failures.any?
