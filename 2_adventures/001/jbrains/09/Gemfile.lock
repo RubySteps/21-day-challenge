@@ -1,12 +1,25 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    opengl (0.9.2)
-    ruby-opengl (0.61.0)
-      opengl
+    atk (2.2.4)
+      glib2 (= 2.2.4)
+    cairo (1.14.1)
+      pkg-config (>= 1.1.5)
+    gdk_pixbuf2 (2.2.4)
+      glib2 (= 2.2.4)
+    glib2 (2.2.4)
+      pkg-config
+    gtk2 (2.2.4)
+      atk (= 2.2.4)
+      gdk_pixbuf2 (= 2.2.4)
+      pango (= 2.2.4)
+    pango (2.2.4)
+      cairo (>= 1.14.0)
+      glib2 (= 2.2.4)
+    pkg-config (1.1.6)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  ruby-opengl
+  gtk2
