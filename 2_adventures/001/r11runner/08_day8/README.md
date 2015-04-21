@@ -1,9 +1,7 @@
-# Adventure 08_day8
+# Script to observe recent unanswered questions on Stackoverflow
 
-What this script does:
- - it clones the 21-day-challenge-repo from the user's fork
- - creates a branch for the current day
- - creates a directory for the current exercise within the user's personal directory,
- - writes the README-file you're reading
- - commits the directory and the README to the local repo
- - pushes the changes to GitHub
+using httparty
+
+Work in progress.
+The topic and the from date have to be parametrized and several refactorings are necessary.
+To be continued... :-)
