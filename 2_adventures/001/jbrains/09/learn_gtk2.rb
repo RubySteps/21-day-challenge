@@ -10,7 +10,7 @@ class HelloWorld < Gtk::Window
       Gtk.main_quit
     end
 
-    show
+    show_all
   end
 end
 
