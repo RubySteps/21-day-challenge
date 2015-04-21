@@ -17,3 +17,29 @@ It seems reasonable. It would thrill me to finish the first version in the next 
 
 So... how do we do graphics in Ruby? DuckDuckGo to the rescue...
 
+## The Result
+
+Wow, that sucked, but at least now I can paint some graphics. I went on a crazy detour trying to install OpenGL and GTK3 before finally managing to install GTK2. Success looked like this:
+
+```
+$ brew install gtk+
+...add gem "gtk2" to Gemfile...
+$ bundle install --clean
+```
+
+It seems so easy now. It took me close to two hours to get here. I managed to put together a Hello, World! app window with a quit button, thanks to a combination of these sites:
+
+* https://tellthemuserstories.wordpress.com/2013/01/08/installing-gtk2-for-ruby-on-mac-os-x/
+* http://zetcode.com/gui/rubygtk/introduction/
+* https://developer.gnome.org/gtk2/stable/
+
+You can look at the resulting code in `learn_gtk2.rb`. Enjoy.
+
+## Epilogue
+
+If anyone can tell me why I couldn't install the GTK3 gem on Mac OS 10.10.2, please do. I had problems with `gobject-introspection` v2.2.4.
+
+Of course, now that I type this, I see that there is a homebrew package for `gtk+3`. There is a clue in that sentence. First, I publish this "work"; next, I give it a try. I hope I have enough coffee.
+
+
+
