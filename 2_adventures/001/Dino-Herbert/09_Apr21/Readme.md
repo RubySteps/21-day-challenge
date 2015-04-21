@@ -1,0 +1,1 @@
+Created a program that uses 3 allowance "jars".  When an allowance is given, each jar gets a certain percentage.  Right now, the 'allowance' method is supposed to do what lines 22-24 did, but the new instances aren't recognized inside the method.  I need to figure this out.  
