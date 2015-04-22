@@ -31,6 +31,10 @@ class TinyTest
     result
   end
 
+  def self.specify(name, &block)
+    Suite.new.tap { |s| s.instance_exec(&block) }
+  end
+
   class Result
     attr_reader :passed_count, :failed_count, :failures
 
@@ -183,13 +187,14 @@ report_test_failure_details = -> () {
 }
 
 run_a_suite_of_tests = -> () {
-  suite = TinyTest::Suite.new
-  suite.add ->() {
-    assert_equal 5, 1 + 4
-  }
-  suite.add ->() {
-    assert_equal 5, -2 + 7
-  }
+  suite = TinyTest.specify "addition" do
+    add ->() {
+      assert_equal 5, 1 + 4
+    }
+    add ->() {
+      assert_equal 5, -2 + 7
+    }
+  end
 
   result = TinyTest.run_all(suite)
 
