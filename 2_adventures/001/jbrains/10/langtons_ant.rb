@@ -193,11 +193,11 @@ class LangtonsAntWalkMainWindow < Gtk::Window
 
     @grid_panel = LangtonsAntWalkGridPanel.new
     self.add(@grid_panel)
+
+    self.show_all()
   end
 end
 
 Gtk.init
 main_window = LangtonsAntWalkMainWindow.new
-main_window.show_all
-main_window.grid_panel.squares[0][0].color_yourself(:black)
 Gtk.main
