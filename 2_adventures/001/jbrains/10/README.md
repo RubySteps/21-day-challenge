@@ -31,3 +31,11 @@ So... how we do draw a grid at all? Criss-crossing lines or tiling little square
 1. Draw the default table with 3 rows and 3 columns.
 1. Adjust the size to make all the cells square and the same size.
 1. Celebrate.
+
+I managed to do all this, although probably quite sloppily. I need a GTK+2 sherpa to show me what pieces I have at my disposal in GTK+.
+
+# The Results
+
+![My First Grid](./images/basic-grid.png)
+
+I can live with it.
