@@ -23,8 +23,7 @@ class TinyTest
     result
   end
 
-  def self.run_all(tests)
-    result = Result.new
+  def self.run_all(tests, result=Result.new)
     tests.each do |test|
       run(test, result)
     end
