@@ -18,4 +18,13 @@
    it "#add returns the sum of a list of comma separated numbers" do
      expect(@calculator.add("1,2,3,4,5,6")).to eq 21
    end
+   it "#add allows to use a line ending character as separator" do
+     expect(@calculator.add("//[;]\n1;2;3;4")).to eq 10
+   end
+   it "#add ignores numbers greater than 1000" do
+     expect(@calculator.add("1,2,1003,3")).to eq 6
+   end
+   it "#add allows to use a multichar separator" do
+     expect(@calculator.add("//[===]\n1===2===4===50===10===1001===2")).to eq 69
+   end
  end
