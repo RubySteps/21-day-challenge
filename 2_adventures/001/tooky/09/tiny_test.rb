@@ -68,13 +68,19 @@ class TinyTest
       @tests = []
     end
 
-    def add(test)
-      @tests << test
-      self
+    def must(name, &test)
+      add(test)
     end
 
     def each(*args, &block)
       @tests.each(*args, &block)
+    end
+
+    private
+
+    def add(test)
+      @tests << test
+      self
     end
   end
 end
@@ -188,12 +194,13 @@ report_test_failure_details = -> () {
 
 run_a_suite_of_tests = -> () {
   suite = TinyTest.specify "addition" do
-    add ->() {
+    must "sum positive numbers" do
       assert_equal 5, 1 + 4
-    }
-    add ->() {
+    end
+
+    must "sum negative and positive numbers together" do
       assert_equal 5, -2 + 7
-    }
+    end
   end
 
   result = TinyTest.run_all(suite)
