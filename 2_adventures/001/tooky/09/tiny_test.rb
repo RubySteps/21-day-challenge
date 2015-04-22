@@ -84,36 +84,38 @@ class TinyTest
   end
 end
 
-assert_does_not_raise_for_true_condition = -> () {
-  assert(1 + 1 == 2)
-}
-
-assert_raises_for_false_condition = -> () {
-  begin
-    assert(1 + 1 != 2)
-  rescue AssertionFailed
-    raised = true
-  else
-    fail
-  end
-}
-
-assert_default_message = -> () {
-  begin
-    assert(1 + 1 != 2)
-  rescue AssertionFailed => fail
-    assert fail.message == "Expected assertion to be to true, was false."
-  end
-}
-
-set_a_custom_assert_message = -> () {
-  begin
-    assert(1 + 1 != 2, "In a parallel universe, 1+1 is not 2.")
-  rescue AssertionFailed => fail
-    assert fail.message == "In a parallel universe, 1+1 is not 2."
+assert_spec = TinyTest.specify "assert" do
+  must "assert_does_not_raise_for_true_condition" do
+    assert(1 + 1 == 2)
   end
 
-}
+  must "assert_raises_for_false_condition" do
+    begin
+      assert(1 + 1 != 2)
+    rescue AssertionFailed
+      raised = true
+    else
+      fail
+    end
+  end
+
+  must "assert_default_message" do
+    begin
+      assert(1 + 1 != 2)
+    rescue AssertionFailed => fail
+      assert fail.message == "Expected assertion to be to true, was false."
+    end
+  end
+
+  must "set_a_custom_assert_message" do
+    begin
+      assert(1 + 1 != 2, "In a parallel universe, 1+1 is not 2.")
+    rescue AssertionFailed => fail
+      assert fail.message == "In a parallel universe, 1+1 is not 2."
+    end
+  end
+end
+
 
 assert_equal_does_not_raise_when_values_are_equal = -> () {
   expected = 2
@@ -208,21 +210,21 @@ run_a_suite_of_tests = -> () {
   assert_equal 2, result.passed_count
 }
 
-result = TinyTest.run_all([
-  assert_does_not_raise_for_true_condition,
-  assert_raises_for_false_condition,
+result = TinyTest::Result.new
+
+TinyTest.run_all(assert_spec, result)
+
+TinyTest.run_all([
   report_result_of_single_passing_test,
   report_result_of_single_failing_test,
   report_result_of_running_a_failing_and_passing_test,
   report_test_failure_details,
-  assert_default_message,
-  set_a_custom_assert_message,
   assert_equal_does_not_raise_when_values_are_equal,
   assert_equal_raises_assertion_failed_when_not_equal,
   default_message_for_assert_equal,
   custom_message_for_assert_equal,
   run_a_suite_of_tests,
-])
+], result)
 
 if result.failures.any?
   puts "Tests Failed:"
