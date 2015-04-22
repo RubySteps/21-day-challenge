@@ -1,0 +1,40 @@
+- name: "Marco Reus"
+  age: 25
+  position: "Midfielder"
+  club: "Dortmund"
+- name: "Cristiano Ronaldo"
+  age: 30
+  position: ""
+  club: "Real Madrid"
+- name: "Lionel Messi"
+  age: 27
+  position: "Midfielder, Forward"
+  club: "FC Barcelona"
+- name: "Luis Suarez"
+  age: 28
+  position: "Forward"
+  club: "FC Barcelona"
+- name: "Eden Hazard"
+  age: 24
+  position: "Midfielder"
+  club: "Chelsea"
+- name: "Philippe Coutinho"
+  age: 22
+  position: "Midfielder"
+  club: "Liverpool"
+- name: "Alexis Sanchez"
+  age: 26
+  position: "Forward"
+  club: "Arsenal"
+- name: "Sergio Aguero"
+  age: 26
+  position: "forward"
+  club: "Man City"
+- name: "David De Gea"
+  age: 24
+  position: "Goalkeeper"
+  club: "Man Utd"
+- name: "Zlatan Ibrahimovic"
+  age: 33
+  position: "Forward"
+  club: "Paris Saint-German"
