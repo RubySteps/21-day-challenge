@@ -134,6 +134,17 @@ class LangtonsAntWalk
 end
 
 require "gtk2"
+class LangtonsAntWalkGridSquare < Gtk::Button
+  def initialize(color)
+    super
+    set_label(color.to_s)
+  end
+
+  def self.white
+    self.new(:white)
+  end
+end
+
 class LangtonsAntWalkGridPanel < Gtk::Table
   def initialize
     # 3 rows
@@ -143,7 +154,7 @@ class LangtonsAntWalkGridPanel < Gtk::Table
 
     3.times do |x|
       3.times do |y|
-        self.attach_defaults(Gtk::Button.new, x, x+1, y, y+1)
+        self.attach_defaults(LangtonsAntWalkGridSquare.white, x, x+1, y, y+1)
       end
     end
 
