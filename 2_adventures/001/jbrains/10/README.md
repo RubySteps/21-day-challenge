@@ -1,45 +1,28 @@
-# Day 9
+# Day 10
 
-I want some graphics. I have no idea how to do graphics in Ruby. I haven't done graphics since high school. This will be interesting.
+I want to at least draw a grid today. After yesterday, that would make me happy.
 
-## An Incremental Approach
+## The Incremental Approach
 
-I have no idea whether this will work, but I need a plan. It will doubtless change. I think this might work:
+This was the overall plan, in the middle of which we find ourselves.
 
-1. Fixed viewport at the origin, simple grid of black and white squares, no representation of the ant.
+1. Fixed viewport at the origin, simple grid of black and white squares, no representation of the ant. **WE ARE HERE**
 1. Represent where the ant is.
 1. Represent which way the ant is facing.
 1. Movable viewport keeping the ant exactly in the middle of the screen.
 1. Movable viewport keeping the ant approximately in the middle of the screen, in order to reduce viewport movement.
 1. Profit?
 
-It seems reasonable. It would thrill me to finish the first version in the next few days.
+## To Draw a Grid
 
-So... how do we do graphics in Ruby? DuckDuckGo to the rescue...
+Even those we're not doing TDD with automated tests, I will want to be able to build the grid incrementally. I figure I should try this:
 
-## The Result
+1. Draw a 3-by-3 grid, with the origin in the center, and all squares white.
+1. Color an arbitrary square black.
+1. Color an arbitrary black square white again.
+1. Draw a bigger (2n+1)-by-(2n+1) grid with the origin in the center.
 
-Wow, that sucked, but at least now I can paint some graphics. I went on a crazy detour trying to install OpenGL and GTK3 before finally managing to install GTK2. Success looked like this:
+I have one design constraint: I want the grid panel (or whatever Gtk calls it) implemented in its own module (not necessarily `module`) with as little dependency on its context as possible. In other words, I want to be able to put the grid panel wherever I want.
 
-```
-$ brew install gtk+
-...add gem "gtk2" to Gemfile...
-$ bundle install --clean
-```
-
-It seems so easy now. It took me close to two hours to get here. I managed to put together a Hello, World! app window with a quit button, thanks to a combination of these sites:
-
-* https://tellthemuserstories.wordpress.com/2013/01/08/installing-gtk2-for-ruby-on-mac-os-x/
-* http://zetcode.com/gui/rubygtk/introduction/
-* https://developer.gnome.org/gtk2/stable/
-
-You can look at the resulting code in `learn_gtk2.rb`. Enjoy.
-
-## Epilogue
-
-If anyone can tell me why I couldn't install the GTK3 gem on Mac OS 10.10.2, please do. I had problems with `gobject-introspection` v2.2.4.
-
-Of course, now that I type this, I see that there is a homebrew package for `gtk+3`. There is a clue in that sentence. First, I publish this "work"; next, I give it a try. I hope I have enough coffee.
-
-
+So... how we do draw a grid at all? Criss-crossing lines or tiling little squares?
 
