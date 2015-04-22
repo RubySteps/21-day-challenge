@@ -149,18 +149,28 @@ class LangtonsAntWalkGridSquare < Gtk::Frame
   def self.white
     self.new(:white)
   end
+
+  def color_yourself(color)
+    @interior.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.parse(color.to_s))
+  end
 end
 
 class LangtonsAntWalkGridPanel < Gtk::Table
+  attr_reader :squares
+
   def initialize
     # 3 rows
     # 3 columns
     # all cells the same size
     super(3, 3, true)
 
+    @squares = []
     3.times do |x|
+      @squares.push([])
       3.times do |y|
-        self.attach_defaults(LangtonsAntWalkGridSquare.white, x, x+1, y, y+1)
+        square = LangtonsAntWalkGridSquare.white
+        @squares[x][y] = square
+        self.attach_defaults(square, x, x+1, y, y+1)
       end
     end
 
@@ -168,6 +178,8 @@ class LangtonsAntWalkGridPanel < Gtk::Table
 end
 
 class LangtonsAntWalkMainWindow < Gtk::Window
+  attr_reader :grid_panel
+
   def initialize
     super
 
@@ -179,12 +191,13 @@ class LangtonsAntWalkMainWindow < Gtk::Window
 
     self.set_default_size(600, 600)
 
-    grid_panel = LangtonsAntWalkGridPanel.new
-    self.add(grid_panel)
+    @grid_panel = LangtonsAntWalkGridPanel.new
+    self.add(@grid_panel)
   end
 end
 
 Gtk.init
 main_window = LangtonsAntWalkMainWindow.new
 main_window.show_all
+main_window.grid_panel.squares[0][0].color_yourself(:black)
 Gtk.main
