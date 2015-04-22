@@ -134,10 +134,11 @@ class LangtonsAntWalk
 end
 
 require "gtk2"
-class LangtonsAntWalkGridSquare < Gtk::Button
+class LangtonsAntWalkGridSquare < Gtk::Frame
   def initialize(color)
-    super
-    set_label(color.to_s)
+    super()
+    self.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.parse("black"))
+    self.add(Gtk::DrawingArea.new.tap { |area| area.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.parse("white")) })
   end
 
   def self.white
