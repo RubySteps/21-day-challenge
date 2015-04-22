@@ -133,8 +133,22 @@ class LangtonsAntWalk
   end
 end
 
-walk = LangtonsAntWalk.new
-9.times do
-  walk.take_a_step
+require "gtk2"
+class LangtonsAntWalkMainWindow < Gtk::Window
+  def initialize
+    super
+
+    set_title("Langton's Ant")
+
+    signal_connect("destroy") do
+      Gtk.main_quit
+    end
+
+    self.set_default_size(600, 600)
+  end
 end
 
+Gtk.init
+main_window = LangtonsAntWalkMainWindow.new
+main_window.show_all
+Gtk.main
