@@ -134,6 +134,17 @@ class LangtonsAntWalk
 end
 
 require "gtk2"
+class LangtonsAntWalkGridPanel < Gtk::Table
+  def initialize
+    # 3 rows
+    # 3 columns
+    # all cells the same size
+    super(3, 3, true)
+
+    self.attach_defaults(Gtk::Button.new, 0, 1, 0, 1)
+  end
+end
+
 class LangtonsAntWalkMainWindow < Gtk::Window
   def initialize
     super
@@ -145,6 +156,9 @@ class LangtonsAntWalkMainWindow < Gtk::Window
     end
 
     self.set_default_size(600, 600)
+
+    grid_panel = LangtonsAntWalkGridPanel.new
+    self.add(grid_panel)
   end
 end
 
