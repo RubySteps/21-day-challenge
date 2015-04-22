@@ -1,3 +1,5 @@
+# require 'pry'
+
 class Output
   def messages
     @messages ||= []
@@ -21,6 +23,8 @@ When /^I start a new game$/ do
 end
 
 Then /^I should see "([^"]*)"$/ do |message|
-  output.messages.should include(message)
+# binding.pry
+  output = Output.new
+  expect(output.messages).to include(message)
 end
 
