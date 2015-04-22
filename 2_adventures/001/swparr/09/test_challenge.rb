@@ -7,7 +7,6 @@ describe 'Challenge' do
   end
 
   def start_and_commit
-    @challenge.start
     @challenge.commit
   end
 
@@ -15,8 +14,8 @@ describe 'Challenge' do
     assert @challenge.ready?
   end
 
-  it 'must be have a status of started when called with start' do
-    assert_equal @challenge.start, true
+  it 'must be have a status of active when first commit is made' do
+    assert_equal @challenge.commit, true
   end
 
   it 'must be active when a commit is made' do
@@ -27,8 +26,13 @@ describe 'Challenge' do
   it 'must have a last commit date' do
     start_and_commit
     assert_equal @challenge.last_commit, Time.now.strftime("%d/%m/%Y")
-
   end
 
-
+  it 'must have a commit count' do
+    assert_equal 0, @challenge.commits
+    start_and_commit
+    assert_equal 1, @challenge.commits
+    @challenge.commit
+    assert_equal 2, @challenge.commits
+  end
 end
