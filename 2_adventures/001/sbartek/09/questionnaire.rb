@@ -28,7 +28,9 @@ class UserQuestionnaire
   end
 
   def answers
-    []
+    QuestionsAnswers.all.find_all do |questions_answers| 
+      self == questions_answers.user_questionnaire
+    end
   end
 
   def for_question(question)
@@ -41,19 +43,28 @@ class UserQuestionnaire
     end
     return @questions_answers
   end
+
 end
 
 class QuestionsAnswers
 
-  attr_accessor :questionnaire
+  attr_accessor :user_questionnaire
   attr_accessor :question
   attr_accessor :answer
 
+  @@all = []
+
   def initialize(arg_hash={})
-    @questionnaire= arg_hash[:questionnaire]
+    @user_questionnaire= arg_hash[:user_questionnaire]
     @question= arg_hash[:question]
     @answer= arg_hash[:answer]
+    @@all.push(self)
   end
+
+  def self.all
+    @@all
+  end
+
 end
 
 def create_questionnaire_from_hash(arg_hash={})
@@ -80,8 +91,8 @@ questions = questions_from_yaml.map do |question|
 end
 questionnaire = create_questionnaire_from_hash questions: questions
 
-questionnaire.questions.each do |question| 
-  puts question.sentence
-end
+# questionnaire.questions.each do |question| 
+#   puts question.sentence
+# end
 
 

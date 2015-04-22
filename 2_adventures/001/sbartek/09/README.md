@@ -17,7 +17,9 @@ I will try BDD using Minitest.
 
 ## Next
 
-* Finishing with UserQuestionnaire and reads Prost answers.
+* Reading Prost answers.
+* Refactor, separating classes ans specs into separate files,
+  creating directories
 
 ## Future ideas
 

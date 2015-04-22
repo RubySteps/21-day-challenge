@@ -83,9 +83,23 @@ describe UserQuestionnaire do
       @user_questionnaire.questions.must_equal(@questionnaire.questions)
     end 
 
+    it 'must have empty set of answers' do
+      @user_questionnaire.answers.must_equal([])
+    end
+
     describe 'we set set answer to a question' do
-      it 'must have set answer to question' do
+      before do 
         @answer = "A1"
+        @user_questionnaire.for_question(@question1)
+      end
+      
+      it 'must have set of answers with one element' do
+        @user_questionnaire.answers.first.user_questionnaire.must_equal(
+             @user_questionnaire)
+        @user_questionnaire.answers.first.question.must_equal(@question1)
+      end
+
+      it 'must have set answer to question' do
         @user_questionnaire.for_question(@question1).answer= @answer
         @user_questionnaire.for_question(@question1).answer.must_equal(@answer)
       end
@@ -97,12 +111,13 @@ describe QuestionsAnswers do
 
   before do 
     @question = 'Q'
-    @questionnaire = 'QA'
+    @user_questionnaire = 'UQA'
     @answer = 'A'
   end
 
   describe 'initialize with no args' do
     before do
+      QuestionsAnswers.class_variable_set :@@all, [] 
       @questions_answers = QuestionsAnswers.new
     end
 
@@ -114,17 +129,24 @@ describe QuestionsAnswers do
       @questions_answers.must_respond_to(:answer)
     end
 
-    it 'must respond to questionnaire' do 
-      @questions_answers.must_respond_to(:questionnaire)
+    it 'must respond to user_questionnaire' do 
+      @questions_answers.must_respond_to(:user_questionnaire)
     end
 
     it 'must be able to set question, answer, questionnaire' do
       @questions_answers.question= @question
       @questions_answers.answer= @answer
-      @questions_answers.questionnaire= @questionnaire
+      @questions_answers.user_questionnaire= @user_questionnaire
       @questions_answers.question.must_equal(@question)
       @questions_answers.answer.must_equal(@answer)
-      @questions_answers.questionnaire.must_equal(@questionnaire)
+      @questions_answers.user_questionnaire.must_equal(@user_questionnaire)
+    end
+
+    it 'must store all initialized instances' do
+      QuestionsAnswers.all.must_equal([@questions_answers])
+      @questions_answers2 = QuestionsAnswers.new
+      QuestionsAnswers.all.must_equal([@questions_answers, 
+                                       @questions_answers2])
     end
   end
 
@@ -133,13 +155,13 @@ describe QuestionsAnswers do
       @questions_answers = 
         QuestionsAnswers.new({
           question: @question, answer: @answer, 
-          questionnaire: @questionnaire})
+          user_questionnaire: @user_questionnaire})
     end
 
     it 'must have question, answer, questionnaire as was set' do
       @questions_answers.question.must_equal(@question)
       @questions_answers.answer.must_equal(@answer)
-      @questions_answers.questionnaire.must_equal(@questionnaire)
+      @questions_answers.user_questionnaire.must_equal(@user_questionnaire)
     end
 
     it 'must respond to answer' do
@@ -147,7 +169,7 @@ describe QuestionsAnswers do
     end
 
     it 'must respond to questionnaire' do 
-      @questions_answers.must_respond_to(:questionnaire)
+      @questions_answers.must_respond_to(:user_questionnaire)
     end
   end
   
