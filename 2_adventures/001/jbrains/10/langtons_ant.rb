@@ -140,9 +140,10 @@ class LangtonsAntWalkGridSquare < Gtk::Frame
     # It's like a border... until I figure out how to draw a border.
     self.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.parse("black"))
     # The area that actually changes color.
-    self.add(Gtk::DrawingArea.new.tap { |area| 
+    @interior = Gtk::DrawingArea.new.tap { |area| 
       area.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.parse(color.to_s)) 
-    })
+    }
+    self.add(@interior)
   end
 
   def self.white
