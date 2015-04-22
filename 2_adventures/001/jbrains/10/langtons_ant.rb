@@ -141,7 +141,12 @@ class LangtonsAntWalkGridPanel < Gtk::Table
     # all cells the same size
     super(3, 3, true)
 
-    self.attach_defaults(Gtk::Button.new, 0, 1, 0, 1)
+    3.times do |x|
+      3.times do |y|
+        self.attach_defaults(Gtk::Button.new, x, x+1, y, y+1)
+      end
+    end
+
   end
 end
 
