@@ -1,14 +1,14 @@
 require "gtk2"
 
 class LangtonsAntWalkGridSquare < Gtk::Frame
-  attr_accessor :xmodel
+  attr_accessor :grid_square_model
 
-  # xmodel (can't be called "model", because Gtk::Frame uses that) must support:
+  # grid_square_model (can't be called "model", because Gtk::Frame uses that) must support:
   # add_listener(listener)
   # color
   def self.with_model(model)
     self.new(model.color).tap { |view|
-      view.xmodel = model
+      view.grid_square_model = model
       model.add_listener(view)
     }
   end
