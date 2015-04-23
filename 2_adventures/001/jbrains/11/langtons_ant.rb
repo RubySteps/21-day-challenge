@@ -159,15 +159,15 @@ class LangtonsAntWalkGridPanel < Gtk::Table
   attr_reader :squares
 
   def initialize
-    # 3 rows
-    # 3 columns
-    # all cells the same size
-    super(3, 3, true)
+    @rows = @columns = 3
+
+    # true -> all cells the same size
+    super(@rows, @columns, true)
 
     @squares = []
-    3.times do |x|
+    @rows.times do |x|
       @squares.push([])
-      3.times do |y|
+      @columns.times do |y|
         square = LangtonsAntWalkGridSquare.white
         @squares[x][y] = square
         self.attach_defaults(square, x, x+1, y, y+1)
