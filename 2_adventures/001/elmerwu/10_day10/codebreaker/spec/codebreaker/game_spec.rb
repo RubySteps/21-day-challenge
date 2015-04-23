@@ -7,3 +7,4 @@ module Codebreaker
       it "prompts for the first guess"
     end
   end
+end
