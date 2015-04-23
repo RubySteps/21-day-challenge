@@ -21,20 +21,14 @@ arguments :strict
 desc 'Describe some switch here'
 switch [:s,:switch]
 
-desc 'Describe some flag here'
-default_value 'the default'
-arg_name 'The name of the argument'
-flag [:f,:flagname]
+desc 'Give the todo.txt file to work with'
+default_value YAML.load_file('config/settings.yml')['file']
+arg_name 'filename'
+flag [:f,:file]
 
-desc 'Describe add here'
-arg_name 'Describe arguments to add here'
+desc 'Add a new task'
+arg_name 'Text to make into a todo item'
 command :add do |c|
-  c.desc 'Describe a switch to add'
-  c.switch :s
-
-  c.desc 'Describe a flag to add'
-  c.default_value 'default'
-  c.flag :f
   c.action do |global_options,options,args|
 
     # Your command logic here
