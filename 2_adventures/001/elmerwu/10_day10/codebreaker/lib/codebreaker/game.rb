@@ -1,9 +1,11 @@
 module Codebreaker
   class Game
-    def initialize(output)
+    def initialize(out)
+      @out = out
     end
 
     def start
+      @out.puts 'Welcome to Codebreaker!'
     end
   end
 end
