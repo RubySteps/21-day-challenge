@@ -1,0 +1,16 @@
+If you look at the source code for this, it will show
+that I am just simply typing words.
+
+Modified from the Pickaxe Book.
+
+<% high, low, numbers_and_containers = 99, 1, '%d bottles of beer' %>
+<% high.downto(low) do |n| %>
+<%= numbers_and_containers % n %> on the wall,
+<%= numbers_and_containers % n %>.
+
+And if one green bottle should accidentally fall
+<%= "There'd" %> be <%= numbers_and_containers % [n - 1] %> on the wall.
+<% end %> 
+
+<% # erb = ERB.new(input) # Sample ow how to run ERB programmatically %>
+<% # erb.run(binding) %>
