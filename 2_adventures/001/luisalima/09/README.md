@@ -1,0 +1,1 @@
+Continued my haskell explorations in multiplication, which are really useful exercises in folds and recursion.
