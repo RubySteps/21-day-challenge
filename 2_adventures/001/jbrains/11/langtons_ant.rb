@@ -208,7 +208,11 @@ threads << Thread.new do
 end
 
 threads << Thread.new do
-  sleep 3
+  sleep 1
+  main_window.grid_panel.squares[0][0].color_yourself(:black)
+  sleep 1
+  main_window.grid_panel.squares[0][0].color_yourself(:white)
+  sleep 1
   Gtk.main_quit
 end
 
