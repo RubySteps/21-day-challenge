@@ -32,3 +32,6 @@ First, I figured out how to flip the color of a square on its own thread while t
 
 I feel uncomfortable with the design of the graphics widgets, notably how they compose each other by their constructors. It encourages the "I know where you live" anti-pattern. I suppose that I can avoid the problem by some simple isolation: for example, I can test connecting a Grid Square to the model that represents the color state of a square without necessarily arranging nine Grid Square widgets the way I will in the final product. I can just instantiate a Grid Square, connect it to a model, and let that be that. Why not? The Langton's Ant Walk becomes just one way to arrange these Grid Square widgets. Of course!
 
+I created `try_connecting_grid_square_to_model.rb` to sketch out the relationship between the view and the model, but when I tried to wire things together, I ended up with a little ripple effect of changes, so I stopped and decided to try again tomorrow with a fresh mind. Even so, I can now tell the square widget to flip color and it goes round trip to the square model and back to flip the color. Is nice!
+
+
