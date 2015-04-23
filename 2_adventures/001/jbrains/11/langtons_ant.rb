@@ -200,4 +200,16 @@ end
 
 Gtk.init
 main_window = LangtonsAntWalkMainWindow.new
-Gtk.main
+
+threads = []
+
+threads << Thread.new do
+  Gtk.main
+end
+
+threads << Thread.new do
+  sleep 3
+  Gtk.main_quit
+end
+
+threads.map(&:join)
