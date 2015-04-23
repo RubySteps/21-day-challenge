@@ -1,8 +1,9 @@
-Feature: My bootstrapped app kinda works
-  In order to get going on coding my awesome app
-  I want to have aruba and cucumber setup
-  So I don't have to do it myself
+Feature: User can add new tasks
+  As a busy person who lives on the command line
+  I want to keep a list of the things I need to do
 
-  Scenario: App just runs
-    When I get help for "todo"
-    Then the exit status should be 0
+  Scenario: Add a new task
+    Given the file "/tmp/todo.txt" doesn't exist
+    When I successfully run `todo -f /tmp/todo.txt add 'Some new task'`
+    Then I successfully run `todo -f /tmp/todo.txt ls`
+    And the stdout should contain "Some new task"
