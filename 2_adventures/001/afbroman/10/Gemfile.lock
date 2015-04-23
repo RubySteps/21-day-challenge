@@ -1,0 +1,14 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    mysql2 (0.3.18)
+    psych (2.0.13)
+    sequel (4.21.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  mysql2 (~> 0.3.18)
+  psych (~> 2.0.13)
+  sequel (~> 4.21.0)
