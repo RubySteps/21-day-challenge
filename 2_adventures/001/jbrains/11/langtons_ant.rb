@@ -208,11 +208,14 @@ threads << Thread.new do
 end
 
 threads << Thread.new do
-  sleep 1
-  main_window.grid_panel.squares[0][0].color_yourself(:black)
-  sleep 1
-  main_window.grid_panel.squares[0][0].color_yourself(:white)
-  sleep 1
+  10.times do
+    x = rand(3)
+    y = rand(3)
+    main_window.grid_panel.squares[x][y].color_yourself(:black)
+    sleep 1
+    main_window.grid_panel.squares[x][y].color_yourself(:white)
+    sleep 1
+  end
   Gtk.main_quit
 end
 
