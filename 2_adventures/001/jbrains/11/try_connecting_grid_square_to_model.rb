@@ -31,9 +31,7 @@ main_window.set_default_size(100, 100)
 main_window.signal_connect("destroy") {
   Gtk.main_quit
 }
-grid_square_view = LangtonsAntWalkGridSquare.with_model(grid_square).tap { |view|
-  grid_square.add_listener(view)
-}
+grid_square_view = LangtonsAntWalkGridSquare.with_model(grid_square)
 main_window.add(grid_square_view)
 main_window.show_all()
 
