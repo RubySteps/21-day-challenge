@@ -29,3 +29,6 @@ I have one design constraint: I want the grid panel (or whatever Gtk calls it) i
 First, I figured out how to flip the color of a square on its own thread while the GTK Main Loop is running.
 
 <iframe src="https://www.youtube.com/embed/IyYna88Tnak" frameborder="0" allowfullscreen></iframe>
+
+I feel uncomfortable with the design of the graphics widgets, notably how they compose each other by their constructors. It encourages the "I know where you live" anti-pattern. I suppose that I can avoid the problem by some simple isolation: for example, I can test connecting a Grid Square to the model that represents the color state of a square without necessarily arranging nine Grid Square widgets the way I will in the final product. I can just instantiate a Grid Square, connect it to a model, and let that be that. Why not? The Langton's Ant Walk becomes just one way to arrange these Grid Square widgets. Of course!
+
