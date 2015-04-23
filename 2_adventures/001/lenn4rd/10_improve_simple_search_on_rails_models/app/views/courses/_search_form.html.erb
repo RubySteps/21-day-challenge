@@ -1,0 +1,9 @@
+<%= form_for @search, url: courses_path, method: :get do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+
+<%= f.label :category_id %>
+<%= f.select :category_id, @categories, include_blank: true %>
+
+<%= f.submit 'Submit' %>
+<% end %>
