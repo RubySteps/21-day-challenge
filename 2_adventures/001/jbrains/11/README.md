@@ -23,3 +23,9 @@ Even those we're not doing TDD with automated tests, I will want to be able to b
 1. Draw a bigger (2n+1)-by-(2n+1) grid with the origin in the center.
 
 I have one design constraint: I want the grid panel (or whatever Gtk calls it) implemented in its own module (not necessarily `module`) with as little dependency on its context as possible. In other words, I want to be able to embed the grid panel wherever I want.
+
+# The Result
+
+First, I figured out how to flip the color of a square on its own thread while the GTK Main Loop is running.
+
+<iframe src="https://www.youtube.com/embed/IyYna88Tnak" frameborder="0" allowfullscreen></iframe>
