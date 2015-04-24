@@ -12,7 +12,7 @@ class GridSquareGateway < Struct.new(:grid_square)
   include Observable
 
   def color
-    grid_square.color
+    self.grid_square.color
   end
 
   def flip_color
