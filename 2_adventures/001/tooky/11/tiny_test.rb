@@ -13,13 +13,7 @@ end
 
 class TinyTest
   def self.run(test, result=Result.new)
-    begin
-      test.call
-    rescue Object => exception
-      result.add_failure(test, exception)
-    else
-      result.add_pass(test)
-    end
+    test.run(result)
     result
   end
 
@@ -90,6 +84,17 @@ class TinyTest
 
     def call(*args, &block)
       test_block.call(*args, &block)
+    end
+
+    def run(result=Result.new)
+      begin
+        test_block.call(result)
+      rescue Object => exception
+        result.add_failure(self, exception)
+      else
+        result.add_pass(self)
+      end
+      result
     end
   end
 
