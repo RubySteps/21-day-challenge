@@ -16,7 +16,7 @@ class TinyTest
     tests.each do |test|
       test.run(result)
     end
-    result
+    self
   end
 
   def self.specify(name, &block)
@@ -33,10 +33,12 @@ class TinyTest
 
     def add_failure(test, exception)
       @failures << Failure.new(test, exception)
+      self
     end
 
     def add_pass(test)
       @passed_count += 1
+      self
     end
 
     def failed_count
@@ -60,11 +62,12 @@ class TinyTest
       @tests.each do |test|
         test.run(result)
       end
-      result
+      self
     end
 
     def must(name, &test)
       add(TestCase.new(test))
+      self
     end
 
     def each(*args, &block)
@@ -75,17 +78,12 @@ class TinyTest
 
     def add(test)
       @tests << test
-      self
     end
   end
 
   class TestCase < Struct.new(:test_block)
     def self.define(&test_block)
       new(test_block)
-    end
-
-    def call(*args, &block)
-      test_block.call(*args, &block)
     end
 
     def run(result=Result.new)
@@ -96,7 +94,7 @@ class TinyTest
       else
         result.add_pass(self)
       end
-      result
+      self
     end
   end
 
