@@ -1,5 +1,5 @@
 # Just played around a bit with IRB today
-# Needed to find the longest line in a text and sorted alphabetically
+# Needed to find the longest line in a text and the lines sorted alphabetically
 
 text = <<-eos
 Several lines of text here
