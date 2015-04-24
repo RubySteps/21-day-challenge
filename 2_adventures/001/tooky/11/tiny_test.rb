@@ -241,11 +241,16 @@ end
 
 result = TinyTest::Result.new
 
-TinyTest.run_all([assert_spec], result)
-TinyTest.run_all(assert_equal_spec, result)
-TinyTest.run_all(running_a_single_test_spec, result)
-TinyTest.run_all(reporting_tests_spec, result)
-TinyTest.run_all(suite_spec, result)
+TinyTest.run_all(
+  [
+    assert_spec,
+    assert_equal_spec,
+    running_a_single_test_spec,
+    reporting_tests_spec,
+    suite_spec
+  ],
+  result
+)
 
 if result.failures.any?
   puts "Tests Failed:"
