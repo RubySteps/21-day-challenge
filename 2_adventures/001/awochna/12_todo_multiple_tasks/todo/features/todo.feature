@@ -7,3 +7,11 @@ Feature: User can add new tasks
     When I successfully run `todo -f /tmp/todo.txt add 'Some new task'`
     Then I successfully run `todo -f /tmp/todo.txt ls`
     And the stdout should contain "Some new task"
+
+  Scenario: List multiple tasks
+    Given the file "/tmp/todo.txt" doesn't exist
+    When I successfully run `todo -f /tmp/todo.txt add 'My first task'`
+    And I successfully run `todo -f /tmp/todo.txt add 'Another, second task'`
+    Then I successfully run `todo -f /tmp/todo.txt ls`
+    And the stdout should contain "My first task"
+    And the stdout should contain "Another, second task"
