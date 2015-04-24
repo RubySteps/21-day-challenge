@@ -15,3 +15,9 @@ Feature: User can add new tasks
     Then I successfully run `todo -f /tmp/todo.txt ls`
     And the stdout should contain "My first task"
     And the stdout should contain "Another, second task"
+
+  Scenario: Adding a new task gives it a date
+    Given the file "/tmp/todo.txt" doesn't exist
+    When I successfully run `todo -f /tmp/todo.txt add 'Some new task'`
+    Then I successfully run `todo -f /tmp/todo.txt ls`
+    And the output should match /\d{4}-\d{2}-\d{2}/

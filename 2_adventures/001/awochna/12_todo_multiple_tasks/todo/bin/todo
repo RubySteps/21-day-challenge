@@ -37,7 +37,7 @@ command :add do |c|
     # raise "that command made no sense"
 
     File.open(global_options[:file], 'a') do |file|
-      file.puts args
+      file.puts "#{Date.today} #{args[0]}"
     end
     
     puts "add command ran"
