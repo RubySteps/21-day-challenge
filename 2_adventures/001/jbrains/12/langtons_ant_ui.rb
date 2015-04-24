@@ -1,6 +1,27 @@
 require "gtk2"
+require "observer"
 
 module LangtonsAntWalkWidgets
+ 
+# observable Gateway
+# View connects to this in order to stay current with model changes.
+# Must respond to:
+#   color()
+#   flip_color()
+class GridSquareGateway < Struct.new(:grid_square)
+  include Observable
+
+  def color
+    grid_square.color
+  end
+
+  def flip_color
+    # REFACTOR Move this into the domain as flip_color, returning the new color?
+    self.grid_square.color = (self.grid_square.color == :white ? :black : :white)
+    self.changed
+    self.notify_observers(self.grid_square.color)
+  end
+end
 
 class GridSquare < Gtk::Frame
   # REFACTOR Rename this "grid square gateway"

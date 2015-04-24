@@ -2,29 +2,10 @@ require "./langtons_ant_ui"
 
 Gtk.init
 
-require "observer"
+# Emulate a Grid Square in the domain
+grid_square = Struct.new(:color).new.tap { |gs| gs.color = :white }
 
-# observable Gateway
-# View connects to this in order to stay current with model changes.
-# Must respond to:
-#   color()
-#   flip_color()
-class GridSquareGateway < Struct.new(:grid_square)
-  include Observable
-
-  def color
-    grid_square.color
-  end
-
-  def flip_color
-    # REFACTOR Move this into the domain as flip_color, returning the new color?
-    self.grid_square.color = (self.grid_square.color == :white ? :black : :white)
-    self.changed
-    self.notify_observers(self.grid_square.color)
-  end
-end
-
-grid_square_gateway = GridSquareGateway.new(Struct.new(:color).new.tap { |gs| gs.color = :white })
+grid_square_gateway = LangtonsAntWalkWidgets::GridSquareGateway.new(grid_square)
 
 # Create a window for displaying the only Grid Square widget
 # so that I can inspect the results by looking at them.
@@ -47,6 +28,7 @@ end
 threads << Thread.new do
   10.times do
     sleep 1
+    # Simulate the View asking to flip the color of the square
     grid_square_gateway.flip_color
   end
   sleep 1
