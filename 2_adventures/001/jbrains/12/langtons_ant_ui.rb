@@ -1,6 +1,8 @@
 require "gtk2"
 
-class LangtonsAntWalkGridSquare < Gtk::Frame
+module LangtonsAntWalkWidgets
+
+class GridSquare < Gtk::Frame
   attr_accessor :grid_square_model
 
   # grid_square_model (can't be called "model", because Gtk::Frame uses that) must support:
@@ -38,7 +40,7 @@ class LangtonsAntWalkGridSquare < Gtk::Frame
   end
 end
 
-class LangtonsAntWalkGridPanel < Gtk::Table
+class GridPanel < Gtk::Table
   attr_reader :squares
 
   def initialize
@@ -51,7 +53,7 @@ class LangtonsAntWalkGridPanel < Gtk::Table
     @rows.times do |x|
       @squares.push([])
       @columns.times do |y|
-        square = LangtonsAntWalkGridSquare.white
+        square = GridSquare.white
         @squares[x][y] = square
         self.attach_defaults(square, x, x+1, y, y+1)
       end
@@ -59,7 +61,7 @@ class LangtonsAntWalkGridPanel < Gtk::Table
   end
 end
 
-class LangtonsAntWalkMainWindow < Gtk::Window
+class MainWindow < Gtk::Window
   attr_reader :grid_panel
 
   def initialize
@@ -73,9 +75,11 @@ class LangtonsAntWalkMainWindow < Gtk::Window
 
     self.set_default_size(600, 600)
 
-    @grid_panel = LangtonsAntWalkGridPanel.new
+    @grid_panel = GridPanel.new
     self.add(@grid_panel)
 
     self.show_all()
   end
+end
+
 end

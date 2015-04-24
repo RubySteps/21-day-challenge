@@ -136,7 +136,7 @@ class LangtonsAntWalk
 end
 
 Gtk.init
-main_window = LangtonsAntWalkMainWindow.new
+main_window = LangtonsAntWalkWidgets::MainWindow.new
 
 threads = []
 
