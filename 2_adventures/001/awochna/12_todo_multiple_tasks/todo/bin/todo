@@ -1,0 +1,88 @@
+#!/usr/bin/env ruby
+require 'gli'
+begin # XXX: Remove this begin/rescue before distributing your app
+require 'todo'
+rescue LoadError
+  STDERR.puts "In development, you need to use `bundle exec bin/todo` to run your app"
+  STDERR.puts "At install-time, RubyGems will make sure lib, etc. are in the load path"
+  STDERR.puts "Feel free to remove this message from bin/todo now"
+  exit 64
+end
+
+include GLI::App
+
+program_desc 'Describe your application here'
+
+version Todo::VERSION
+
+subcommand_option_handling :normal
+arguments :strict
+
+desc 'Describe some switch here'
+switch [:s,:switch]
+
+desc 'Give the todo.txt file to work with'
+default_value '~/Documents/todo.txt'
+arg_name 'filename'
+flag [:f,:file]
+
+desc 'Add a new task'
+arg_name 'Text to make into a todo item'
+command :add do |c|
+  c.action do |global_options,options,args|
+
+    # Your command logic here
+     
+    # If you have any errors, just raise them
+    # raise "that command made no sense"
+
+    File.open(global_options[:file], 'a') do |file|
+      file.puts args
+    end
+    
+    puts "add command ran"
+  end
+end
+
+desc 'Describe ls here'
+arg_name 'Describe arguments to ls here'
+command :ls do |c|
+  c.action do |global_options,options,args|
+    File.open(global_options[:file]) do |file|
+      file.each_line do |line|
+        puts line
+      end
+    end
+  end
+end
+
+desc 'Describe done here'
+arg_name 'Describe arguments to done here'
+command :done do |c|
+  c.action do |global_options,options,args|
+    puts "done command ran"
+  end
+end
+
+pre do |global,command,options,args|
+  # Pre logic here
+  # Return true to proceed; false to abort and not call the
+  # chosen command
+  # Use skips_pre before a command to skip this block
+  # on that command only
+  true
+end
+
+post do |global,command,options,args|
+  # Post logic here
+  # Use skips_post before a command to skip this
+  # block on that command only
+end
+
+on_error do |exception|
+  # Error logic here
+  # return false to skip default error handling
+  true
+end
+
+exit run(ARGV)
