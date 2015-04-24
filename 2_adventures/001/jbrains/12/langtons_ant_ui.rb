@@ -3,6 +3,7 @@ require "gtk2"
 module LangtonsAntWalkWidgets
 
 class GridSquare < Gtk::Frame
+  # REFACTOR Rename this "grid square gateway"
   attr_accessor :grid_square_model
 
   # grid_square_model (can't be called "model", because Gtk::Frame uses that) must support:
@@ -11,7 +12,7 @@ class GridSquare < Gtk::Frame
   def self.with_model(model)
     self.new(model.color).tap { |view|
       view.grid_square_model = model
-      model.add_listener(view)
+      model.add_observer(view, :on_flip)
     }
   end
 
@@ -35,7 +36,6 @@ class GridSquare < Gtk::Frame
   end
 
   def on_flip(color)
-    puts "on_flip(#{color})"
     self.color_yourself(color)
   end
 end
