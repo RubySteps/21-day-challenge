@@ -2,28 +2,37 @@ require "./langtons_ant_ui"
 
 Gtk.init
 
-# Simulate a grid
-class GridSquare < Struct.new(:color)
+# observable Gateway
+# View connects to this in order to stay current with model changes.
+# Must respond to:
+#   color()
+#   flip_color()
+#   signal_flipped_color()
+class GridSquareGateway < Struct.new(:grid_square)
   def initialize(*args)
     super(*args)
     @listeners = []
+  end
+
+  def color
+    grid_square.color
   end
 
   def add_listener(listener)
     @listeners << listener
   end
 
-  def flip
-    self.color = (self.color == :white ? :black : :white)
-    self.signal_flipped(self.color)
+  def flip_color
+    self.grid_square.color = (self.color == :white ? :black : :white)
+    self.signal_flipped_color(self.color)
   end
 
-  def signal_flipped(color)
+  def signal_flipped_color(color)
     @listeners.map { |each| each.on_flip(color) }
   end
 end
 
-grid_square = GridSquare.new(:white)
+grid_square = GridSquareGateway.new(Struct.new(:color).new.tap { |gs| gs.color = :white })
 
 # Create a window for displaying the only Grid Square widget
 # so that I can inspect the results by looking at them.
@@ -46,7 +55,7 @@ end
 threads << Thread.new do
   10.times do
     sleep 1
-    grid_square.flip
+    grid_square.flip_color
   end
   sleep 1
   Gtk.main_quit
