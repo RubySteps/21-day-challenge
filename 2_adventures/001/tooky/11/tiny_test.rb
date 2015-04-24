@@ -56,6 +56,13 @@ class TinyTest
       @tests = []
     end
 
+    def run(result)
+      @tests.each do |test|
+        test.run(result)
+      end
+      result
+    end
+
     def must(name, &test)
       add(TestCase.new(test))
     end
@@ -234,7 +241,7 @@ end
 
 result = TinyTest::Result.new
 
-TinyTest.run_all(assert_spec, result)
+TinyTest.run_all([assert_spec], result)
 TinyTest.run_all(assert_equal_spec, result)
 TinyTest.run_all(running_a_single_test_spec, result)
 TinyTest.run_all(reporting_tests_spec, result)
