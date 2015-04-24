@@ -40,3 +40,8 @@ Even those we're not doing TDD with automated tests, I will want to be able to b
 1. Draw a bigger (2n+1)-by-(2n+1) grid with the origin in the center.
 
 I have one design constraint: I want the grid panel (or whatever Gtk calls it) implemented in its own module (not necessarily `module`) with as little dependency on its context as possible. In other words, I want to be able to embed the grid panel wherever I want.
+
+# The Result
+
+Another Chunnel problem. The Grid Square Gateway wants to talk to a Grid Square (which responds to `color()` and `flip_color()`; however, the Grid in the domain doesn't provide a Grid Square view to itself. Right now, I have no way to connect the Grid Square Widget to the corresponding Grid Square in the domain. I need the Grid to expose itself as Grid Squares. But I'm tired, so I'll do that tomorrow.
+
