@@ -4,9 +4,12 @@ module Codebreaker
       @out = out
     end
 
-    def start
+    def start(secret)
       @out.puts 'Welcome to Codebreaker!'
       @out.puts 'Enter guess:'
+    end
+
+    def guess(guess)
     end
   end
 end
