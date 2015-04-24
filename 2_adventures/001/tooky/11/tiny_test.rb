@@ -84,6 +84,10 @@ class TinyTest
   end
 
   class TestCase < Struct.new(:test_block)
+    def self.define(&test_block)
+      new(test_block)
+    end
+
     def call(*args, &block)
       test_block.call(*args, &block)
     end
@@ -166,7 +170,7 @@ end
 running_a_single_test_spec = TinyTest.specify "running a single test" do
   must "report_result_of_single_passing_test" do
     result = TinyTest.run(
-      TinyTest::TestCase.new(->() {})
+      TinyTest::TestCase.define {}
     )
     assert_equal 1, result.run_count
     assert_equal 1, result.passed_count
@@ -175,7 +179,7 @@ running_a_single_test_spec = TinyTest.specify "running a single test" do
 
   must "report_result_of_single_failing_test" do
     result = TinyTest.run(
-      TinyTest::TestCase.new(->() { fail })
+      TinyTest::TestCase.define { fail }
     )
     assert_equal 1, result.run_count
     assert_equal 0, result.passed_count
@@ -186,8 +190,8 @@ end
 reporting_tests_spec = TinyTest.specify "reporting results" do
   must "report_result_of_running_a_failing_and_passing_test" do
     result = TinyTest.run_all([
-      TinyTest::TestCase.new(->() { fail }),
-      TinyTest::TestCase.new(->() {})
+      TinyTest::TestCase.define { fail },
+      TinyTest::TestCase.define {}
     ])
 
     assert_equal 2, result.run_count
@@ -197,7 +201,7 @@ reporting_tests_spec = TinyTest.specify "reporting results" do
 
   must "report_test_failure_details" do
     the_exception = StandardError.new("this error")
-    failing_test = TinyTest::TestCase.new(->() { raise the_exception })
+    failing_test = TinyTest::TestCase.define { raise the_exception }
 
     result = TinyTest.run_all([failing_test])
 
