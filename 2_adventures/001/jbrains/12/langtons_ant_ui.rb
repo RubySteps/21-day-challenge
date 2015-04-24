@@ -16,8 +16,7 @@ class GridSquareGateway < Struct.new(:grid_square)
   end
 
   def flip_color
-    # REFACTOR Move this into the domain as flip_color, returning the new color?
-    self.grid_square.color = (self.grid_square.color == :white ? :black : :white)
+    self.grid_square.flip_color()
     self.changed
     self.notify_observers(self.grid_square.color)
   end

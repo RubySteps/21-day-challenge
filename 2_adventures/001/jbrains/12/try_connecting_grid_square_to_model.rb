@@ -3,7 +3,14 @@ require "./langtons_ant_ui"
 Gtk.init
 
 # Emulate a Grid Square in the domain
+# CONTRACT: responds to 
+#   color() for the current color of the square.
+#   flip_color() to flip the color of the square, returning the new color.
 grid_square = Struct.new(:color).new.tap { |gs| gs.color = :white }
+def grid_square.flip_color()
+  self.color = (self.color == :white) ? :black : :white
+  self.color
+end
 
 grid_square_gateway = LangtonsAntWalkWidgets::GridSquareGateway.new(grid_square)
 
