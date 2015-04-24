@@ -68,7 +68,7 @@ class TinyTest
     end
 
     def must(name, &test)
-      add(test)
+      add(TestCase.new(test))
     end
 
     def each(*args, &block)
