@@ -22,7 +22,7 @@ desc 'Describe some switch here'
 switch [:s,:switch]
 
 desc 'Give the todo.txt file to work with'
-default_value YAML.load_file('config/settings.yml')['file']
+default_value '~/Documents/todo.txt'
 arg_name 'filename'
 flag [:f,:file]
 
@@ -36,6 +36,10 @@ command :add do |c|
     # If you have any errors, just raise them
     # raise "that command made no sense"
 
+    File.open(global_options[:file], 'a') do |file|
+      file.puts args
+    end
+    
     puts "add command ran"
   end
 end
@@ -44,7 +48,11 @@ desc 'Describe ls here'
 arg_name 'Describe arguments to ls here'
 command :ls do |c|
   c.action do |global_options,options,args|
-    puts "ls command ran"
+    File.open(global_options[:file]) do |file|
+      file.each_line do |line|
+        puts line
+      end
+    end
   end
 end
 
