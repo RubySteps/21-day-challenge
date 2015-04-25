@@ -135,25 +135,7 @@ class LangtonsAntWalk
   end
 end
 
-Gtk.init
-main_window = LangtonsAntWalkWidgets::MainWindow.new
-
-threads = []
-
-threads << Thread.new do
-  Gtk.main
+walk = LangtonsAntWalk.new
+10.times do
+  walk.take_a_step
 end
-
-threads << Thread.new do
-  10.times do
-    x = rand(3)
-    y = rand(3)
-    main_window.grid_panel.squares[x][y].color_yourself(:black)
-    sleep 1
-    main_window.grid_panel.squares[x][y].color_yourself(:white)
-    sleep 1
-  end
-  Gtk.main_quit
-end
-
-threads.map(&:join)
