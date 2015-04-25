@@ -103,3 +103,29 @@ class MainWindow < Gtk::Window
 end
 
 end
+
+Gtk.init
+
+main_window = LangtonsAntWalkWidgets::MainWindow.new
+main_window.show_all()
+
+threads = []
+
+threads << Thread.new do
+  10.times do
+    x = rand(3)
+    y = rand(3)
+    sleep 0.5
+    main_window.grid_panel.squares[x][y].color_yourself(:black)
+    sleep 0.5
+    main_window.grid_panel.squares[x][y].color_yourself(:white)
+  end
+  Gtk.main_quit
+end
+
+threads << Thread.new do
+  Gtk.main
+end
+
+threads.map(&:join)
+

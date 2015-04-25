@@ -125,7 +125,7 @@ class ConsoleReportingWalkListener < WalkListener
   end
 
   def color_flipped(location, color)
-    puts "The square at #{location} is now #{color}"
+    puts "The square at #{location} is changing to #{color}"
   end
 end
 
