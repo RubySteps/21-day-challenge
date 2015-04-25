@@ -1,23 +1,8 @@
-# Day 12
+# Day 13
 
-Today I'd like to see path to connecting the view and model to one another, so that I can refocus on adding features to the graphical interface. I have some code that does this, but I need to step back, draw the design, and get a rough idea where the pieces belong, then move them there. This means turning `try_connecting_grid_square_to_model.rb` into a design I will always be able to understand.
+Today I'd like to see path to connecting the view and model to one another, so that I can refocus on adding features to the graphical interface. (This sounds familiar, seeing as I wrote it yesterday.)
 
-I care about connecting a Grid Square view object with a Grid Square model object. The view paints a square the correct color, whereas the the model knows the correct color. The view listens to the model and repaints the correct color when the model changes. This means a few things:
-
-* The view and model are tangled, although not terribly. At least the model doesn't really know that the view is a view, but rather only "something that cares about when my color changes".
-* The "model" is really a user interface peer, and not an object "in the domain". The terms that people tend to use kinda suck here. I really have a Grid Square Model Gateway, which belongs to the view layer, but which gives me access to a Grid Square Domain Model Object. Yuck.
-
-This past part bothers me, so I should probably try raising the level of abstraction. Let me try again.
-
-* The "model" is really something that exposes the Grid Square Domain Object as an observable so that the view layer can react to changes. It adds observer/observable behavior to the Grid Square, so it really acts as a Grid Square Gateway, rather than the Grid Square itself.
-
-I prefer this. I see the relationships and the division of labor more clearly.
-
-1. The Grid Square GTK widget handles painting the color of the square.
-1. The Grid Square Gateway mediates between the widget and the domain object. It keeps the widget up to date and helps the widget tell the domain object when it needs to change color.
-1. The Grid Square (domain object) only cares about its color.
-
-Easy. I think I can build this today.
+I need the Grid to expose itself as Grid Squares. If I can do that, then I can connect the view to the model and It'll Just Work<sup>SM</sup>. I intend to focus on that now.
 
 ## Reviewing The Plan
 
