@@ -111,14 +111,25 @@ main_window.show_all()
 
 threads = []
 
+require "./langtons_ant"
+class WidgetsWalkListener < WalkListener
+  def initialize(square_widgets)
+    @square_widgets = square_widgets
+  end
+
+  def color_flipped(location, color)
+    # Assumes 3-by-3 grid!
+    widget_grid_x = location.x + 3 - 2
+    widget_grid_y = location.y + 3 - 2
+    @square_widgets[widget_grid_x][widget_grid_y].color_yourself(color)
+  end
+end
+
 threads << Thread.new do
+  walk = LangtonsAntWalk.new(WidgetsWalkListener.new(main_window.grid_panel.squares))
   10.times do
-    x = rand(3)
-    y = rand(3)
     sleep 0.5
-    main_window.grid_panel.squares[x][y].color_yourself(:black)
-    sleep 0.5
-    main_window.grid_panel.squares[x][y].color_yourself(:white)
+    walk.take_a_step
   end
   Gtk.main_quit
 end

@@ -3,8 +3,6 @@
 # I first saw Kent Beck demonstrate this at XP Universe 2001.
 # To my knowledge, I've never tried writing it myself.
 
-require "./langtons_ant_ui"
-
 Vector = Struct.new(:x, :y)
 class Location < Vector
   def step_towards(direction)
@@ -108,6 +106,10 @@ end
 
 class WalkListener
   def step_taken(number, ant)
+    # Optional subclass responsibility
+  end
+
+  def color_flipped(location, color)
     # Optional subclass responsibility
   end
 end
