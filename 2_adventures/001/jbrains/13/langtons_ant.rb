@@ -123,9 +123,9 @@ class LangtonsAntWalk
     origin = Location.new(0, 0)
     grid = Grid.with_black_squares([])
     @ant = LangtonsAnt.start(grid: grid, facing: Direction.north, location: origin)
-    @steps = 0
     @walk_listener = ConsoleReportingWalkListener.new
-    @walk_listener.step_taken(0, @ant)
+    @steps = 0
+    @walk_listener.step_taken(@steps, @ant)
   end
 
   def take_a_step
