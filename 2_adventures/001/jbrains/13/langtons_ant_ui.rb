@@ -121,14 +121,17 @@ class WidgetsWalkListener < WalkListener
     # Assumes 3-by-3 grid!
     widget_grid_x = location.x + 3 - 2
     widget_grid_y = location.y + 3 - 2
-    @square_widgets[widget_grid_x][widget_grid_y].color_yourself(color)
+    # Don't try to paint outside the viewport
+    if ((0...3).include?(widget_grid_x) && (0...3).include?(widget_grid_y))
+      @square_widgets[widget_grid_x][widget_grid_y].color_yourself(color)
+    end
   end
 end
 
 threads << Thread.new do
   walk = LangtonsAntWalk.new(WidgetsWalkListener.new(main_window.grid_panel.squares))
-  10.times do
-    sleep 0.5
+  20.times do
+    sleep 0.1
     walk.take_a_step
   end
   Gtk.main_quit
