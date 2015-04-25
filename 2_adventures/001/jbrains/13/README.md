@@ -10,6 +10,8 @@ Taking a few more seconds to think about it, it seems that `LangtonsAntWalk` pub
 
 Hm.
 
+Looking at the code more closely, I notice that the design of the "text-based UI" suffers the same problem. At the end of each step, it "paints" the grid by listing all the black squares. This works just fine for text, but represents an accident of implementation, and perhaps a better way to do this involves noting which squares have flipped, rather than "repainting" the entire grid. If I do this with the text-based UI (which already works), then there would be no special design for the GUI to use. This gives me a place to start.
+
 ## Reviewing The Plan
 
 This was the overall plan, in the middle of which we find ourselves.
