@@ -16,9 +16,13 @@ class Location < Vector
   end
 end
 
+require "observer"
+
 # black_squares: List of black-colored squares
 Grid = Struct.new(:black_squares) 
 class Grid
+  include Observable
+
   def self.with_black_squares(black_squares)
     self.new(black_squares)
   end
@@ -28,10 +32,13 @@ class Grid
   end
 
   def flip_square_at(location)
+    changed
     if color_of(location) == :white
       black_squares << location
+      notify_observers(location, :black)
     else
       black_squares.delete(location)
+      notify_observers(location, :white)
     end
   end
 
@@ -116,12 +123,17 @@ class ConsoleReportingWalkListener < WalkListener
     puts "He is facing #{ant.facing}"
     puts "He sees black squares at #{ant.grid.describe()}"
   end
+
+  def color_flipped(location, color)
+    puts "The square at #{location} is now #{color}"
+  end
 end
 
 class LangtonsAntWalk
   def initialize(walk_listener)
     origin = Location.new(0, 0)
     grid = Grid.with_black_squares([])
+    grid.add_observer(walk_listener, :color_flipped)
     @ant = LangtonsAnt.start(grid: grid, facing: Direction.north, location: origin)
     @walk_listener = walk_listener
     @steps = 0
