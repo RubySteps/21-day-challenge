@@ -4,6 +4,12 @@ Today I'd like to see path to connecting the view and model to one another, so t
 
 I need the Grid to expose itself as Grid Squares. If I can do that, then I can connect the view to the model and It'll Just Work<sup>SM</sup>. I intend to focus on that now.
 
+Unfortunately, I see a fundamental mismatch between what the GUI wants and what `LangtonsAntWalk` does. The GUI wants to update the domain through the Gateway object, but `LangtonsAntWalk` hides those details, instead only offering a single event to the outside world: `step_taken(how_many, ant)`. How do I combine these two things while keeping the domain in the dark about the GUI?
+
+Taking a few more seconds to think about it, it seems that `LangtonsAntWalk` publishes enough information through its `step_taken` event to give the GUI everything it needs, albeit in a quite annoying fashion: rather than the GUI being able to listen to the flipping of the color of a single square, it gets a new `ant` after each step, meaning that it would have to repaint the entire grid after each step. This feels wrong. And so I find myself stuck between two wrong choices: either `LangtonsAntWalk` has to change its design to accommodate the GUI, or the GUI has to do far more work than seems necessary.
+
+Hm.
+
 ## Reviewing The Plan
 
 This was the overall plan, in the middle of which we find ourselves.
