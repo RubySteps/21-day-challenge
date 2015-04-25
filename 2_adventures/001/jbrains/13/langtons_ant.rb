@@ -91,13 +91,13 @@ class LangtonsAnt
 
   def go
     if self.grid.color_of(self.location) == :white
-      self.grid.flip_square_at(self.location)
       now_facing = Direction.turn_right_from(self.facing)
+      self.grid.flip_square_at(self.location)
       now_at = self.location.step_towards(now_facing)
       self.class.new(self.grid, now_facing, now_at)
     else
-      self.grid.flip_square_at(self.location)
       now_facing = Direction.turn_left_from(self.facing)
+      self.grid.flip_square_at(self.location)
       now_at = self.location.step_towards(now_facing)
       self.class.new(self.grid, now_facing, now_at)
     end
@@ -136,7 +136,7 @@ class LangtonsAntWalk
     origin = Location.new(0, 0)
     grid = Grid.with_black_squares([])
     grid.add_observer(walk_listener, :color_flipped)
-    @ant = LangtonsAnt.start(grid: grid, facing: Direction.north, location: origin)
+    @ant = LangtonsAnt.start(grid: grid, facing: Direction.new(0, 1), location: origin)
     @walk_listener = walk_listener
     @steps = 0
     @walk_listener.step_taken(@steps, @ant)

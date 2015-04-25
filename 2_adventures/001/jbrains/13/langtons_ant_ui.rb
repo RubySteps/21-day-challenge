@@ -39,7 +39,7 @@ class GridSquare < Gtk::Frame
   def initialize(color)
     super()
     # It's like a border... until I figure out how to draw a border.
-    self.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.parse("black"))
+    # self.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.parse("black"))
     # The area that actually changes color.
     @interior = Gtk::DrawingArea.new.tap { |area| 
       area.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.parse(color.to_s)) 
@@ -63,8 +63,8 @@ end
 class GridPanel < Gtk::Table
   attr_reader :squares
 
-  def initialize
-    @rows = @columns = 3
+  def initialize(grid_radius)
+    @rows = @columns = 2 * grid_radius + 1 
 
     # true -> all cells the same size
     super(@rows, @columns, true)
@@ -84,8 +84,8 @@ end
 class MainWindow < Gtk::Window
   attr_reader :grid_panel
 
-  def initialize
-    super
+  def initialize(options)
+    super()
 
     set_title("Langton's Ant")
 
@@ -93,9 +93,9 @@ class MainWindow < Gtk::Window
       Gtk.main_quit
     end
 
-    self.set_default_size(600, 600)
+    self.set_default_size(800, 800)
 
-    @grid_panel = GridPanel.new
+    @grid_panel = GridPanel.new(options[:grid_radius] || 20)
     self.add(@grid_panel)
 
     self.show_all()
@@ -106,8 +106,7 @@ end
 
 Gtk.init
 
-main_window = LangtonsAntWalkWidgets::MainWindow.new
-main_window.show_all()
+main_window = LangtonsAntWalkWidgets::MainWindow.new(grid_radius: 20)
 
 threads = []
 
@@ -136,7 +135,7 @@ end
 threads << Thread.new do
   walk = LangtonsAntWalk.new(WidgetsWalkListener.new(main_window.grid_panel.squares))
   20.times do
-    sleep 0.1
+    sleep 0.001
     walk.take_a_step
   end
   Gtk.main_quit
