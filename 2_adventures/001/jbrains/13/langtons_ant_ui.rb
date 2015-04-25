@@ -118,9 +118,9 @@ class WidgetsWalkListener < WalkListener
   end
 
   def color_flipped(location, color)
-    # Assumes 3-by-3 grid!
-    widget_grid_x = location.x + 3 - 2
-    widget_grid_y = location.y + 3 - 2
+    # Assumes a square grid!
+    widget_grid_x = location.x + @square_widgets.length - 2
+    widget_grid_y = location.y + @square_widgets[0].length - 2
     # Don't try to paint outside the viewport
     if ((0...3).include?(widget_grid_x) && (0...3).include?(widget_grid_y))
       @square_widgets[widget_grid_x][widget_grid_y].color_yourself(color)
