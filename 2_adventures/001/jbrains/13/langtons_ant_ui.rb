@@ -115,14 +115,17 @@ require "./langtons_ant"
 class WidgetsWalkListener < WalkListener
   def initialize(square_widgets)
     @square_widgets = square_widgets
+    # Assumes a square grid.
+    @rows = @columns = @square_widgets.length
   end
 
   def color_flipped(location, color)
-    # Assumes a square grid!
-    widget_grid_x = location.x + @square_widgets.length - 2
-    widget_grid_y = location.y + @square_widgets[0].length - 2
+    # Locations go from (-n, -n) to (n, n) in a grid of size 2n+1.
+    # x, y coordinates on the grid go from (0, 0) to (2n, 2n)
+    widget_grid_x = location.x + @rows - 2
+    widget_grid_y = location.y + @columns - 2
     # Don't try to paint outside the viewport
-    if ((0...3).include?(widget_grid_x) && (0...3).include?(widget_grid_y))
+    if ((0...@rows).include?(widget_grid_x) && (0...@columns).include?(widget_grid_y))
       @square_widgets[widget_grid_x][widget_grid_y].color_yourself(color)
     end
   end
