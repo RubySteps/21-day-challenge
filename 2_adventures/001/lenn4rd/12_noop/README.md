@@ -1,0 +1,3 @@
+# Day 12
+
+Today I took a break from development, so no real commit from me today. Tomorrow I'll continue working on a Ruby project that will use Stripe for booking. I plan to use the [Payola](https://github.com/peterkeen/payola) gem by [@peterkeen](https://github.com/peterkeen). I found his e-book [Mastering Modern Payments: Using Stripe with Rails](https://www.masteringmodernpayments.com) incredibly useful and he took the code from that book and turned it into a gem.
