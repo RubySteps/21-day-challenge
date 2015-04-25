@@ -119,11 +119,11 @@ class ConsoleReportingWalkListener < WalkListener
 end
 
 class LangtonsAntWalk
-  def initialize
+  def initialize(walk_listener)
     origin = Location.new(0, 0)
     grid = Grid.with_black_squares([])
     @ant = LangtonsAnt.start(grid: grid, facing: Direction.north, location: origin)
-    @walk_listener = ConsoleReportingWalkListener.new
+    @walk_listener = walk_listener
     @steps = 0
     @walk_listener.step_taken(@steps, @ant)
   end
@@ -135,7 +135,7 @@ class LangtonsAntWalk
   end
 end
 
-walk = LangtonsAntWalk.new
+walk = LangtonsAntWalk.new(ConsoleReportingWalkListener.new)
 10.times do
   walk.take_a_step
 end
