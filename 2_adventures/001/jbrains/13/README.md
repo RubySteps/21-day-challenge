@@ -36,5 +36,4 @@ I have one design constraint: I want the grid panel (or whatever Gtk calls it) i
 
 # The Result
 
-Another Chunnel problem. The Grid Square Gateway wants to talk to a Grid Square (which responds to `color()` and `flip_color()`; however, the Grid in the domain doesn't provide a Grid Square view to itself. Right now, I have no way to connect the Grid Square Widget to the corresponding Grid Square in the domain. I need the Grid to expose itself as Grid Squares. But I'm tired, so I'll do that tomorrow.
-
+Something strange happened in my last commit, so I had to revert it. Obviously, I need to redo it in smaller steps. Good thing I can easily do that. Tomorrow.
