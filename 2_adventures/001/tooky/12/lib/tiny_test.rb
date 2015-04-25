@@ -19,8 +19,11 @@ class TinyTest
     self
   end
 
-  def self.specify(name, &block)
-    Suite.new.tap { |s| s.instance_exec(&block) }
+  def self.specify(name, suite_stack=Suite.stack, &block)
+    Suite.new.tap do |s|
+      s.instance_exec(&block)
+      suite_stack.push(s)
+    end
   end
 
   class Result
@@ -54,6 +57,11 @@ class TinyTest
   end
 
   class Suite
+
+    def self.stack
+      @suite_stack ||= []
+    end
+
     def initialize
       @tests = []
     end

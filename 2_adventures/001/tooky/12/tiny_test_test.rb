@@ -140,6 +140,18 @@ suite_spec = TinyTest.specify "creating a suite of tests" do
     assert_equal 2, result.run_count
     assert_equal 2, result.passed_count
   end
+
+  must "add suite to the stack" do
+    suite_stack = []
+
+    suite = TinyTest.specify "do things", suite_stack do
+      must "have a test" do
+        assert(true)
+      end
+    end
+
+    assert_equal suite, suite_stack.last
+  end
 end
 
 result = TinyTest::Result.new
