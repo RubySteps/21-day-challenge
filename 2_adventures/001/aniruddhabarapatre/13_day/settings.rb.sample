@@ -1,0 +1,7 @@
+# Copy this to settings.rb in the project root or adjust your require line in my_web_app
+module SETTINGS
+  CONSUMER_KEY        = "YOUR API KEY"
+  CONSUMER_SECRET     = "Your SECRET"
+  ACCESS_TOKEN        = "YOUR TOKEN"
+  ACCESS_TOKEN_SECRET = "YOUR TOKEN SECRET"
+end
