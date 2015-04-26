@@ -106,7 +106,7 @@ end
 
 Gtk.init
 
-main_window = LangtonsAntWalkWidgets::MainWindow.new
+main_window = LangtonsAntWalkWidgets::MainWindow.new(grid_radius: 1)
 main_window.show_all()
 
 threads = []
