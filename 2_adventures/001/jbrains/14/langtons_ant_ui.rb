@@ -63,8 +63,8 @@ end
 class GridPanel < Gtk::Table
   attr_reader :squares
 
-  def initialize
-    @rows = @columns = 3
+  def initialize(grid_radius)
+    @rows = @columns = grid_radius * 2 + 1
 
     # true -> all cells the same size
     super(@rows, @columns, true)
@@ -95,7 +95,7 @@ class MainWindow < Gtk::Window
 
     self.set_default_size(600, 600)
 
-    @grid_panel = GridPanel.new
+    @grid_panel = GridPanel.new(1)
     self.add(@grid_panel)
 
     self.show_all()
