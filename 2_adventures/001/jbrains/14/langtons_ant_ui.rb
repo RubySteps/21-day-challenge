@@ -106,7 +106,7 @@ end
 
 Gtk.init
 
-main_window = LangtonsAntWalkWidgets::MainWindow.new(grid_radius: 1)
+main_window = LangtonsAntWalkWidgets::MainWindow.new(grid_radius: 10)
 main_window.show_all()
 
 threads = []
@@ -135,7 +135,7 @@ end
 
 threads << Thread.new do
   walk = LangtonsAntWalk.new(WidgetsWalkListener.new(main_window.grid_panel.squares))
-  20.times do
+  2000.times do
     sleep 0.01
     walk.take_a_step
   end
