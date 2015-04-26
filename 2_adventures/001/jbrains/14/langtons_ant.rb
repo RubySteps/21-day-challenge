@@ -149,7 +149,3 @@ class LangtonsAntWalk
   end
 end
 
-walk = LangtonsAntWalk.new(ConsoleReportingWalkListener.new)
-10.times do
-  walk.take_a_step
-end
