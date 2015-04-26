@@ -1,0 +1,16 @@
+My first Sinatra app
+
+This is for <%= @project_name %> project.
+
+Here are some fruits - 
+<% @fruits.each do |f| %>
+  <%= f %>
+  <br />
+<% end %>
+
+<br />
+Some of the tweets pulled from twitter - <br />
+<% @my_tweets.each do |tweet| %>
+  <%= tweet %>
+  <br />
+<% end %>
