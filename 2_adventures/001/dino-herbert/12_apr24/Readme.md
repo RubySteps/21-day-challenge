@@ -1,0 +1,1 @@
+This program counts the HTML tags within 3 websites. (based on exercise done on Bastard's book of Ruby).

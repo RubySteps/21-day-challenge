@@ -1,0 +1,28 @@
+<h1>All courses</h1>
+
+<%= render 'search_form', search: @search %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Location</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= link_to course.title, course %></td>
+        <td><%= l course.date, format: :short %></td>
+        <td><%= course.city %></td>
+        <td>
+          <%= link_to 'Edit', edit_course_path(course) %>
+          <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

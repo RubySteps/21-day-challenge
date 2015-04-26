@@ -1,0 +1,5 @@
+# each line is a verb
+go
+stop
+kill
+eat

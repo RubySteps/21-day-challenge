@@ -1,0 +1,1 @@
+Day 5!  Limited internet access through the weekend.  Will read more of the RSpec Book.

@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require '21-day-challenge-countdown'
+countdown = TwentyOneDayChallenge::Countdown.new
+puts countdown.deadline
