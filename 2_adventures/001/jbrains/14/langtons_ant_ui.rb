@@ -84,8 +84,8 @@ end
 class MainWindow < Gtk::Window
   attr_reader :grid_panel
 
-  def initialize
-    super
+  def initialize(options = Hash.new)
+    super()
 
     set_title("Langton's Ant")
 
@@ -95,7 +95,7 @@ class MainWindow < Gtk::Window
 
     self.set_default_size(600, 600)
 
-    @grid_panel = GridPanel.new(1)
+    @grid_panel = GridPanel.new(options[:grid_radius] || 1)
     self.add(@grid_panel)
 
     self.show_all()
