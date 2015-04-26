@@ -6,8 +6,6 @@ Also yesterday I got a little overexcited by thinking that I could see the finis
 
 I have no idea where I'll end up today, so rather than declare a plan, I intend simply to do things until I get tired, then stop. Some days simply go like that.
 
-In the process of running some more tests, I discovered that things started to go sour when I started trying to draw off-screen, meaning a square that isn't in the viewport. Perhaps GTK doesn't handle this very well on its own, and so I might need to protect against it.
-
 ## Reviewing The Plan
 
 This was the overall plan, in the middle of which we find ourselves.
@@ -19,17 +17,8 @@ This was the overall plan, in the middle of which we find ourselves.
 1. Movable viewport keeping the ant approximately in the middle of the screen, in order to reduce viewport movement.
 1. Profit?
 
-### To Draw a Grid
-
-Even those we're not doing TDD with automated tests, I will want to be able to build the grid incrementally. I figure I should try this:
-
-1. Draw a 3-by-3 grid, with the origin in the center, and all squares white.
-1. Color an arbitrary square black.
-1. Color an arbitrary black square white again. **WE ARE HERE**
-1. Draw a bigger (2n+1)-by-(2n+1) grid with the origin in the center.
-
-I have one design constraint: I want the grid panel (or whatever Gtk calls it) implemented in its own module (not necessarily `module`) with as little dependency on its context as possible. In other words, I want to be able to embed the grid panel wherever I want.
-
 # The Result
 
-Something strange happened in my last commit, so I had to revert it. Obviously, I need to redo it in smaller steps. Good thing I can easily do that. Tomorrow.
+In the process of running some more tests, I discovered that things started to go sour when I started trying to draw off-screen, meaning a square that isn't in the viewport. Perhaps GTK doesn't handle this very well on its own, and so I might need to protect against it.
+
+It might help to say where the ant is in case it goes off the screen. I have in mind some text at the bottom of the main window describing the current step of the walk. I can do that tomorrow.
