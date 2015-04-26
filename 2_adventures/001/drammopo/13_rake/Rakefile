@@ -1,0 +1,11 @@
+require "rake/task"
+
+desc "a simple file creation task"
+task :default do
+  puts "before file creation"
+  File.open("hello.txt", "w") do |f|
+    puts "in file creation"
+    f << "content for hello.txt"
+  end
+  puts "after file creation"
+end
