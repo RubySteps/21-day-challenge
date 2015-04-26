@@ -6,6 +6,8 @@ Also yesterday I got a little overexcited by thinking that I could see the finis
 
 I have no idea where I'll end up today, so rather than declare a plan, I intend simply to do things until I get tired, then stop. Some days simply go like that.
 
+In the process of running some more tests, I discovered that things started to go sour when I started trying to draw off-screen, meaning a square that isn't in the viewport. Perhaps GTK doesn't handle this very well on its own, and so I might need to protect against it.
+
 ## Reviewing The Plan
 
 This was the overall plan, in the middle of which we find ourselves.

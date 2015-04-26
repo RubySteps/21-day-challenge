@@ -133,8 +133,8 @@ end
 
 threads << Thread.new do
   walk = LangtonsAntWalk.new(WidgetsWalkListener.new(main_window.grid_panel.squares))
-  2000.times do
-    sleep 0.01
+  10000.times do
+    sleep 0.001
     walk.take_a_step
   end
   Gtk.main_quit
