@@ -20,3 +20,12 @@ backseat advisory role when people report issues, so they can work on rvm themse
 She described on she initially got involved with Diaspora, and why the project is important in general. She also
 showed how the community took over development and project management after the original dev team dropped out.
 
+## [Katrina Owen](https://twitter.com/kytrinyx) on [Exercism.io]()
+
+Exercism is for programmers by programmers to become better programmers. Started out as an accident, and grew
+quickly.
+
+## [Arne Brasseur](https://twitter.com/plexus) on [yaks](https://github.com/plexus/yaks)
+
+Didn't pay much attention, was checking out the exercism repositories ;) But it seems to be a nice
+hypermedia API builder thingie.
