@@ -1,6 +1,6 @@
 $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), "lib"))) unless $LOAD_PATH.include?(File.expand_path(File.join(File.dirname(__FILE__), "lib")))
 
-require 'tiny_test'
+require 'tiny_test/autorun'
 
 assert_spec = TinyTest.specify "assert" do
   must "assert_does_not_raise_for_true_condition" do
@@ -153,22 +153,3 @@ suite_spec = TinyTest.specify "creating a suite of tests" do
     assert_equal suite, suite_stack.last
   end
 end
-
-result = TinyTest::Result.new
-
-TinyTest.run_all(TinyTest::Suite.stack, result)
-
-if result.failures.any?
-  puts "Tests Failed:"
-  puts
-
-  result.failures.each do |f|
-    puts "  #{f.exception.class} - #{f.exception.message}"
-    puts f.exception.backtrace.map { |s| "    #{s}" }
-    puts
-  end
-end
-
-puts "#{result.run_count} ran, #{result.passed_count} passed, #{result.failed_count} failed"
-
-puts "Success!" if result.run_count == result.passed_count
