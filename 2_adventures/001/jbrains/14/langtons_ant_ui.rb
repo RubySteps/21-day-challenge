@@ -38,8 +38,6 @@ class GridSquare < Gtk::Frame
 
   def initialize(color)
     super()
-    # It's like a border... until I figure out how to draw a border.
-    self.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.parse("black"))
     # The area that actually changes color.
     @interior = Gtk::DrawingArea.new.tap { |area| 
       area.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.parse(color.to_s)) 
