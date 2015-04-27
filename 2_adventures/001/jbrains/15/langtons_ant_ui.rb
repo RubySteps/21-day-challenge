@@ -94,7 +94,9 @@ class MainWindow < Gtk::Window
     self.set_default_size(600, 600)
 
     @grid_panel = GridPanel.new(options[:grid_radius] || 1)
-    self.add(@grid_panel)
+    layout_container = Gtk::VBox.new(false, 0)
+    layout_container.add(@grid_panel)
+    self.add(layout_container)
 
     self.show_all()
   end
@@ -133,8 +135,8 @@ end
 
 threads << Thread.new do
   walk = LangtonsAntWalk.new(WidgetsWalkListener.new(main_window.grid_panel.squares))
-  10000.times do
-    sleep 0.001
+  1000.times do
+    sleep 0.0001
     walk.take_a_step
   end
   Gtk.main_quit
