@@ -98,7 +98,7 @@ class TinyTest
 
     def run(result)
       begin
-        fix = Object.new.extend(Assertions)
+        fix = Fixture.new
         fix.instance_exec(&test_block)
       rescue Object => exception
         result.add_failure(self, exception)
@@ -107,6 +107,10 @@ class TinyTest
       end
       self
     end
+  end
+
+  class Fixture
+    include Assertions
   end
 
 end
