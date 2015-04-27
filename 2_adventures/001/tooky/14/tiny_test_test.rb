@@ -2,7 +2,7 @@ $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), "lib"))) u
 
 require 'tiny_test/autorun'
 
-assert_spec = TinyTest.specify "assert" do
+TinyTest.specify "assert" do
   must "assert_does_not_raise_for_true_condition" do
     assert(1 + 1 == 2)
   end
@@ -34,7 +34,7 @@ assert_spec = TinyTest.specify "assert" do
   end
 end
 
-assert_equal_spec = TinyTest.specify "assert_equal" do
+TinyTest.specify "assert_equal" do
   must "assert_equal_does_not_raise_when_values_are_equal" do
     expected = 2
     actual   = 1 + 1
@@ -74,7 +74,7 @@ assert_equal_spec = TinyTest.specify "assert_equal" do
   end
 end
 
-running_a_single_test_spec = TinyTest.specify "running a single test" do
+TinyTest.specify "running a single test" do
   must "report_result_of_single_passing_test" do
     test_case = TinyTest::TestCase.define {}
     result = TinyTest::Result.new
@@ -98,7 +98,7 @@ running_a_single_test_spec = TinyTest.specify "running a single test" do
   end
 end
 
-reporting_tests_spec = TinyTest.specify "reporting results" do
+TinyTest.specify "reporting results" do
   must "report_result_of_running_a_failing_and_passing_test" do
     result = TinyTest::Result.new
     TinyTest.run_all([
@@ -122,7 +122,7 @@ reporting_tests_spec = TinyTest.specify "reporting results" do
   end
 end
 
-suite_spec = TinyTest.specify "creating a suite of tests" do
+TinyTest.specify "creating a suite of tests" do
   must "run_a_suite_of_tests" do
     suite = TinyTest.specify "addition" do
       must "sum positive numbers" do
