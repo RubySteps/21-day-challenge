@@ -142,7 +142,7 @@ class WidgetsWalkListener < WalkListener
   end
 
   def step_taken(number, ant)
-    @walk_description.set_text("BOO!")
+    @walk_description.set_text("Langton's ant is at #{ant.location} facing #{ant.facing} after step #{number}.")
   end
 end
 
