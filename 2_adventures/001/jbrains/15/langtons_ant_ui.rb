@@ -95,8 +95,11 @@ class MainWindow < Gtk::Window
     @grid_panel.set_size_request(600, 600)
     layout_container = Gtk::VBox.new(false, 0)
     layout_container.add(@grid_panel)
-    control_panel = Gtk::DrawingArea.new()
+
+    control_panel = Gtk::HBox.new(false, 10)
+    control_panel.add(Gtk::Label.new("Langton's Ant is at (5, 12) facing east after step 578"))
     control_panel.set_size_request(0, 50)
+
     layout_container.add(control_panel)
     self.add(layout_container)
 
