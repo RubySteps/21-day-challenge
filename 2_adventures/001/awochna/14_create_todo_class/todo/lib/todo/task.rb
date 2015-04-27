@@ -10,8 +10,8 @@ module Todo
       else
         @done = false
       end
-      @priority = /^\(\w\)/.match(string)[0][1] if /^\(\w\)/ =~ string
-      if @priority
+      if /^\(\w\)\s/ =~ string
+        @priority = /^\(\w\)/.match(string)[0][1]
         string.gsub!(/^\(\w\)\s/, "")
       end
       @text = string
