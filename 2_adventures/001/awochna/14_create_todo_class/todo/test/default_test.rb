@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DefaultTest < Test::Unit::TestCase
+class DefaultTest < MiniTest::Test
 
   def setup
   end
