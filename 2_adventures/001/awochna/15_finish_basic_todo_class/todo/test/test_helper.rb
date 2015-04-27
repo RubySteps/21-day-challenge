@@ -9,5 +9,5 @@ require 'minitest/pride'
 class MiniTest::Test
 
   # Add global extensions to the test case class here
-  
+
 end
