@@ -1,3 +1,6 @@
 # Markov Chains Investigation
 
-Not sure what will end up here by the end of the day.
+I am using the `eg` tool from `https://github.com/srsudar/eg` and am tracking
+my custom example pages for different tools that I use.
+
+Still reading more on Markov Chains.
