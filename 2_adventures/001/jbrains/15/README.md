@@ -24,6 +24,9 @@ This was the overall plan, in the middle of which we find ourselves.
 
 # The Result
 
-In the process of running some more tests, I discovered that things started to go sour when I started trying to draw off-screen, meaning a square that isn't in the viewport. Perhaps GTK doesn't handle this very well on its own, and so I might need to protect against it.
+I decided to junk the start/stop button until I really wanted it. I managed to do the rest, and now I wonder whether one of these two things is happening:
 
-It might help to say where the ant is in case it goes off the screen. I have in mind some text at the bottom of the main window describing the current step of the walk. I can do that tomorrow.
+* I'm trying to draw too many square widgets, and I'm either running out of memory, or it's just slow.
+* I'm trying to draw the square widgets too small, and GTK can't figure out how to render them, and is getting stuck.
+
+Tomorrow.
