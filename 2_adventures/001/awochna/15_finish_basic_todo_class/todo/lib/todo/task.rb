@@ -17,11 +17,16 @@ module Todo
       if /^\d{4}-\d{2}-\d{2}\s/ =~ string
         @added = Date.parse(/^\d{4}-\d{2}-\d{2}/.match(string)[0])
         string.gsub!(/^\d{4}-\d{2}-\d{2}\s/, "")
+        if /^\d{4}-\d{2}-\d{2}\s/ =~ string
+          @completed = Date.parse(/^\d{4}-\d{2}-\d{2}/.match(string)[0])
+          string.gsub!(/^\d{4}-\d{2}-\d{2}\s/, "")
+        else
+          @completed = nil
+        end
       else
         @added = Date.today
       end
       @text = string
-      @completed = nil
     end
 
     def to_s
@@ -32,6 +37,11 @@ module Todo
       string += "#{@completed} " if @completed
       string += "#{@text}" if @text
       string
+    end
+
+    def complete
+      @done = true
+      @completed = Date.today
     end
   end
 end
