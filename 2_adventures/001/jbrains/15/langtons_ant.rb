@@ -131,21 +131,25 @@ class ConsoleReportingWalkListener < WalkListener
   end
 end
 
-class LangtonsAntWalk
+class LangtonsAntWalk 
+  include Observable
+
   def initialize(walk_listener)
     origin = Location.new(0, 0)
     grid = Grid.with_black_squares([])
     grid.add_observer(walk_listener, :color_flipped)
     @ant = LangtonsAnt.start(grid: grid, facing: Direction.north, location: origin)
-    @walk_listener = walk_listener
+    self.add_observer(walk_listener, :step_taken)
     @steps = 0
-    @walk_listener.step_taken(@steps, @ant)
+    changed
+    notify_observers(@steps, @ant)
   end
 
   def take_a_step
     @ant = @ant.go
     @steps = @steps + 1
-    @walk_listener.step_taken(@steps, @ant)
+    changed
+    notify_observers(@steps, @ant)
   end
 end
 
