@@ -45,4 +45,11 @@ class TaskTest < MiniTest::Test
     assert_equal('A', task.priority)
     assert_equal("x (A) #{Date.today} Clean desk.", task.to_s)
   end
+
+  def test_having_a_added_date
+    yesterday = Date.today - 1
+    task = Todo::Task.new("#{yesterday} Clean desk.")
+    assert_equal(yesterday, task.added)
+    assert_equal("#{yesterday} Clean desk.", task.to_s)
+  end
 end

@@ -14,8 +14,13 @@ module Todo
         @priority = /^\(\w\)/.match(string)[0][1]
         string.gsub!(/^\(\w\)\s/, "")
       end
+      if /^\d{4}-\d{2}-\d{2}\s/ =~ string
+        @added = Date.parse(/^\d{4}-\d{2}-\d{2}/.match(string)[0])
+        string.gsub!(/^\d{4}-\d{2}-\d{2}\s/, "")
+      else
+        @added = Date.today
+      end
       @text = string
-      @added = Date.today
       @completed = nil
     end
 
