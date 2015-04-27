@@ -4,9 +4,9 @@ module Todo
     attr_accessor :priority, :text, :done, :added, :completed
 
     def initialize(string)
-      @priority = /\(\w\)/.match(string)[0][1] if /\(\w\)/ =~ string
+      @priority = /^\(\w\)/.match(string)[0][1] if /^\(\w\)/ =~ string
       if @priority
-        string.gsub!(/\(\w\)\s/, "")
+        string.gsub!(/^\(\w\)\s/, "")
       end
       @text = string
       @done = false
