@@ -94,7 +94,7 @@ class TinyTest
       new(test_block)
     end
 
-    def run(result=Result.new)
+    def run(result)
       begin
         test_block.call(result)
       rescue Object => exception
