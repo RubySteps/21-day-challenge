@@ -1,7 +1,8 @@
 module Todo
   class Task
 
-    attr_accessor :priority, :text, :done, :added, :completed
+    attr_accessor :priority, :text, :done, :added, :completed,
+                  :contexts
 
     def initialize(string)
       if /^x\s/ =~ string
@@ -27,6 +28,10 @@ module Todo
         @added = Date.today
       end
       @text = string
+      @contexts = []
+      if /@\w+/ =~ string
+        @contexts << /@\w+/.match(string)[0]
+      end
     end
 
     def to_s

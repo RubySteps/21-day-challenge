@@ -17,11 +17,23 @@ module Todo
       @tasks.each do |task|
         list << task.to_s unless task.done
       end
-      list.join
+      list.sort.join
     end
 
     def length
       @tasks.length
+    end
+
+    def contexts
+      list = []
+      @tasks.each do |task|
+        list << task.contexts unless task.contexts == []
+      end
+      list.flatten.uniq.sort
+    end
+
+    def add(string)
+      @tasks << Task.new(string)
     end
   end
 end

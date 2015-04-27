@@ -72,4 +72,9 @@ class TaskTest < MiniTest::Test
     assert(task.completed)
     assert_equal("x #{Date.today} #{Date.today} Clean desk.", task.to_s)
   end
+
+  def test_having_context
+    task = Todo::Task.new("Clean desk @work.")
+    assert_equal(["@work"], task.contexts)
+  end
 end
