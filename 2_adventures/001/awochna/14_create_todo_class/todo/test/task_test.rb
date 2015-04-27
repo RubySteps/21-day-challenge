@@ -6,6 +6,8 @@ class TaskTest < MiniTest::Test
     task = Todo::Task.new('Clean desk.')
     assert_equal(Date.today, task.added)
     assert_equal("#{Date.today} Clean desk.", task.to_s)
+    refute(task.done)
+    assert_nil(task.completed)
   end
 
   def test_add_with_priority
@@ -30,5 +32,17 @@ class TaskTest < MiniTest::Test
     task = Todo::Task.new('Clean (A) desk.')
     assert_equal(nil, task.priority)
     assert_equal("#{Date.today} Clean (A) desk.", task.to_s)
+  end
+
+  def test_starting_with_x_marks_as_done
+    task = Todo::Task.new('x Clean desk.')
+    assert(task.done)
+  end
+
+  def test_being_done_still_has_priority
+    task = Todo::Task.new('x (A) Clean desk.')
+    assert(task.done)
+    assert_equal('A', task.priority)
+    assert_equal("x (A) #{Date.today} Clean desk.", task.to_s)
   end
 end

@@ -4,12 +4,17 @@ module Todo
     attr_accessor :priority, :text, :done, :added, :completed
 
     def initialize(string)
+      if /^x\s/ =~ string
+        @done = true
+        string.gsub!(/^x\s/, "")
+      else
+        @done = false
+      end
       @priority = /^\(\w\)/.match(string)[0][1] if /^\(\w\)/ =~ string
       if @priority
         string.gsub!(/^\(\w\)\s/, "")
       end
       @text = string
-      @done = false
       @added = Date.today
       @completed = nil
     end
