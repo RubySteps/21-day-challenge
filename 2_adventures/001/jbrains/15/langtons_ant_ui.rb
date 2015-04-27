@@ -81,6 +81,7 @@ end
 
 class MainWindow < Gtk::Window
   attr_reader :grid_panel
+  attr_reader :walk_description_label
 
   def initialize(options = Hash.new)
     super()
@@ -97,7 +98,8 @@ class MainWindow < Gtk::Window
     layout_container.add(@grid_panel)
 
     control_panel = Gtk::HBox.new(false, 10)
-    control_panel.add(Gtk::Label.new("Langton's Ant is at (5, 12) facing east after step 578"))
+    @walk_description_label = Gtk::Label.new("Langton's Ant hasn't yet taken a step.")
+    control_panel.add(@walk_description_label)
     control_panel.set_size_request(0, 50)
 
     layout_container.add(control_panel)
@@ -118,12 +120,14 @@ threads = []
 
 require "./langtons_ant"
 class WidgetsWalkListener < WalkListener
-  def initialize(square_widgets)
+  def initialize(square_widgets, walk_description)
     @square_widgets = square_widgets
     # Assumes a square grid.
     @rows = @columns = @square_widgets.length
     # The grid is of size 2n+1, where n is the "radius".
     @grid_radius = (@rows - 1) / 2
+
+    @walk_description = walk_description
   end
 
   def color_flipped(location, color)
@@ -136,10 +140,14 @@ class WidgetsWalkListener < WalkListener
       @square_widgets[widget_grid_x][widget_grid_y].color_yourself(color)
     end
   end
+
+  def step_taken(number, ant)
+    @walk_description.set_text("BOO!")
+  end
 end
 
 threads << Thread.new do
-  walk = LangtonsAntWalk.new(WidgetsWalkListener.new(main_window.grid_panel.squares))
+  walk = LangtonsAntWalk.new(WidgetsWalkListener.new(main_window.grid_panel.squares, main_window.walk_description_label))
   1000.times do
     sleep 0.0001
     walk.take_a_step
