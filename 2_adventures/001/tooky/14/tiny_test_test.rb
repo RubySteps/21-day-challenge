@@ -10,7 +10,7 @@ assert_spec = TinyTest.specify "assert" do
   must "assert_raises_for_false_condition" do
     begin
       assert(1 + 1 != 2)
-    rescue AssertionFailed
+    rescue TinyTest::Assertions::Failed
       raised = true
     else
       fail
@@ -20,7 +20,7 @@ assert_spec = TinyTest.specify "assert" do
   must "assert_default_message" do
     begin
       assert(1 + 1 != 2)
-    rescue AssertionFailed => fail
+    rescue TinyTest::Assertions::Failed => fail
       assert fail.message == "Expected assertion to be to true, was false."
     end
   end
@@ -28,7 +28,7 @@ assert_spec = TinyTest.specify "assert" do
   must "set_a_custom_assert_message" do
     begin
       assert(1 + 1 != 2, "In a parallel universe, 1+1 is not 2.")
-    rescue AssertionFailed => fail
+    rescue TinyTest::Assertions::Failed => fail
       assert fail.message == "In a parallel universe, 1+1 is not 2."
     end
   end
@@ -46,7 +46,7 @@ assert_equal_spec = TinyTest.specify "assert_equal" do
     actual   = 1 + 2
     begin
       assert_equal expected, actual
-    rescue AssertionFailed
+    rescue TinyTest::Assertions::Failed
     else
       fail "Should have raised"
     end
@@ -57,7 +57,7 @@ assert_equal_spec = TinyTest.specify "assert_equal" do
     actual   = 1 + 2
     begin
       assert_equal expected, actual
-    rescue AssertionFailed => failure
+    rescue TinyTest::Assertions::Failed => failure
       assert_equal "Expected '2' to `==` '3'", failure.message
     end
   end
@@ -68,7 +68,7 @@ assert_equal_spec = TinyTest.specify "assert_equal" do
 
     begin
       assert_equal expected, actual, "Hello world requires punctuation!"
-    rescue AssertionFailed => failure
+    rescue TinyTest::Assertions::Failed => failure
       assert_equal "Hello world requires punctuation!", failure.message
     end
   end

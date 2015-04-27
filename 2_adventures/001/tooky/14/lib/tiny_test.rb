@@ -1,16 +1,3 @@
-class AssertionFailed < StandardError; end
-
-def assert(condition, message="Expected assertion to be to true, was false.")
-  unless condition
-    raise AssertionFailed, message
-  end
-end
-
-def assert_equal(expected, actual, message=nil)
-  message ||= "Expected '#{expected.inspect}' to `==` '#{actual.inspect}'"
-  assert expected == actual, message
-end
-
 class TinyTest
   def self.run_all(tests, result)
     tests.each do |test|
@@ -23,6 +10,21 @@ class TinyTest
     Suite.new.tap do |s|
       s.instance_exec(&block)
       suite_stack.push(s)
+    end
+  end
+
+  module Assertions
+    class Failed < StandardError; end
+
+    def assert(condition, message="Expected assertion to be to true, was false.")
+      unless condition
+        raise Failed, message
+      end
+    end
+
+    def assert_equal(expected, actual, message=nil)
+      message ||= "Expected '#{expected.inspect}' to `==` '#{actual.inspect}'"
+      assert expected == actual, message
     end
   end
 
@@ -96,7 +98,8 @@ class TinyTest
 
     def run(result)
       begin
-        test_block.call(result)
+        fix = Object.new.extend(Assertions)
+        fix.instance_exec(&test_block)
       rescue Object => exception
         result.add_failure(self, exception)
       else
