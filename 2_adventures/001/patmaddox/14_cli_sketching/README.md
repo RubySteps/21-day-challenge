@@ -13,4 +13,9 @@ rs21 validate:warmup
 rs21 validate:adventure -a 001 # all of adventure 001
 rs21 validate:adventure -a 001 -u patmaddox
 rs21 validate:pr -i 123 # pull request / issue 123...
+rs21 status # check my own status
+rs21 status -u patmaddox # check patmaddox status
+rs21 status --all # status of everyone in the current adventure?
+rs21 report
+rs21 progress
 ```
