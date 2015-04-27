@@ -39,12 +39,11 @@ command :add do |c|
     # If you have any errors, just raise them
     # raise "that command made no sense"
 
+    task = Todo::Task.new(args[0])
+    task.priority = options[:p] if options[:p]
+
     File.open(global_options[:file], 'a') do |file|
-      if options[:p]
-        file.puts "(#{options[:p].upcase}) #{Date.today} #{args[0]}"
-      else
-        file.puts "#{Date.today} #{args[0]}"
-      end
+      file.puts task
     end
     
     puts "add command ran"
