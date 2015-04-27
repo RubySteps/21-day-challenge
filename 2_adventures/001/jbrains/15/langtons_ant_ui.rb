@@ -91,11 +91,13 @@ class MainWindow < Gtk::Window
       Gtk.main_quit
     end
 
-    self.set_default_size(600, 600)
-
     @grid_panel = GridPanel.new(options[:grid_radius] || 1)
+    @grid_panel.set_size_request(600, 600)
     layout_container = Gtk::VBox.new(false, 0)
     layout_container.add(@grid_panel)
+    control_panel = Gtk::DrawingArea.new()
+    control_panel.set_size_request(0, 50)
+    layout_container.add(control_panel)
     self.add(layout_container)
 
     self.show_all()
