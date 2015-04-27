@@ -1,7 +1,7 @@
 def chop (num, array)
-  puts "HOLA"
+  result = 0
    if array.index(num) != nil
-     result = array.index(num) 
+     result = 0
    else
      result = -1
    end
