@@ -1,10 +1,15 @@
-# Day 14
+# Day 15
 
-Yesterday I had some problems going from a 3-by-3 grid to something bigger. I saw some strange behavior from GTK+, and I don't know how much of it comes from my mistakes and how much of it comes from the quality of the library or its Mac OS implementation. I never feel good about blaming other people's stuff until I feel quite confident that I've done everything correctly that I should have.
+Wow am I going to phone this one in.
 
-Also yesterday I got a little overexcited by thinking that I could see the finish line, and as a result, I started taking overly-big steps. I need to pay attention today to avoiding doing that. Today, I take microsteps instead.
+I want to add some text feedback to the GTK UI so that I can track where the ant goes if it goes off the screen. This might help me figure out why my app seems to crash some of the time.
 
-I have no idea where I'll end up today, so rather than declare a plan, I intend simply to do things until I get tired, then stop. Some days simply go like that.
+The plan:
+
+1. Wrap the current main window in a container. Probably a vertical layout box.
+1. Add some hardcoded text at the bottom of the screen.
+1. Add a start/stop button.
+1. Hook the text up to events in the ant's walk.
 
 ## Reviewing The Plan
 
