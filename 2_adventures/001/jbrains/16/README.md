@@ -1,15 +1,11 @@
-# Day 15
+# Day 16
 
-Wow am I going to phone this one in.
+Yesterday, I ran into a problem. I wonder whether one of these two things is happening:
 
-I want to add some text feedback to the GTK UI so that I can track where the ant goes if it goes off the screen. This might help me figure out why my app seems to crash some of the time.
+* I'm trying to draw too many square widgets, and I'm either running out of memory, or it's just slow.
+* I'm trying to draw the square widgets too small, and GTK can't figure out how to render them, and is getting stuck.
 
-The plan:
-
-1. Wrap the current main window in a container. Probably a vertical layout box.
-1. Add some hardcoded text at the bottom of the screen.
-1. Add a start/stop button.
-1. Hook the text up to events in the ant's walk.
+Today I intend to figure that out&mdash;or at least try to, in the 30 minutes I have.
 
 ## Reviewing The Plan
 
@@ -22,11 +18,3 @@ This was the overall plan, in the middle of which we find ourselves.
 1. Movable viewport keeping the ant approximately in the middle of the screen, in order to reduce viewport movement.
 1. Profit?
 
-# The Result
-
-I decided to junk the start/stop button until I really wanted it. I managed to do the rest, and now I wonder whether one of these two things is happening:
-
-* I'm trying to draw too many square widgets, and I'm either running out of memory, or it's just slow.
-* I'm trying to draw the square widgets too small, and GTK can't figure out how to render them, and is getting stuck.
-
-Tomorrow.
