@@ -1,0 +1,8 @@
+$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), "lib"))) unless $LOAD_PATH.include?(File.expand_path(File.join(File.dirname(__FILE__), "lib")))
+
+task :default => :test
+
+desc "run all tests"
+task :test do
+  Dir.glob('./test/**/*_test.rb').each { |file| require file}
+end

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Global Opioid Consumption</title>
+    <script type="text/javascript" src="//d3js.org/d3.v3.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="style.css" media="screen" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Global Opioid Consumption</h1>
+    <h2>Morphine Equivalence (ME), (mg/capita)</h2>
+    <aside>
+      <p><em>Opioids</em> are pain-relieving medications.</p>
+      <p>The <a href="http://www.incb.org">International Narcotics Control Board (INCB)</a> tracks
+      legal consumption of these medications.</p>
+      <hr>
+      <p>Consumption data provided by the <a href="http://www.painpolicy.wisc.edu/opioid-consumption-data">Pain
+        & Policy Studies Group of the University of Wisconsin</a>, gathered from INCB technical reports.</p>
+      <p>Population data provided by the <a href="http://www.who.int/en/">World Health Organization</a>.</p>
+    </aside>
+    <script type="text/javascript">
+      var w = 700;
+      var h = 600;
+      var padding = {
+        top: 20,
+        right: 10,
+        bottom: 50,
+        left: 100 };
+
+      var c10 = d3.scale.category10()
+
+      //Set up date formatting and years
+      var dateFormat = d3.time.format("%Y");
+
+
+
+      //Set up scales
+      var xScale = d3.time.scale()
+                .range([ padding.left, w - padding.right - padding.left ]);
+
+      var yScale = d3.scale.linear()
+                .range([ padding.top, h - padding.bottom ]);
+
+      //Configure axis generators
+      var xAxis = d3.svg.axis()
+                        .scale(xScale)
+                        .orient("bottom")
+                        .ticks(15)
+                        .tickFormat(function(d) {
+                          return dateFormat(d);
+                        });
+
+      var yAxis = d3.svg.axis()
+                        .scale(yScale)
+                        .orient("left");
+
+
+      //Configure line generator
+      var line = d3.svg.line()
+        .x(function(d) {
+          return xScale(dateFormat.parse(d.year));
+        })
+        .y(function(d) {
+          return yScale(parseFloat(d.amount));
+        });
+
+
+      //Create the empty SVG image
+      var svg = d3.select("body")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+
+      d3.csv("opioids.csv", function(data) {
+        var headerNames = d3.keys(data[0])
+        var medNames = headerNames.slice(1, headerNames.length);
+
+        var dataset = [];
+        var years = [];
+
+        for (var i = 0; i < medNames.length; i++) {
+          dataset[i] = {
+            med: medNames[i],
+            consumption: []
+          }
+        }
+
+        for (var j = 0; j < data.length; j++) {
+          years.push(data[j].Year);
+          for (var k = 0; k < medNames.length; k++) {
+            dataset[k].consumption.push({
+              year: data[j].Year,
+              amount: parseFloat(data[j][medNames[k]]).toFixed(2)
+            });
+          }
+        }
+console.log(dataset);
+        //Set scale domains
+        xScale.domain([
+          d3.min(years, function(d) {
+            return dateFormat.parse(d);
+          }),
+          d3.max(years, function(d) {
+            return dateFormat.parse(d);
+          })
+        ]);
+
+        yScale.domain([
+          d3.max(dataset, function(d) {
+            return d3.max(d.consumption, function(d) {
+              return parseFloat(d.amount);
+            });
+          }),
+          0
+        ]);
+
+
+        //Make a group for each medication
+        var groups = svg.selectAll("g")
+          .data(dataset)
+          .enter()
+          .append("g")
+
+
+
+        var labels = svg.selectAll("text")
+                        .data(dataset)
+                        .enter()
+                        .append("text")
+                        .text(function(d) {
+                          return d.med;
+                        })
+                        .attr("class", "label")
+                        .attr("x", function(d) {
+                          return w - padding.right - padding.left;
+                        })
+                        .attr("y", function(d) {
+                          return yScale(d.consumption[32].amount);
+                        })
+                        .attr("fill", function(d,i) {
+                          return c10(i);
+                        });
+
+
+        // Append a title with the medication name
+        groups.append("title")
+          .text(function(d) {
+            return d.med;
+          });
+
+
+        groups.selectAll("path")
+          .data(function(d) {
+            return [ d.consumption ];
+          })
+          .enter()
+          .append("path")
+          .attr("class", "line")
+          .attr("d", line)
+          .attr("fill", "none")
+          .attr("stroke-width", 2)
+          .attr("stroke", function(d,i) {
+            return c10(i);
+          });
+
+
+        //Axes
+        svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + (h - padding.bottom) + ")")
+          .call(xAxis);
+
+        svg.append("g")
+          .attr("class", "y axis")
+          .attr("transform", "translate(" + (padding.left) + ",0)")
+          .call(yAxis);
+
+      });
+
+    </script>
+  </body>

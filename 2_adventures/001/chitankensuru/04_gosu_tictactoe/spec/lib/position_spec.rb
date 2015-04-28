@@ -58,4 +58,9 @@ describe Position do
     it { expect(Position.new(%w(o o - - - - - - -), "o").minimax).to eq(-99)}
     it { expect { timeout(2) { Position.new.minimax }}.not_to raise_error }
   end
+
+  context "#best_move" do
+    it { expect(Position.new(%w(x x - - - - - - -), "x").best_move).to eq(2)}
+    it { expect(Position.new(%w(o o - - - - - - -), "o").best_move).to eq(2)}
+  end
 end
