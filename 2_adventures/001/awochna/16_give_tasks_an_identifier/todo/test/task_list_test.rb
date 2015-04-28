@@ -26,7 +26,7 @@ class TaskListTest < MiniTest::Test
   end
 
   def test_automatic_sorting
-    assert_match(/^\(A\) #{Date.today} New, super high priority task/, @task_list.to_s)
+    assert_match(/^\d+\s\(A\) #{Date.today} New, super high priority task/, @task_list.to_s)
   end
 
   def test_listing_contexts
@@ -58,6 +58,10 @@ class TaskListTest < MiniTest::Test
     refute(@task_list.tasks[3].done)
     @task_list.complete(4)
     copy = Todo::TaskList.new('./tmp/todo.txt')
-    assert(copy.tasks[3].done)
+    assert(copy.tasks[3].done, "#{copy.tasks[3]}")
+  end
+
+  def test_tasks_have_identifiers
+    assert(@task_list.tasks[0].id)
   end
 end

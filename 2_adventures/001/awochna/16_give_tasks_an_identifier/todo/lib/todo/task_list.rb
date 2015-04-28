@@ -8,8 +8,10 @@ module Todo
       @file = filename
       array_of_lines = IO.readlines(filename)
       @tasks = []
+      counter = 1
       array_of_lines.each do |line|
-        @tasks << Task.new(line)
+        @tasks << Task.new(line, counter)
+        counter += 1
       end
     end
 
@@ -62,8 +64,9 @@ module Todo
     private
 
     def save
+      tasks_without_ids = @tasks.map { |task| task.id = nil; task }
       File.open(@file, 'w') do |file|
-        file.puts @tasks
+        file.puts tasks_without_ids
       end
     end
   end

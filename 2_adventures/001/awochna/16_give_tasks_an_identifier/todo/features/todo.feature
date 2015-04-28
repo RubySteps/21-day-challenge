@@ -26,7 +26,7 @@ Feature: User can add new tasks
     Given the file "/tmp/todo.txt" doesn't exist
     When I successfully run `todo -f /tmp/todo.txt add -p A 'Some new task'`
     Then I successfully run `todo -f /tmp/todo.txt ls`
-    And the output should match /^\(A\)/
+    And the output should match /^\d+\s\(A\)/
 
   Scenario: Marking a task as done
     Given the file "/tmp/todo.txt" doesn't exist
