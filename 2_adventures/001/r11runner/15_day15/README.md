@@ -1,9 +1,3 @@
 # Adventure 15_day15
 
-What this script does:
- - it clones the 21-day-challenge-repo from the user's fork
- - creates a branch for the current day
- - creates a directory for the current exercise within the user's personal directory,
- - writes the README-file you're reading
- - commits the directory and the README to the local repo
- - pushes the changes to GitHub
+small refactorings in the script lookup-dict, which was created on day 4 but has since wandered to [this repo](https://github.com/r11runner/lookup-dict)
