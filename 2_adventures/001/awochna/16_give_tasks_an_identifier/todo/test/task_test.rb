@@ -55,11 +55,11 @@ class TaskTest < MiniTest::Test
 
   def test_adding_with_completed_date
     yesterday = Date.today - 1
-    task = Todo::Task.new("x #{yesterday} #{Date.today} Clean desk.")
+    task = Todo::Task.new("x #{Date.today} #{yesterday} Clean desk.")
     assert(task.done)
     assert_equal(yesterday, task.added)
     assert_equal(Date.today, task.completed)
-    assert_equal("x #{yesterday} #{Date.today} Clean desk.", task.to_s)
+    assert_equal("x #{Date.today} #{yesterday} Clean desk.", task.to_s)
   end
 
   def test_marking_done_adds_completed_date
@@ -81,5 +81,25 @@ class TaskTest < MiniTest::Test
   def test_having_a_project
     task = Todo::Task.new("Clean desk +GTD.")
     assert_equal(["+GTD"], task.projects)
+  end
+
+  def test_tasks_have_id
+    task = Todo::Task.new("Clean desk", 3)
+    assert(task.id)
+  end
+
+  def test_tasks_are_sortable_by_priority
+    task_1 = Todo::Task.new("(A) Clean desk")
+    task_2 = Todo::Task.new("(C) Organize pens")
+    assert(task_1 > task_2)
+    refute(task_1 == task_2)
+    refute(task_1 < task_2)
+  end
+  
+  def test_completed_tasks_sort_to_bottom
+    task_1 = Todo::Task.new("x (A) Clean desk")
+    task_2 = Todo::Task.new("(C) Organize pens")
+    assert(task_1 < task_2)
+    refute(task_1 == task_2)
   end
 end

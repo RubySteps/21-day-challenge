@@ -1,10 +1,12 @@
 module Todo
   class Task
 
-    attr_accessor :priority, :text, :done, :added, :completed,
-                  :contexts, :projects
+    include Comparable
 
-    def initialize(string)
+    attr_accessor :priority, :text, :done, :added, :completed,
+                  :contexts, :projects, :id
+
+    def initialize(string, id = nil)
       # if task begins with an 'x' it is considered done
       if /^x\s/ =~ string
         @done = true
@@ -18,17 +20,16 @@ module Todo
         @priority = /^\(\w\)/.match(string)[0][1]
         string.gsub!(/^\(\w\)\s/, "")
       end
-      # the first date in a task is its added date
-      if /^\d{4}-\d{2}-\d{2}\s/ =~ string
+      # if there are two dates, the first is the completed
+      # and the second one is the added date.
+      if /^\d{4}-\d{2}-\d{2}\s\d{4}-\d{2}-\d{2}\s/ =~ string
+        @completed = Date.parse(/^\d{4}-\d{2}-\d{2}/.match(string)[0])
+        string.sub!(/^\d{4}-\d{2}-\d{2}\s/, "")
         @added = Date.parse(/^\d{4}-\d{2}-\d{2}/.match(string)[0])
-        string.gsub!(/^\d{4}-\d{2}-\d{2}\s/, "")
-        # the second date (if it has one) is the completed date
-        if /^\d{4}-\d{2}-\d{2}\s/ =~ string
-          @completed = Date.parse(/^\d{4}-\d{2}-\d{2}/.match(string)[0])
-          string.gsub!(/^\d{4}-\d{2}-\d{2}\s/, "")
-        else
-          @completed = nil
-        end
+        string.sub!(/^\d{4}-\d{2}-\d{2}\s/, "")
+      elsif /^\d{4}-\d{2}-\d{2}\s/ =~ string
+        @added = Date.parse(/^\d{4}-\d{2}-\d{2}/.match(string)[0])
+        string.sub!(/^\d{4}-\d{2}-\d{2}\s/, "")
       else
         @added = Date.today
       end
@@ -36,11 +37,11 @@ module Todo
       # What remains now is the task text.
       # I am a fan of using the context or project in the
       # task language, so those are not stripped out first.
-      # 
+      #
       # Example:
       #
       # Clean desk @work
-      
+
       @text = string
       @contexts = []
       @projects = []
@@ -50,14 +51,16 @@ module Todo
       if /\+\w+/ =~ string
         @projects << /\+\w+/.match(string)[0]
       end
+      @id = id
     end
 
     def to_s
       string = ""
+      string += "#{@id} " if @id
       string += "x " if @done
       string += "(#{@priority.upcase}) " if @priority
-      string += "#{@added} " if @added
       string += "#{@completed} " if @completed
+      string += "#{@added} " if @added
       string += "#{@text}" if @text
       string
     end
@@ -65,6 +68,23 @@ module Todo
     def complete
       self.done = true
       self.completed = Date.today
+    end
+
+    def <=> other_task
+      if self.done && !other_task.done
+        return -1
+      elsif !self.done && other_task.done
+        return 1
+      end
+      if self.priority.nil? && other_task.priority.nil?
+        0
+      elsif other_task.priority.nil?
+        1
+      elsif self.priority.nil?
+        -1
+      else
+        other_task.priority <=> self.priority
+      end
     end
   end
 end
