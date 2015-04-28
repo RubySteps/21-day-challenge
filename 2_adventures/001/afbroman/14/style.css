@@ -1,0 +1,57 @@
+body {
+  background-color: white;
+  font-family: Roboto, sans-serif;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+p {
+  font-size: 14px;
+  margin: 10px 0 0 0;
+}
+
+aside {
+  position: absolute;
+  width: 200px;
+  top: 100px;
+  left: 710px;
+}
+
+svg {
+  background-color: white;
+}
+
+circle:hover {
+  fill: #0057bf;
+}
+
+path {
+  /*stroke: gray;*/
+  /*stroke-width: 1;*/
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font-family:  Roboto, sans-serif;
+  font-size: 11px;
+}
+
+text.label {
+  font-family: Roboto, sans-serif;
+  font-size: 11px;
+}
