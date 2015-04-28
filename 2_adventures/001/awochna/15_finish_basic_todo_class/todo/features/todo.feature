@@ -27,3 +27,10 @@ Feature: User can add new tasks
     When I successfully run `todo -f /tmp/todo.txt add -p A 'Some new task'`
     Then I successfully run `todo -f /tmp/todo.txt ls`
     And the output should match /^\(A\)/
+
+  Scenario: Marking a task as done
+    Given the file "/tmp/todo.txt" doesn't exist
+    When I successfully run `todo -f /tmp/todo.txt add 'My first task'`
+    And I successfully run `todo -f /tmp/todo.txt done 1`
+    Then I successfully run `todo -f /tmp/todo.txt ls`
+    And the output should not match /\d{4}-\d{2}-\d{2}/

@@ -1,10 +1,11 @@
 module Todo
   class TaskList
 
-    attr_reader :file, :tasks
+    attr_reader :file
+    attr_accessor :tasks
 
     def initialize(filename)
-      @file = filename.path
+      @file = filename
       array_of_lines = IO.readlines(filename)
       @tasks = []
       array_of_lines.each do |line|
@@ -24,6 +25,14 @@ module Todo
       @tasks.length
     end
 
+    def completed_length
+      @tasks.select { |task| task.done }.length
+    end
+
+    def incomplete_length
+      @tasks.select { |task| !task.done }.length
+    end
+
     def contexts
       list = []
       @tasks.each do |task|
@@ -32,8 +41,30 @@ module Todo
       list.flatten.uniq.sort
     end
 
-    def add(string)
-      @tasks << Task.new(string)
+    def projects
+      list = []
+      @tasks.each do |task|
+        list << task.projects unless task.projects == []
+      end
+      list.flatten.uniq.sort
+    end
+
+    def add(task)
+      @tasks << task
+      save
+    end
+
+    def complete(task_number)
+      @tasks[task_number.to_i - 1].complete
+      save
+    end
+
+    private
+
+    def save
+      File.open(@file, 'w') do |file|
+        file.puts @tasks
+      end
     end
   end
 end

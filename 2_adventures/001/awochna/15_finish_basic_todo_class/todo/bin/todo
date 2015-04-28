@@ -22,7 +22,7 @@ desc 'Describe some switch here'
 switch [:s,:switch]
 
 desc 'Give the todo.txt file to work with'
-default_value '~/Documents/todo.txt'
+default_value '~/.todo.txt'
 arg_name 'filename'
 flag [:f,:file]
 
@@ -39,34 +39,34 @@ command :add do |c|
     # If you have any errors, just raise them
     # raise "that command made no sense"
 
+    task_list = Todo::TaskList.new(global_options[:file])
     task = Todo::Task.new(args[0])
     task.priority = options[:p] if options[:p]
+    task_list.add(task)
 
-    File.open(global_options[:file], 'a') do |file|
-      file.puts task
-    end
-    
-    puts "add command ran"
+    puts "Task added"
   end
 end
 
-desc 'Describe ls here'
-arg_name 'Describe arguments to ls here'
+desc 'List your tasks'
+arg_name 'Optional filter'
 command :ls do |c|
   c.action do |global_options,options,args|
-    File.open(global_options[:file]) do |file|
-      file.each_line do |line|
-        puts line
-      end
-    end
+    task_list = Todo::TaskList.new(global_options[:file])
+    puts task_list
+    puts "Complete: #{task_list.completed_length} tasks"
+    puts "Incomplete: #{task_list.incomplete_length} tasks"
   end
 end
 
-desc 'Describe done here'
-arg_name 'Describe arguments to done here'
+desc 'Mark a task as complete'
+arg_name 'task number'
 command :done do |c|
   c.action do |global_options,options,args|
-    puts "done command ran"
+    task_list = Todo::TaskList.new(global_options[:file])
+    task_list.complete(args[0])
+
+    puts "Task completed"
   end
 end
 
@@ -76,7 +76,11 @@ pre do |global,command,options,args|
   # chosen command
   # Use skips_pre before a command to skip this block
   # on that command only
-  true
+  if !File.exist?(global[:file])
+    FileUtils.touch(global[:file])
+  else
+    true
+  end
 end
 
 post do |global,command,options,args|

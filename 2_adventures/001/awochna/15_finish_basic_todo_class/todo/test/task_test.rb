@@ -77,4 +77,9 @@ class TaskTest < MiniTest::Test
     task = Todo::Task.new("Clean desk @work.")
     assert_equal(["@work"], task.contexts)
   end
+
+  def test_having_a_project
+    task = Todo::Task.new("Clean desk +GTD.")
+    assert_equal(["+GTD"], task.projects)
+  end
 end
