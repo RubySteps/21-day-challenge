@@ -40,4 +40,8 @@ class Position
       move(idx).minimax(depth+1)
     end.send(xturn(:max, :min)) + xturn(- depth,depth)
   end
+
+  def best_move
+    possible_moves.send(xturn(:max_by, :min_by)) { |idx|  move(idx).minimax }
+  end
 end
