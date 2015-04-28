@@ -1,0 +1,16 @@
+GIT
+  remote: git://github.com/skahlert/as-duration.git
+  revision: aed995f4d0a67ce85e723854a92beda77790f2a2
+  branch: no-method-error-patch-1
+  specs:
+    as-duration (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  as-duration!
