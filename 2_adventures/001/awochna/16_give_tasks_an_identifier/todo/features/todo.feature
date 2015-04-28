@@ -26,11 +26,17 @@ Feature: User can add new tasks
     Given the file "/tmp/todo.txt" doesn't exist
     When I successfully run `todo -f /tmp/todo.txt add -p A 'Some new task'`
     Then I successfully run `todo -f /tmp/todo.txt ls`
-    And the output should match /^\d+\s\(A\)/
+    And the output should match /^\(A\)/
+
+  Scenario: Task has an identifier
+    Given the file "/tmp/todo.txt" doesn't exist
+    When I successfully run `todo -f /tmp/todo.txt add 'Some new task'`
+    Then I successfully run `todo -f /tmp/todo.txt ls`
+    And the output should match /\{id:/
 
   Scenario: Marking a task as done
     Given the file "/tmp/todo.txt" doesn't exist
-    When I successfully run `todo -f /tmp/todo.txt add 'My first task'`
-    And I successfully run `todo -f /tmp/todo.txt done 1`
+    When I successfully run `todo -f /tmp/todo.txt add 'My first task {id:task}'`
+    And I successfully run `todo -f /tmp/todo.txt done task`
     Then I successfully run `todo -f /tmp/todo.txt ls`
     And the output should not match /\d{4}-\d{2}-\d{2}/

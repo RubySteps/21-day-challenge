@@ -1,3 +1,5 @@
+require 'securerandom'
+
 module Todo
   class Task
 
@@ -6,7 +8,7 @@ module Todo
     attr_accessor :priority, :text, :done, :added, :completed,
                   :contexts, :projects, :id
 
-    def initialize(string, id = nil)
+    def initialize(string)
       # if task begins with an 'x' it is considered done
       if /^x\s/ =~ string
         @done = true
@@ -34,6 +36,16 @@ module Todo
         @added = Date.today
       end
 
+      # if there is an {id:####}, then set the id to that
+      # otherwise generate a new one
+
+      if /\{id:.*\}/ =~ string
+        @id = /\{id:(.*)\}/.match(string)[1]
+        string.sub!(/\s\{id:.*\}/, "")
+      else
+        @id = SecureRandom::uuid()
+      end
+
       # What remains now is the task text.
       # I am a fan of using the context or project in the
       # task language, so those are not stripped out first.
@@ -42,7 +54,7 @@ module Todo
       #
       # Clean desk @work
 
-      @text = string
+      @text = string.chomp
       @contexts = []
       @projects = []
       if /@\w+/ =~ string
@@ -51,17 +63,16 @@ module Todo
       if /\+\w+/ =~ string
         @projects << /\+\w+/.match(string)[0]
       end
-      @id = id
     end
 
     def to_s
       string = ""
-      string += "#{@id} " if @id
       string += "x " if @done
       string += "(#{@priority.upcase}) " if @priority
       string += "#{@completed} " if @completed
       string += "#{@added} " if @added
       string += "#{@text}" if @text
+      string += " {id:#{@id}}"
       string
     end
 

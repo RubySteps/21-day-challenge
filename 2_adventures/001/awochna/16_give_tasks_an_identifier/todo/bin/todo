@@ -53,7 +53,7 @@ arg_name 'Optional filter'
 command :ls do |c|
   c.action do |global_options,options,args|
     task_list = Todo::TaskList.new(global_options[:file])
-    puts task_list
+    puts task_list.to_s
     puts "Complete: #{task_list.completed_length} tasks"
     puts "Incomplete: #{task_list.incomplete_length} tasks"
   end

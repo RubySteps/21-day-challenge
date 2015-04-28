@@ -6,7 +6,7 @@ class TaskListTest < MiniTest::Test
     File.open('./tmp/todo.txt', 'w') do |file|
       file.puts "x #{Date.today - 1} #{Date.today} Completed task that took 1 day."
       file.puts "#{Date.today} Some other task with a +project"
-      file.puts "(A) #{Date.today} New, super high priority task"
+      file.puts "(A) #{Date.today} New, super high priority task to clean my desk {id:desk}"
       file.puts "(C) #{Date.today} Prioritized, @context based task"
     end
     @task_list = Todo::TaskList.new('./tmp/todo.txt')
@@ -26,7 +26,7 @@ class TaskListTest < MiniTest::Test
   end
 
   def test_automatic_sorting
-    assert_match(/^\d+\s\(A\) #{Date.today} New, super high priority task/, @task_list.to_s)
+    assert_match(/^\(A\) #{Date.today} New, super high priority task/, @task_list.to_s)
   end
 
   def test_listing_contexts
@@ -49,19 +49,19 @@ class TaskListTest < MiniTest::Test
 
   def test_complete_a_task
     start = @task_list.incomplete_length
-    @task_list.complete(4)
+    @task_list.complete('desk')
     assert_equal(start - 1, @task_list.incomplete_length)
-    refute_match(/\(C\)/, @task_list.to_s)
-  end
-
-  def test_save_task_list
-    refute(@task_list.tasks[3].done)
-    @task_list.complete(4)
-    copy = Todo::TaskList.new('./tmp/todo.txt')
-    assert(copy.tasks[3].done, "#{copy.tasks[3]}")
+    refute_match(/\{id:desk\}/, @task_list.to_s)
   end
 
   def test_tasks_have_identifiers
-    assert(@task_list.tasks[0].id)
+    assert(@task_list[0].id)
+  end
+
+  def test_save_task_list
+    refute(@task_list.id('desk').done, @task_list.dump)
+    @task_list.complete('desk')
+    copy = Todo::TaskList.new('./tmp/todo.txt')
+    assert(copy.id('desk').done, "#{copy.id('desk')}")
   end
 end
