@@ -1,12 +1,3 @@
-require 'tiny_test/autorun'
-
-
-
-
-
-
-
-
 TinyTest.specify "creating a suite of tests" do
   must "run_a_suite_of_tests" do
     suite = TinyTest.specify "addition" do
