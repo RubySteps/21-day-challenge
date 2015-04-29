@@ -1,16 +1,16 @@
 require 'twitter'
-
+require_relative 'settings'
 
 #### Get your twitter keys & secrets:
 #### https://dev.twitter.com/docs/auth/tokens-devtwittercom
 twitter = Twitter::REST::Client.new do |config|
-  config.consumer_key = 'YOUR_CONSUMER_KEY'
-  config.consumer_secret = 'YOUR_CONSUMER_SECRET'
-  config.access_token = 'YOUR_OAUTH_TOKEN'
-  config.access_token_secret = 'YOUR_OAUTH_SECRET'
+  config.consumer_key = SETTINGS::CONSUMER_KEY
+  consumer_secret = SETTINGS::CONSUMER_SECRET
+  config.access_token = SETTINGS::ACCESS_TOKEN
+  config.access_token_secret = SETTINGS::ACCESS_TOKEN_SECRET
 end
 
-search_term = URI::encode('#todayilearned')
+search_term = URI::encode('NepalEarthquake')
 
 SCHEDULER.every '10m', :first_in => 0 do |job|
   begin
