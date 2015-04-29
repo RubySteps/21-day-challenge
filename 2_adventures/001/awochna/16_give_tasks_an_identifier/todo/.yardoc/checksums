@@ -1,0 +1,4 @@
+lib/todo.rb 78dbdff3b28ff8c5ea0cc12c3c5663e17ac784f4
+lib/todo/task.rb 8563183ae254ae815a3b70a99af3ed0e9775b373
+lib/todo/version.rb f4620ef54475a9bec72baf3ebfd93225c48cc9e6
+lib/todo/task_list.rb 31df5ed8c8eb5621b729c0b1f6f2737b422b5765

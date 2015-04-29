@@ -54,8 +54,8 @@ command :ls do |c|
   c.action do |global_options,options,args|
     task_list = Todo::TaskList.new(global_options[:file])
     puts task_list.to_s
-    puts "Complete: #{task_list.completed_length} tasks"
-    puts "Incomplete: #{task_list.incomplete_length} tasks"
+    puts "Complete: #{task_list.completed_tasks.length} tasks"
+    puts "Incomplete: #{task_list.incomplete_tasks.length} tasks"
   end
 end
 

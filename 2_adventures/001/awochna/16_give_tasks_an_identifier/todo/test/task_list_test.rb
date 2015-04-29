@@ -21,12 +21,12 @@ class TaskListTest < MiniTest::Test
   end
 
   def test_printing_list
-    assert_match(/Some other task/, @task_list.to_s)
-    refute_match(/Completed task/, @task_list.to_s)
+    assert_match(/Some other task/, @task_list.incomplete)
+    refute_match(/Completed task/, @task_list.incomplete)
   end
 
   def test_automatic_sorting
-    assert_match(/^\(A\) #{Date.today} New, super high priority task/, @task_list.to_s)
+    assert_match(/^\(A\) #{Date.today} New, super high priority task/, @task_list.incomplete)
   end
 
   def test_listing_contexts
@@ -35,7 +35,7 @@ class TaskListTest < MiniTest::Test
 
   def test_adding_tasks_to_list
     @task_list.add(Todo::Task.new("Another task to do"))
-    assert_match(/#{Date.today} Another task to do/, @task_list.to_s)
+    assert_match(/#{Date.today} Another task to do/, @task_list.incomplete)
   end
 
   def test_two_contexts
@@ -48,10 +48,10 @@ class TaskListTest < MiniTest::Test
   end
 
   def test_complete_a_task
-    start = @task_list.incomplete_length
+    start = @task_list.incomplete.length
     @task_list.complete('desk')
-    assert_equal(start - 1, @task_list.incomplete_length)
-    refute_match(/\{id:desk\}/, @task_list.to_s)
+    assert_equal(start - 1, @task_list.incomplete.length)
+    refute_match(/\{id:desk\}/, @task_list.incomplete)
   end
 
   def test_tasks_have_identifiers
@@ -59,8 +59,8 @@ class TaskListTest < MiniTest::Test
   end
 
   def test_save_task_list
-    refute(@task_list.id('desk').done, @task_list.dump)
-    @task_list.complete('desk')
+    refute(@task_list.id('desk').done)
+    assert(@task_list.complete('desk'), @task_list.id('desk').inspect)
     copy = Todo::TaskList.new('./tmp/todo.txt')
     assert(copy.id('desk').done, "#{copy.id('desk')}")
   end
