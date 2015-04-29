@@ -138,7 +138,7 @@ class LangtonsAntWalk
     origin = Location.new(0, 0)
     grid = Grid.with_black_squares([])
     grid.add_observer(walk_listener, :color_flipped)
-    @ant = LangtonsAnt.start(grid: grid, facing: Direction.north, location: origin)
+    @ant = LangtonsAnt.start(grid: grid, facing: Direction.new(1, 0), location: origin)
     self.add_observer(walk_listener, :step_taken)
     @steps = 0
     changed
