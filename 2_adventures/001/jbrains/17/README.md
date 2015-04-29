@@ -22,3 +22,5 @@ This was the overall plan, in the middle of which we find ourselves.
 1. Profit?
 
 ## The Result
+
+I have the code running in a new environment. I refactored a little. I think I might have to switch gears for the last few days of the challenge. We'll see.
