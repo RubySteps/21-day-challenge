@@ -1,9 +1,5 @@
 def chop (num, array)
-  result = 0
-   if array.index(num) != nil
-     result = 0
-   else
-     result = -1
-   end
-   result
+  result = array.index(num) 
+  result = -1 if array.index(num) == nil
+  result
 end

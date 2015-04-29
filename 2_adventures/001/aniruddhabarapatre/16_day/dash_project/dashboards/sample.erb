@@ -1,0 +1,14 @@
+<% content_for :title do %>My super sweet dashboard<% end %>
+<div class="gridster">
+  <ul>
+    <li data-row="1" data-col="1" data-sizex="3" data-sizey="1">
+      <div data-id="welcome" data-view="Text" data-title="Hello" data-text="Social Dashboard." data-moreinfo="Protip: You can drag the widgets around!"></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="twitter_mentions" data-view="Comments" style="background-color:#ff9618;" data-moreinfo="Tweets tagged with #NepalEarthquake"></div>
+      <i class="icon-twitter icon-background"></i>
+    </li>
+  </ul>
+  <center><div style="font-size: 12px">Try this: curl -d '{ "auth_token": "YOUR_AUTH_TOKEN", "text": "Hey, Look what I can do!" }' \http://<%=request.host%>:<%=request.port%>/widgets/welcome</div></center>
+</div>
