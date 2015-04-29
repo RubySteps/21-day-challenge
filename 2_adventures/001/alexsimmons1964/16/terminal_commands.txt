@@ -81,8 +81,8 @@ each time.
 
 git pull origin master
 
-today I used this for the first time. As I was offline with internet down for the past week and a half, i was confined to occasional visits to Github via occasional remote or phone connection and so updated readme.md files via the Github interface.
+today I used this for the first time. As I was offline with internet down for the past week and a half, I was confined to occasional visits to Github via remote or phone connection and so updated readme.md files via the Github interface.
 
 I had no idea if this would correctly download/merge my Github 21-day-challenge with my local PC version.
 
-Going through my local version shows that the directories on my PC have all updated correctly, so that's a small win and no merge conflicts. That's probably because once the net went down, I decide to not do anything with my remote while I was using Github interface to create the readme files for the challenge.
+Going through my local version after this git pull command shows that the directories on my PC have all updated correctly, so that's a small win and no merge conflicts. That's probably because once the internet went down, I decided to not do anything with my local PC version while I was using Github interface to create the readme files for the challenge.
