@@ -1,11 +1,14 @@
-# Day 16
+# Day 17
 
-Yesterday, I ran into a problem. I wonder whether one of these two things is happening:
+And now for something completely different: I'm traveling soon and don't plan to take my laptop with me. This means that I have to figure out how to write Ruby code without my laptop.
 
-* I'm trying to draw too many square widgets, and I'm either running out of memory, or it's just slow.
-* I'm trying to draw the square widgets too small, and GTK can't figure out how to render them, and is getting stuck.
+Fortunately, I have a new Bluetooth keyboard. I use this to control my phone. I use the phone and an SSH client to connect to my Rackspace account, where I can run Ruby code.
 
-Today I intend to figure that out&mdash;or at least try to, in the 30 minutes I have.
+Unfortunately, I can't do graphics on my Rackspace account, so I guess I can do some refactoring for now, then hope that that doesn't hurt the GTK UI. Especially running without tests, this will be difficult. I don't know how much I'm going to get done.
+
+Yesterday I ran some additional tests to check on the performance of my UI. With a grid radius of 100 (a 201-by-201 grid), it took about 28 minutes for the ant to take 12,000 steps. This doesn't exactly make incremental programming easy.
+
+I have no plan for today, except to get my code running in a new environment. We'll see what happens after that.
 
 ## Reviewing The Plan
 
@@ -19,5 +22,3 @@ This was the overall plan, in the middle of which we find ourselves.
 1. Profit?
 
 ## The Result
-
-GTK is slow. If I use a grid radius of 50 (101-by-101 grid), then 1000 steps takes about 40 seconds to run. I figured out a rough model for the execution time at `1.1^radius/3`, which sadly means that with a grid radius of 100 (201-by-201 grid), 1000 steps would take about 1.3 hours. I can try that later to see whether it runs at all. Shame, too, since it takes about 32000 steps to see interesting stuff, but the action happens hundreds of units away from the origin. For a grid radius of 500, we're talking 5.3 quadrillion years, give or take. We don't have that kind of time.
