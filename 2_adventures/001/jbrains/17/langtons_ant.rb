@@ -151,5 +151,11 @@ class LangtonsAntWalk
     changed
     notify_observers(@steps, @ant)
   end
+
+  def walk(how_many_steps)
+    how_many_steps.times do
+      self.take_a_step
+    end
+  end
 end
 
