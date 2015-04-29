@@ -150,7 +150,7 @@ threads << Thread.new do
   walk = LangtonsAntWalk.new(WidgetsWalkListener.new(main_window.grid_panel.squares, main_window.walk_description_label))
   12_000.times do
     # sleep 0.001
-    walk.take_a_step
+    walk.step
   end
   Gtk.main_quit
 end

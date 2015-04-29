@@ -145,7 +145,7 @@ class LangtonsAntWalk
     notify_observers(@steps, @ant)
   end
 
-  def take_a_step
+  def step
     @ant = @ant.go
     @steps = @steps + 1
     changed
@@ -154,7 +154,7 @@ class LangtonsAntWalk
 
   def walk(how_many_steps)
     how_many_steps.times do
-      self.take_a_step
+      self.step
     end
   end
 end
