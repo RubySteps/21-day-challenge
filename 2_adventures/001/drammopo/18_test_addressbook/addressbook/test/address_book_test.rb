@@ -18,4 +18,12 @@ class TestAddressBook < Minitest::Test
     @person.email      = "joe.smith@example.com"
     @person.address    = @address
   end
+
+  def test_is_an_address_book
+    assert_kind_of AddressBook, @address_book
+  end
+
+  def test_can_add_a_contact
+    assert_equal 1, @address_book.add(@person).size
+  end
 end
