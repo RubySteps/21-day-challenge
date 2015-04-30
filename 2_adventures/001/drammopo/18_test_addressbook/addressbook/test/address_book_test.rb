@@ -1,5 +1,4 @@
 require_relative "test_helper"
-require_relative '../lib/address_book'
 
 class TestAddressBook < Minitest::Test
 
