@@ -21,5 +21,6 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency('aruba')
   s.add_development_dependency('guard-rspec')
   s.add_development_dependency('rspec-pride')
+  s.add_development_dependency('guard-cucumber')
   s.add_runtime_dependency('gli','2.13.0')
 end

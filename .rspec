@@ -1,1 +1,2 @@
---color --require rspec/pride --format PrideFormatter
+--require rspec/pride
+--format PrideFormatter
