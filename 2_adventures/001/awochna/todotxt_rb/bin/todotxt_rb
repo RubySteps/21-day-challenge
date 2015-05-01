@@ -1,0 +1,190 @@
+#!/usr/bin/env ruby
+require 'gli'
+begin # XXX: Remove this begin/rescue before distributing your app
+require 'todotxt_rb'
+rescue LoadError
+  STDERR.puts "In development, you need to use `bundle exec bin/todotxt_rb` to run your app"
+  STDERR.puts "At install-time, RubyGems will make sure lib, etc. are in the load path"
+  STDERR.puts "Feel free to remove this message from bin/todotxt_rb now"
+  exit 64
+end
+
+include GLI::App
+
+program_desc 'Describe your application here'
+
+version TodotxtRb::VERSION
+
+subcommand_option_handling :normal
+arguments :strict
+
+desc 'Describe some switch here'
+switch [:s,:switch]
+
+desc 'Describe some flag here'
+default_value 'the default'
+arg_name 'The name of the argument'
+flag [:f,:flagname]
+
+desc 'Describe add here'
+arg_name 'Describe arguments to add here'
+command :add do |c|
+  c.desc 'Describe a switch to add'
+  c.switch :s
+
+  c.desc 'Describe a flag to add'
+  c.default_value 'default'
+  c.flag :f
+  c.action do |global_options,options,args|
+
+    # Your command logic here
+     
+    # If you have any errors, just raise them
+    # raise "that command made no sense"
+
+    puts "add command ran"
+  end
+end
+
+desc 'Describe append here'
+arg_name 'Describe arguments to append here'
+command :append do |c|
+  c.action do |global_options,options,args|
+    puts "append command ran"
+  end
+end
+
+desc 'Describe archive here'
+arg_name 'Describe arguments to archive here'
+command :archive do |c|
+  c.action do |global_options,options,args|
+    puts "archive command ran"
+  end
+end
+
+desc 'Describe deduplicate here'
+arg_name 'Describe arguments to deduplicate here'
+command :deduplicate do |c|
+  c.action do |global_options,options,args|
+    puts "deduplicate command ran"
+  end
+end
+
+desc 'Describe rm here'
+arg_name 'Describe arguments to rm here'
+command :rm do |c|
+  c.action do |global_options,options,args|
+    puts "rm command ran"
+  end
+end
+
+desc 'Describe depri here'
+arg_name 'Describe arguments to depri here'
+command :depri do |c|
+  c.action do |global_options,options,args|
+    puts "depri command ran"
+  end
+end
+
+desc 'Describe do here'
+arg_name 'Describe arguments to do here'
+command :do do |c|
+  c.action do |global_options,options,args|
+    puts "do command ran"
+  end
+end
+
+desc 'Describe list here'
+arg_name 'Describe arguments to list here'
+command :list do |c|
+  c.action do |global_options,options,args|
+    puts "list command ran"
+  end
+end
+
+desc 'Describe listall here'
+arg_name 'Describe arguments to listall here'
+command :listall do |c|
+  c.action do |global_options,options,args|
+    puts "listall command ran"
+  end
+end
+
+desc 'Describe listcon here'
+arg_name 'Describe arguments to listcon here'
+command :listcon do |c|
+  c.action do |global_options,options,args|
+    puts "listcon command ran"
+  end
+end
+
+desc 'Describe listpri here'
+arg_name 'Describe arguments to listpri here'
+command :listpri do |c|
+  c.action do |global_options,options,args|
+    puts "listpri command ran"
+  end
+end
+
+desc 'Describe listproj here'
+arg_name 'Describe arguments to listproj here'
+command :listproj do |c|
+  c.action do |global_options,options,args|
+    puts "listproj command ran"
+  end
+end
+
+desc 'Describe prepend here'
+arg_name 'Describe arguments to prepend here'
+command :prepend do |c|
+  c.action do |global_options,options,args|
+    puts "prepend command ran"
+  end
+end
+
+desc 'Describe pri here'
+arg_name 'Describe arguments to pri here'
+command :pri do |c|
+  c.action do |global_options,options,args|
+    puts "pri command ran"
+  end
+end
+
+desc 'Describe replace here'
+arg_name 'Describe arguments to replace here'
+command :replace do |c|
+  c.action do |global_options,options,args|
+    puts "replace command ran"
+  end
+end
+
+desc 'Describe report here'
+arg_name 'Describe arguments to report here'
+command :report do |c|
+  c.action do |global_options,options,args|
+    puts "report command ran"
+  end
+end
+
+pre do |global,command,options,args|
+  # Pre logic here
+  # Return true to proceed; false to abort and not call the
+  # chosen command
+  # Use skips_pre before a command to skip this block
+  # on that command only
+  true
+end
+
+post do |global,command,options,args|
+  # Post logic here
+  # Use skips_post before a command to skip this
+  # block on that command only
+end
+
+on_error do |exception|
+  # Error logic here
+  # return false to skip default error handling
+  true
+end
+
+exit run(ARGV)

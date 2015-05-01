@@ -1,0 +1,5 @@
+= todotxt_rb
+
+Generate this with
+    todotxt_rb rdoc
+After you have described your command line interface
