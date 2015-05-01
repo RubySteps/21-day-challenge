@@ -113,3 +113,5 @@ and did the needful to the `spec_helper.rb` file.
 
 ## Day 18
 
+*  Day 18: got further in the test matrix for turmite moving, turning, changing state, and changing color.
+* See [commit](https://github.com/JonKernPA/turmites/commit/8226462cb3e2fcc7184db7282b22d1a69804a9c1)
