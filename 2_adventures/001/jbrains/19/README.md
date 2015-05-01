@@ -1,6 +1,8 @@
-# Day 18
+# Day 19
 
-I'm phoning this in, big time.
+I'm phoning this in, big time. Even more than yesterday. I have something like 3 minutes.
+
+I'll refactor something. Anything.
 
 ## Reviewing The Plan
 
