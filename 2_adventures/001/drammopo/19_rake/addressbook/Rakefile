@@ -1,0 +1,25 @@
+require 'rake/testtask'
+
+desc 'Run test for addressbook class'
+task :addressbook do
+  sh "ruby -I test:lib test/address_book_test.rb"
+end
+
+desc 'Run test for address class'
+task :address do
+  sh "ruby -I test:lib test/address_test.rb"
+end
+
+desc 'Run test for person class'
+task :person do
+  sh "ruby -I test:lib test/person_test.rb"
+end
+
+Rake::TestTask.new do |t|
+  t.libs << %w(test lib)
+  t.pattern = "test/**/*_test.rb"
+  t.verbose = true
+end
+
+desc "Default: run tests"
+task :default => :test
