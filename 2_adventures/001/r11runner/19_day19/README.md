@@ -1,9 +1,3 @@
 # Adventure 19_day19
 
-What this script does:
- - it clones the 21-day-challenge-repo from the user's fork
- - creates a branch for the current day
- - creates a directory for the current exercise within the user's personal directory,
- - writes the README-file you're reading
- - commits the directory and the README to the local repo
- - pushes the changes to GitHub
+[Robot Name on exercism](http://exercism.io/submissions/9ecf0f1a776b45249dc894aa7d5896f5)
