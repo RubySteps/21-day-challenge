@@ -19,3 +19,4 @@ This was the overall plan, in the middle of which we find ourselves.
 
 ## The Result
 
+I have an app that starts a new walk on every request to `/go`. It responds with HTML that I can't verify too well because I'm stuck with `curl` as my "browser". (I don't want to mess with Apache here to forward the necessary ports.)
