@@ -1,0 +1,2 @@
+--require rspec/pride
+--format PrideFormatter
