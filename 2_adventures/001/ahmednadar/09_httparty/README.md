@@ -1,6 +1,11 @@
-require 'httparty'
-require 'awesome_print'
+## Day 9: 
 
+### HTTParty 
+
+Use HTTParty to 
+
+##### FacebookGraph class:
+```ruby
 class FacebookGraph
   include HTTParty
 
@@ -29,10 +34,9 @@ class FacebookGraph
 
 end
 
-graph_api = FacebookGraph.new
-
-graph_api.get_data
-
+```
+##### HTTP example:
+```ruby
 puts "Name : #{graph_api.name}"
 puts "About : #{graph_api.about}\n"
 puts "Website : #{graph_api.website}"
@@ -44,3 +48,22 @@ puts "---" * 5
 puts "City Name : #{graph_api.city}"
 puts "Location Street : #{graph_api.street}"
 puts "Location State : #{graph_api.state}"
+```
+
+
+#### Output
+
+```
+Name : GitHub
+About : GitHub's official Facebook page.
+Website : GitHub.com
+---------------
+Total Likes : 51692
+Description : GitHub is the best place to share code with friends, co-workers, classmates, and complete strangers. Over three million people use GitHub to build amazing things together.
+wards : Best Overall Start-up • 2012 Crunchies (TechCrunch Awards)
+Best Bootstrapped Start-up • 2008 Crunchies (TechCrunch Awards)
+---------------
+City Name : San Francisco
+Location Street : 88 Colin P Kelly Jr St
+Location State : CA
+```
