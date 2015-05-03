@@ -1,11 +1,11 @@
-require './weather_data'
+require './soccer'
 
-describe WeatherReader do
+describe SoccerReader do
   describe "Utility methods" do
-    let(:weather_reader) { WeatherReader.new }
+    let(:soccer_reader) { SoccerReader.new }
 
     before(:each) do
-      @data = weather_reader.read("weather.dat")
+      @data = soccer_reader.read("football.dat")
     end
 
     it "filters lines that don't contain weather data" do
