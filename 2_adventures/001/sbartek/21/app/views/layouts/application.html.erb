@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Oatwitter</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div>
+    <% if session[:user_name] %>
+      <%= session[:user_name] %> (<%= link_to 'Logout', '/logout' %>)
+    <% else %>
+      <%= link_to 'Login with Twitter', '/auth/twitter'  %>
+    <% end %>
+  </div>
+
+<%= yield %>
+
+</body>
+</html>
