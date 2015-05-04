@@ -41,7 +41,17 @@ class LangtonsAntWebApp < Sinatra::Application
     unless session['walk']
       erb %Q{<h1>Nice try</h1><p>You can't step until you've <a href="/go">started a walk</a>.</p></h1>}
     else
-      erb "<h1>Can't take a step yet</h1>"
+      @walk = session['walk']
+      @walk_listener = session['walk_listener']
+
+      @walk.step
+
+      @step_number = @walk_listener.number
+      @location = @walk_listener.ant.location
+      @facing = @walk_listener.ant.facing
+      @color = @walk_listener.ant.grid.color_of(@location.to_s)
+
+      erb "<h1>The Ant took a step!</h1><p>After step <%= @step_number %>, the ant is on <%= @color %> square <%= @location %>, facing <%= @facing %>.</p>"
     end
   end
 
