@@ -208,4 +208,32 @@ describe TodotxtRb::Task do
       end
     end
   end
+
+  describe "attributes override information from string" do
+    
+    let(:string) { "x (A) 2015-04-29 2015-04-28 Clean desk +cleandesk @work" }
+    let(:task) { TodotxtRb::Task.new(string, done: false, added: '2015-05-01',
+                                     completed: '2015-05-02', priority: 'B',
+                                     projects: ['+cleanoffice'],
+                                     contexts: ['@home']) }
+
+    subject { task }
+
+    it { is_expected.to_not be_done }
+    it { is_expected.to have_priority }
+    it { is_expected.to have_context '@home' }
+    it { is_expected.to have_project '+cleanoffice' }
+
+    it "should have new added date" do
+      expect(subject.added).to eq Date.parse('2015-05-01')
+    end
+
+    it "should have completed date" do
+      expect(subject.completed).to eq Date.parse('2015-05-02')
+    end
+
+    it "should have the 'B' priority" do
+      expect(subject.priority).to eq 'B'
+    end
+  end
 end
