@@ -1,0 +1,7 @@
+[package]
+name = "day-21"
+version = "0.1.0"
+authors = ["Markus Prinz <markus.prinz@nuclearsquid.com>"]
+
+[dependencies.nickel]
+git = "https://github.com/nickel-org/nickel.rs.git"
