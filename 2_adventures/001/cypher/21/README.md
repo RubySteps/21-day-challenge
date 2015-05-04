@@ -28,6 +28,13 @@ The program actually has a small trick up its sleeve. If you run `cargo run -- c
 a bit more complex example that demonstrates how to fetch things from a query string, and how to render
 a template that displays data.
 
+If you'll just go to [http://127.0.0.1:6767/][], you'll be greeted by a generic unknown person greeting.
+But if you go to [http://127.0.0.1:6767/?name=Markus][], it will greet you personally! (If your name happens
+to be "Markus". If you're not named Markus, you might want to substitute your own name.)
+
+For fun, you can also try going to [http://127.0.0.1:6767/?name=%3Cscript%3Ealert('xss!')%3C/script%3E][] to discover
+that it does escape your inputs (but that's all thanks to the templating engine, not me).
+
 
 [install-rust]: http://www.rust-lang.org/install.html
 [nickel]: http://nickel.rs
