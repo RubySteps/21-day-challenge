@@ -15,15 +15,34 @@ class InMemoryWalkListener < WalkListener
 end
 
 class LangtonsAntWebApp < Sinatra::Application
+  enable :sessions
+  set :session_secret, "alessinterestingsecret"
+
+  get "/logout" do
+    session.clear
+    session['walk'] = nil
+    session['walk_listener'] = nil
+  end
+
   get "/go" do
     @walk_listener = InMemoryWalkListener.new
     @walk = LangtonsAntWalk.new(@walk_listener)
+    session['walk'] = @walk
+    session['walk_listener'] = @walk_listener
 
     @location = @walk_listener.ant.location
     @facing = @walk_listener.ant.facing
     @color = @walk_listener.ant.grid.color_of(@location.to_s)
 
     erb "<h1>Starting a new walk</h1><p>Ant is on <%= @color %> square <%= @location %>, facing <%= @facing %></p>."
+  end
+
+  get "/step" do
+    unless session['walk']
+      erb %Q{<h1>Nice try</h1><p>You can't step until you've <a href="/go">started a walk</a>.</p></h1>}
+    else
+      erb "<h1>Can't take a step yet</h1>"
+    end
   end
 
   run! if app_file == $0

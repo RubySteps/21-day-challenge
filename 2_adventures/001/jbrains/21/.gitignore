@@ -1,0 +1,4 @@
+# vim swap files
+*.sw*
+# cookies file used for testing with curl
+cookies.txt
