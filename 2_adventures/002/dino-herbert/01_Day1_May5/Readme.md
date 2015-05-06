@@ -1,0 +1,1 @@
+Day 1: Still toying with scraping an HTML site, converting arrays to string and using a custom String method.
