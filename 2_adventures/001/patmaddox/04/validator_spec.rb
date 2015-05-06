@@ -16,7 +16,7 @@ describe Validator do
 
         filenames: [
           '1_warmup/github-user/01/README.md',
-          '2_adventures/001/github-user/01/README.md'
+          '2_adventures/002/github-user/01/README.md'
         ]
       }
     end
@@ -31,37 +31,37 @@ describe Validator do
       end
 
       it 'allows README.txt as an alternative to README.md' do
-        pull[:filenames] = ['2_adventures/001/github-user/01/README.txt']
+        pull[:filenames] = ['2_adventures/002/github-user/01/README.txt']
 
         expect(response[:success]).to eq(true), response[:message]
       end
 
       it 'allows README as an alternative to README.md' do
-        pull[:filenames] = ['2_adventures/001/github-user/01/README']
+        pull[:filenames] = ['2_adventures/002/github-user/01/README']
 
         expect(response[:success]).to eq(true), response[:message]
       end
 
       it 'ignores case for README files' do
-        pull[:filenames] = ['2_adventures/001/github-user/01/readme.md']
+        pull[:filenames] = ['2_adventures/002/github-user/01/readme.md']
 
         expect(response[:success]).to eq(true), response[:message]
       end
 
       it 'ignores case for the username' do
-        pull[:filenames] << '2_adventures/001/GitHub-User/01/file.rb'
+        pull[:filenames] << '2_adventures/002/GitHub-User/01/file.rb'
 
         expect(response[:success]).to eq(true), response[:message]
       end
 
       it 'allows a - extension for a day directory' do
-        pull[:filenames] = ['2_adventures/001/github-user/01-ext/readme.md']
+        pull[:filenames] = ['2_adventures/002/github-user/01-ext/readme.md']
 
         expect(response[:success]).to eq(true), response[:message]
       end
 
       it 'allows a _ extension for a day directory' do
-        pull[:filenames] = ['2_adventures/001/github-user/01_ext/readme.md']
+        pull[:filenames] = ['2_adventures/002/github-user/01_ext/readme.md']
 
         expect(response[:success]).to eq(true), response[:message]
       end
@@ -87,7 +87,7 @@ describe Validator do
       end
 
       it 'checks for a README.md in the day directory' do
-        pull[:filenames] = ['2_adventures/001/github-user/01/NOT_README']
+        pull[:filenames] = ['2_adventures/002/github-user/01/NOT_README']
 
         expect(response[:success]).to eq(false)
         expect(response[:message]).to include('Where\'s the README? :(')
