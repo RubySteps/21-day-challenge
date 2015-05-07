@@ -1,0 +1,106 @@
+body {
+  /*margin: 0 auto;*/
+}
+
+div {
+    height: 640px;
+    width: 100%;
+    /*border: 0.1px solid black;*/
+    text-align: center;
+    margin: 0px;
+    background-size: cover;
+    position: relative;
+    padding: 10px;
+  }
+  #header {
+  background-color: black;
+  height: 20px;
+  color: white;
+  }
+  
+  #first {
+    background-image: url("images/city01-640x480.jpg");
+    background-attachment: fixed;
+  }
+  
+  #second {
+    background-image: url("images/city09-640x480.jpg");
+    background-attachment: fixed;
+  }
+  
+  #third {
+  background-image: url("images/city07-640x480.jpg");
+  background-attachment: fixed;
+  }
+  
+  #fourth {
+  background-image: url("images/city05-640x480.jpg");
+  background-attachment: fixed;
+ }
+  
+  #fifth {
+  background-image: url("images/city06-640x480.jpg");
+  background-attachment: fixed;
+  }
+  
+  h1 {
+  font-family: 'Lato', cursive;
+  /*font-family: 'Iceberg', cursive;*/
+   /*font-family: 'Iceland', cursive;*/
+  /*font-family: 'Quantico', sans-serif;*/
+  /*font-family: 'VT323', ;*/
+  /*font-family: 'Tulpen One', cursive;*/
+  /*font-family: 'Monofett', cursive;*/
+  /*font-family: 'Press Start 2P', cursive;*/
+  /*font-family: 'Averia Sans Libre', cursive;*/
+  /*font-family: 'Waiting for the Sunrise', cursive;*/
+  /*font-family: 'Margarine', cursive;*/
+  /*font-family: arial;*/
+  font-size: 150px;
+  color: black;
+  text-align: center;
+  padding: 0px 0 0px 0;
+  margin: 20px 0 0 0;
+  }
+  
+  h2 {
+  color: white;
+  font-size: 35px;
+  font-family: Lato;
+  text-align: center;
+  padding: 0 20px 0 20px;
+  margin: 40px 0 0 0;
+  }
+  
+  h3 {
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  padding: 0 20px 0 0px;
+  margin: 0px 0 0 0;
+  border: 0;
+  }
+  
+  h4 {
+  font-size: 10px;
+  }
+  
+  span {
+   color: red;
+  }
+  
+  p {
+  color: red;
+  font-size: 30px;
+  text-align: center;
+  margin: 0;
+  padding: 0px;
+  }
+  
+  #footer {
+  line-height: 20px;
+  background-color: black;
+  height: 20px;
+  color: white;
+  bottom: 0;
+  }

@@ -1,0 +1,1 @@
+Day 3: Did a little HTML/ CSS today on my website that I'm developing.
