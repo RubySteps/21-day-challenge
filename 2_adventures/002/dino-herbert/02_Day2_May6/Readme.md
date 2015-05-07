@@ -1,0 +1,1 @@
+Day 2: Scraped HTML file from web and used regex to identify the "fortunes".  All empty lines removed.  Resulting output are arrays, not strings, however.  So the new String method is not recognized.
