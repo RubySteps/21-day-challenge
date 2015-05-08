@@ -1,3 +1,4 @@
 # Adventure 04_day4
 
-Just a generated README :)
+ - small improvements in the [Rails practice app generator](https://github.com/r11runner/practice-rails-app-generator)
+ - some JavaScript practice
