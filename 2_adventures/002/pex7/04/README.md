@@ -1,0 +1,1 @@
+Worked on Learn Ruby The Hard Way: Exercise 24.
