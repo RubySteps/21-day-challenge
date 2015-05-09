@@ -1,0 +1,1 @@
+Went through the first 4 sections of Ruby MVC Framework From Scratch on Tuts+
