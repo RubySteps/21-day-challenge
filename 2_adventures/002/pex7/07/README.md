@@ -1,0 +1,1 @@
+Went through Building Ribbit in Rails on Tuts+
