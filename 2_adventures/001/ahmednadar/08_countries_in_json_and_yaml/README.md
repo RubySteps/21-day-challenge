@@ -26,3 +26,8 @@ all_countries.each do |country|
   puts "#{name} code is => '#{code}'" #=> Finland code is: 'FI'
 end
 ```
+
+
+### Tools
+- Convert JSON to YAML [http://jsontoyaml.com/](http://jsontoyaml.com/)
+- Convert YAML to JSON [http://yamltojson.com/](http://yamltojson.com/)
