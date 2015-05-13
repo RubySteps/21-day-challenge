@@ -1,0 +1,1 @@
+Reading through [Learn Haskell Fast and hard](http://yannesposito.com/Scratch/en/blog/Haskell-the-Hard-Way/), it's such a good intro.
