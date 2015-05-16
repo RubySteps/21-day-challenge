@@ -1,0 +1,1 @@
+Day 12: Had a pairing session earlier involving TMOX and testing...still working on a few things.
