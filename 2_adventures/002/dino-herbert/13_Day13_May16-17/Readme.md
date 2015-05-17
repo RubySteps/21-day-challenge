@@ -1,0 +1,1 @@
+Day 13: This file will check whether the results of an equation are odd or even given 3 unknown variables.
