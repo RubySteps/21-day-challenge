@@ -1,1 +1,2 @@
-Day 12: Had a pairing session earlier involving TMOX and testing...still working on a few things.
+Day 12: Program takes a set of numbers within a certain range and averages them.
+Prompts user for correct input if number is out of range.
