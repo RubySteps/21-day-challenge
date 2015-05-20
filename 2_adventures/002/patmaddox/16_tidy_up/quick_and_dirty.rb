@@ -15,9 +15,7 @@ def get_directories_containing_readmes(files)
 end
 
 def convert_directories_to_numbers(directories)
-  numbered_dirs = directories.collect {|d| d.split("/").last }
-  numbers = numbered_dirs.collect {|d| d.to_i }
-  numbers
+  directories.collect {|d| d.split("/").last }.collect {|d| d.to_i }
 end
 
 def check_warmup
@@ -26,16 +24,4 @@ end
 
 def check_days_work
   check_the_thing "~/code/21-day-challenge/2_adventures/001/patmaddox"
-end
-
-describe "my methods" do
-  it "checks a warmup" do
-    numbers = check_warmup
-    expect(numbers).to eq([1,2])
-  end
-
-  it "checks days" do
-    numbers = check_days_work
-    expect(numbers).to eq([*1..21])
-  end
 end
