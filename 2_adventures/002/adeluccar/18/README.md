@@ -1,4 +1,4 @@
-IRubysteps 21 Day Challenge (2015-05 002)
+Rubysteps 21 Day Challenge (2015-05 002)
 
 Day 18
 Today I learned more about Git through the git immersion tutorial.
