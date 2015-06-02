@@ -1,0 +1,1 @@
+<img src="https://bluefieldhighschool.files.wordpress.com/2015/03/day-2.jpg" />
