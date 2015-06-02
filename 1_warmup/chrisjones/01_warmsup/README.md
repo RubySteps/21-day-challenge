@@ -1,0 +1,1 @@
+<img src="http://i.telegraph.co.uk/multimedia/archive/02382/horror_2382351b.jpg" />
