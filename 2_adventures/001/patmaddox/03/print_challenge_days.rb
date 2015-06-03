@@ -1,6 +1,6 @@
 require 'date'
 
-start_of_challenge = Date.parse("April 13, 2015")
+start_of_challenge = Date.parse("June 1, 2015")
 format = "%a %m/%d"
 
 21.times do |i|
