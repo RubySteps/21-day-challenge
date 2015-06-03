@@ -1,0 +1,10 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    clipboard (1.0.6)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  clipboard
