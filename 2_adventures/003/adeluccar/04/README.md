@@ -9,3 +9,5 @@ The reasons are multiple. Mainly, I want to use a better terminal app ([iTerm 2]
 2015-06-04 1926 Installed [PostgreSQL](http://www.postgresql.org/).
 
 Quick tip: Use [Homebrew](http://brew.sh/) for easy installation of most packages on Mac OS X.
+
+Also, ```git add -p``` is your friend. Avoid ```git add .``` like the plague.
