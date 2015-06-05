@@ -7,3 +7,5 @@ This was done using this tutorial by [Tealeaf Academy](http://www.gotealeaf.com/
 The reasons are multiple. Mainly, I want to use a better terminal app ([iTerm 2](http://iterm2.com/)) and I also want to avoid some issues I've had in the past using tmux.
 
 2015-06-04 1926 Installed [PostgreSQL](http://www.postgresql.org/).
+
+Quick tip: Use [Homebrew](http://brew.sh/) for easy installation of most packages on Mac OS X.
