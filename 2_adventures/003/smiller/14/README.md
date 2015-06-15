@@ -106,7 +106,7 @@ Then Bob is on the dashboard
   ./test_commons/page_objects/helpers.rb:11:in `block in on_page'
 ```
 
-The error message would be more useful if it said something like “expected to be on page ‘dashboard’, was at URL ‘/secondary-control-room’”.  (Site_prism has a [#current_url](https://github.com/natritmeyer/site_prism#getting-the-current-pages-url) method that gives us the actual value.)  Feels like an RSpec Custom Matcher problem, though the shortest first step would be to precede the `expect(page).to be_displayed` check with
+The error message would be more useful if it said something like “expected to be on page ‘dashboard’, was on ‘/secondary-control-room’”.  (Site_prism has a [#current_url](https://github.com/natritmeyer/site_prism#getting-the-current-pages-url) method that gives us the actual value.)  Feels like an RSpec Custom Matcher problem, though the shortest first step would be to precede the `expect(page).to be_displayed` check with
 
 ```ruby
 expect(page.current_path).to match(page.url_matcher || page.url)
@@ -124,7 +124,7 @@ Then Bob is on the dashboard
   (RSpec::Expectations::ExpectationNotMetError)
 ```
 
-I think it makes sense to leave it at that for now, because one thing I haven’t explored is site_prism’s [parameterized URLs](https://github.com/natritmeyer/site_prism#parameterized-urls), such that we probably would have wanted to do something more like
+It might make sense to leave it at that for now, because I haven’t explored site_prism’s [parameterized URLs](https://github.com/natritmeyer/site_prism#parameterized-urls), such that we probably would have wanted to do something more like
 
 ```ruby
 set_url "/dashboard{?#extra-parameters=*}"
@@ -144,4 +144,80 @@ end
 
 also suggests that I’m going to want to pass another argument into `visit_page` for optional arguments to the `page.load` call.
 
-So further investigation is required, and as I start using these more advanced features the simplest path matcher will break, but then I’ll also have a better idea of how I want to fix it.
+### Postscript: RSpec Custom Matcher
+
+A few hours later, I’m not comfortable leaving that fragile expectation in.  Let’s build the RSpec custom matcher after all.  Revert `on_page` to just check `expect(page).to be_displayed`, and then, after checking the [official rspec-expectations docs](https://www.relishapp.com/rspec/rspec-expectations/v/2-4/docs/custom-matchers/define-matcher) and Daniel Chang’s [additional notes](http://danielchangnyc.github.io/blog/2014/01/15/tdd2-RSpecMatchers/), add:
+
+```ruby
+# spec/support/matchers/be_displayed.rb
+RSpec::Matchers.define :be_displayed do |args|
+  match do |actual|
+    actual.displayed?(args)
+  end
+
+  failure_message_for_should do |actual|
+    expected = actual.class.to_s.sub(/PageObjects::/, '')
+    expected += " (args: #{args})" if args.count > 0
+    "expected to be on page '#{expected}', but was on #{actual.current_path}"
+  end
+end
+```
+
+Since we’re running it from cucumber, we need to require it explicitly in `features/support/env.rb`:
+
+```ruby
+require_relative '../../spec/support/matchers/be_displayed'
+```
+
+The first time we run it, we hit a weird error
+
+```ruby
+Then Bob is on the dashboard
+  comparison of Float with nil failed (ArgumentError)
+  ./spec/support/matchers/be_displayed.rb:3:in `block (2 levels) in <top (required)>'
+```
+
+which debugging into site_prism’s `#displayed?` method suggests is a problem of passing nil instead of an empty Hash.  We can fix that from the `on_page` method:
+
+```ruby
+def on_page(page_name, args = {}, &block)
+  Object.const_get("PageObjects::#{page_name.capitalize}").new.tap do |page|
+    expect(page).to be_displayed(args)
+    block.call page if block
+  end
+end
+```
+
+With that change, we now get
+
+```ruby
+Then Bob is on the dashboard
+  expected to be on page 'Dashboard', but was on '/secondary-control-room' (RSpec::Expectations::ExpectationNotMetError)
+  ./test_commons/page_objects/helpers.rb:11:in `block in on_page'
+```
+
+We aren’t passing in any parameters to the URL yet, but when we start, it will just work.
+
+### Postscript 2:
+
+It is the case, looking at `test_commons/page_objects/helpers.rb`:
+
+```ruby
+module PageObjects
+  def visit_page(page_name, args = {}, &block)
+    Object.const_get("PageObjects::#{page_name.capitalize}").new.tap do |page|
+      page.load(args)
+      block.call page if block
+    end
+  end
+
+  def on_page(page_name, args = {}, &block)
+    Object.const_get("PageObjects::#{page_name.capitalize}").new.tap do |page|
+      expect(page).to be_displayed(args)
+      block.call page if block
+    end
+  end
+end
+```
+
+that we have two methods that are the same except for one line, which we could refactor into a common method which yields to either `page.load(args)` or `expect(page).to be_displayed(args)`.  I’m inclined to leave it for now, but if we add a third method following the same template, we should definitely refactor then.
