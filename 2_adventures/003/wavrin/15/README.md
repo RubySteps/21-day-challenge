@@ -1,7 +1,10 @@
-Today I though a lot of ruby version management. I switched to a new laptop over the last few weeks and decided to do things a little different.
+Today I thought a lot about managing ruby versions. I'd recently upgraded computers and wanted to change how I managed ruby versions.
 
-On previous computer, I used rvm and gemsets to manager different apps. It ended up getting a bit hairy.
+On previous computer I used rvm + gemsets. But that seemed to get a bit hairy.
 
-I decided to take this opportunity to update the ruby version of alls I've been working on. And then use bundler to manage all the gem versions.
+On new computer, I'm using just new version of ruby and letting Bundler handle gem versions.
 
-So far, so good.
+So far, so good. It was not as hard as I thought updating apps to new version of Ruby.
+
+And not having to use gemsets hace been nice. :)
+
