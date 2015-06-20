@@ -10,9 +10,9 @@ Initial investigation of the five-state problem reveals that because of the java
 4. external service allows user input, but also offers alternate suggestions
 
 
-#1 and #2 can be uniquely identified by the content of their error messages, and will display the original form.
+\#1 and #2 can be uniquely identified by the content of their error messages, and will display the original form.
 
-#3 and #4 will display a new form with suggestions, either allowing (#4) or not allowing (#3) the initial input.
+\#3 and #4 will display a new form with suggestions, either allowing (#4) or not allowing (#3) the initial input.
 
 So this could be verified by:
 
