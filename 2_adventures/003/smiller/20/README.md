@@ -18,7 +18,7 @@ test_commons
 
 Suppose one of the flows through component one involves a side-trip through component two.  And you’ve got a separate test that exercises component two, so really you just want something that passes through component two without breaking anything.  It would be to have a `flows.rb` file in the `component_two` directory, and then in `PageObjects::ComponentTwo::Flows` you can have a `pass_through` method that goes through all the pages, putting in safe inputs.
 
-For any inputs that we need to specify, we can pass in a hash of inputs, with the names of the elements they refer to, and ewe’ll grab them in the actual page objects via fetch and pass in the default safe inputs if there’s no supplied specific input.
+For any inputs that we want to customize, based on where we started from in component one, for instance, we can pass in a hash of inputs, with the names of the elements they refer to, and we’ll grab them in the actual page objects via fetch and pass in the default safe inputs if there’s no supplied specific input.
 
 ```ruby
 module PageObjects
@@ -32,6 +32,21 @@ module PageObjects
       end
 
     end
+  end
+end
+
+module PageObjects
+  module ComponentTwo
+    class PageOne < SitePrism::Page
+
+       element :input_field, "input#input_field"
+       element :submit, "input[type='commit']"
+
+       def pass_through(inputs)
+         input_field.set inputs.fetch(:input_field, "safe_value_if_none_supplied")
+         submit.click
+	   end
+	end
   end
 end
 ```
