@@ -1,4 +1,4 @@
-# 1. [Sign up for the *RubySteps 21-Day Challenge*...](http://www.rubysteps.com/#21-day-challenge)
+# 1. [Sign up for the *RubySteps 21-Day Challenge*...](http://www.rubysteps.com/21-day-challenge/)
 
 # 2. [Join us in Gitter chat](https://gitter.im/RubySteps/21-day-challenge)
 
