@@ -1,0 +1,1 @@
+Had a UG meeting last night, so didn't get to hack.  Today's goal is to explore some of the ruby std lib to see how to count an input, sort into buckets, and maybe draw a graph (probably need a 3rd party lib for that, I suppose).
