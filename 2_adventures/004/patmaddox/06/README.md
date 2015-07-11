@@ -1,0 +1,3 @@
+I really want to get magit working with emacs again!
+
+Keep on keepin on...
