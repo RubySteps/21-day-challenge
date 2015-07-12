@@ -52,3 +52,7 @@ That clogs me with this answer.’
 Having figured that, we can leave the rails app to one side (we can always bring it back if we have further uncertainties about how we want the UI to feel), and concentrate on the narrower problem of converting an array of strings into an Entry.
 
 ## Back to Building an Entry
+
+Bringing forward the code from day 2 with the `lib/html_formatter`, we can add a `lib/entry_builder` in the same way, and starting with a `spec/entry_builder_spec` using the test data we just came up with while trying out the UI.
+
+(In a real application, might this code end up in an `Entry.build_from_raw_input(params)` factory method?  Sure.  Could we put it there from the beginning?  Yes.  But part of my thought-experiment here is to build small isolated well-tested blocks with as few assumptions as possible.  We don’t yet know how the rest of the system will work, so we’re deferring that decision for now.)
