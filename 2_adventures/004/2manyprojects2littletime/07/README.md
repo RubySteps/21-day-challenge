@@ -1,0 +1,1 @@
+Too many balls in the air... don't think I'm going to get a chance to program anything today.  Still have stashed changes (from day 6, but in day 5 folder), but no bw to think about where they should go.  Should probably refactor to 'long-running project' format now.
