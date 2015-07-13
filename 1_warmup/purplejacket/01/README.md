@@ -1,4 +1,6 @@
-Kai Middleton, first README
+Kai Middleton, first README.
+
+This README is essenti
 
 This is just a quick copy of a markdown sample file, this one:
 
