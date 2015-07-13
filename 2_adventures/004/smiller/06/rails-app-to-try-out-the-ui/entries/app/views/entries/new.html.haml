@@ -1,0 +1,5 @@
+%h1 Entries
+
+= form_tag("/preview", method: "POST") do
+  = text_area_tag(:body, "", size: "60x40")
+  = submit_tag "Preview"
