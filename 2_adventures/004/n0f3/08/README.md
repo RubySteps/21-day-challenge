@@ -1,0 +1,1 @@
+This is a readme for day 08 of RubySteps challenge.
