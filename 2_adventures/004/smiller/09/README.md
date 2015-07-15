@@ -83,3 +83,5 @@ end
 ```
 
 And now we have passing tests and a refactoring cycle to do.  (Maybe the guard code should go on the initializer?  On the other hand, if there is bad data in the database, we still want to catch it before `#paragraphs` passes it up to the HtmlFormatter, so we probably want it here too, at the least.
+
+(Having pushed that change also up into entry-rails, can confirm that it no longer breaks in the UI either.  So that’s the immediate crisis sorted.)
