@@ -2,9 +2,9 @@ require 'emerald'
 require 'spec_helper'
 
 describe Emerald::CLI do
-  describe "#process" do
+  describe "#emerald" do
     context "plan from a file eg1" do
-      let(:emerald) { Emerald:CLI.start(["emerald", "--file", 'data/eg1.txt']) }
+      let(:emerald) { Emerald::CLI.start(["emerald", "--file", 'data/eg1.txt']) }
 
       context "containing valid test data" do
         it "should parse the file contents and output a result" do
