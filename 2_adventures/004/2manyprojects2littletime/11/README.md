@@ -1,0 +1,1 @@
+impl 'long-running project' pattern in crypto-games repo
