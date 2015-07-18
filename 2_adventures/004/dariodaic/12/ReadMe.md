@@ -16,10 +16,10 @@ One is the following:
 5. reverse the whole result.
 
 Example:
-your text: "BORN IN 2015!", shift 1
-1 + 2 + 3 -> "CPSO JO 7984!"
-4 "CpSo jO 7984!"
-5 "!4897 Oj oSpC"
++ your text: "BORN IN 2015!", shift 1
++ 1 + 2 + 3 -> "CPSO JO 7984!"
++ 4 "CpSo jO 7984!"
++ 5 "!4897 Oj oSpC"
 
 With longer passphrases it's better to have a small and easy program. Would you write it?
 https://en.wikipedia.org/wiki/Passphrase
