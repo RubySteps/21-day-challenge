@@ -1,0 +1,1 @@
+This is a readme for day 12 of ruby challenge.
