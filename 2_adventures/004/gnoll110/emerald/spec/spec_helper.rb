@@ -1,6 +1,9 @@
 require 'rspec'
 Dir[File.dirname(__FILE__) + '/support/*.rb'].each {|file| require file }
 
+$0 = "emerald"
+ARGV.clear
+
 def capture(stream)
   begin
     stream = stream.to_s
