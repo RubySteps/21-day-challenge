@@ -1,5 +1,6 @@
 require 'emerald'
 require 'spec_helper'
+require 'byebug'
 
 describe Emerald::CLI do
   describe "#emerald" do
@@ -16,13 +17,19 @@ describe Emerald::CLI do
     #end
 
     context "executing instructions from the command line" do
+      puts "A"
+      byebug
       let(:emerald) { Emerald::CLI.start(["emerald"]) }
-  
+
       context "with valid commands" do
         it "should process the commands and output the results" do
+          puts "a"
           expect($stdin).to receive(:gets).and_return('WEIGHT 110', 'REPORT', 'EXIT')
+          puts "b"
           results = capture(:stdout) { emerald }
+          puts "c"
           expect(results).to match(/110/)
+          puts "d"
         end
       end
     end

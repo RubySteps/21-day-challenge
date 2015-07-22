@@ -16,7 +16,9 @@ module Emerald
       if options[:file]
         process_file(options[:file])
       else
+        puts "x"
         process_stdin
+        puts "y"
       end
     end
 

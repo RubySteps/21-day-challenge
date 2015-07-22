@@ -6,6 +6,7 @@ module Emerald
     end
  
   	def process (line)
+  	  line
     end
   end
 end	
