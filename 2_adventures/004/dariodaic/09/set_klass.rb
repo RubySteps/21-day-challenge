@@ -66,7 +66,8 @@ gamma = gamma - triplet_set
 
 hash = {a: 100, b: 200, c: 300}
 # Q: what will be the contents of gamma, if we merge it with hash?
-gamma.merge(hash)
+puts "HERE"
+p gamma.merge(hash)
 
 # 4. SUBSETS AND SUPERSETS
 ps = Set.new(["B", "C"])
