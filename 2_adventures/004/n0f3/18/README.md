@@ -1,0 +1,1 @@
+This is a readme for day 18 of the ruby challenge.
