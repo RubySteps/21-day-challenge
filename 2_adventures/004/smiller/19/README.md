@@ -1,6 +1,6 @@
 # 004/19
 
-Adds to (smiller/extracts)[https://github.com/smiller/extracts):
+Adds to (smiller/extracts)[https://github.com/smiller/extracts]:
 
 We have our first extract-an-entry test, and a second rewrite-the-file-adding-a-footnote-to-a-citation test.  It feels like we missed a step, which is identify-a-citation-in-an-entry.
 
