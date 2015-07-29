@@ -26,5 +26,18 @@ describe Emerald::CLI do
         end
       end
     end
+
+    context "executing instructions from the command line (2)" do
+      let(:output) { capture(:stdout) { Emerald::CLI.start(["emerald"]) } }
+
+      context "with valid commands" do
+        it "should process the commands and output the results" do
+          allow($stdin).to receive(:gets).and_return('WEIGHT 110', 'REPORT', 'EXIT')
+          expect(output).to include '110'
+        end
+      end
+    end
+
+
   end
 end

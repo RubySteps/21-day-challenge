@@ -12,13 +12,12 @@ module Emerald
 
     desc "execute commands", "takes actions as per commands"
     def emerald
+      puts 'in CLI.emerald'
       @app = Emerald::Application.new
       if options[:file]
         process_file(options[:file])
       else
-        puts "x"
         process_stdin
-        puts "y"
       end
     end
 
