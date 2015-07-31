@@ -1,0 +1,1 @@
+I am going to write a 'hello world' program in ruby
